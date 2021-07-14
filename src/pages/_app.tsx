@@ -1,81 +1,34 @@
-import { SaleorProvider } from "@saleor/sdk";
-import { ConfigInput } from "@saleor/sdk/lib/types";
-import { Integrations as ApmIntegrations } from "@sentry/apm";
-import * as Sentry from "@sentry/browser";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import * as React from "react";
-import { positions, Provider as AlertProvider } from "react-alert";
-import TagManager from "react-gtm-module";
-import { ThemeProvider } from "styled-components";
+import "../styles/globals.css"
+import * as React from "react"
+import { Provider } from "react-redux"
+import type { AppProps, AppContext } from "next/app"
+import { getOrCreateStore } from "../state/store"
+import { EnhancedStore } from "@reduxjs/toolkit"
 
-import { NotificationTemplate } from "@components/atoms";
-import { ServiceWorkerProvider } from "@components/containers";
-import { defaultTheme, GlobalStyle } from "@styles";
-import { NextQueryParamProvider } from "@temp/components";
-
-import { version } from "../../package.json";
-import { App as StorefrontApp } from "../app";
-import { LocaleProvider } from "../components/Locale";
-import {
-  apiUrl,
-  channelSlug,
-  sentryDsn,
-  sentrySampleRate,
-  serviceWorkerTimeout,
-  ssrMode,
-} from "../constants";
-
-if (!ssrMode) {
-  window.version = version;
+function MyApp({
+  Component,
+  pageProps,
+  initialReduxState,
+}: AppProps & { initialReduxState: EnhancedStore }): JSX.Element {
+  const reduxStore = getOrCreateStore(initialReduxState)
+  return (
+    <Provider store={reduxStore}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
 
-if (process.env.GTM_ID) {
-  TagManager.initialize({ gtmId: process.env.GTM_ID });
+MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
+  let pageProps = {}
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+
+  return {
+    pageProps,
+    initialReduxState: getOrCreateStore().getState(),
+  }
 }
 
-if (sentryDsn) {
-  Sentry.init({
-    dsn: sentryDsn,
-    // @ts-ignore
-    integrations: [new ApmIntegrations.Tracing()],
-    tracesSampleRate: sentrySampleRate,
-  });
-}
-
-const saleorConfig: ConfigInput = { apiUrl, channel: channelSlug };
-
-const notificationConfig = { position: positions.BOTTOM_RIGHT, timeout: 2500 };
-
-const App = ({ Component, pageProps }: AppProps) => (
-  <>
-    <Head>
-      <title>Demo PWA Storefront – Saleor Commerce</title>
-      <link rel="preconnect" href={apiUrl} />
-      <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
-      <link rel="icon" type="image/png" href="/favicon-36.png" />
-      <link rel="manifest" href="/manifest.json" />
-    </Head>
-    <ThemeProvider theme={defaultTheme}>
-      <AlertProvider
-        template={NotificationTemplate as any}
-        {...notificationConfig}
-      >
-        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-          <LocaleProvider>
-            <GlobalStyle />
-            <NextQueryParamProvider>
-              <SaleorProvider config={saleorConfig}>
-                <StorefrontApp>
-                  <Component {...pageProps} />
-                </StorefrontApp>
-              </SaleorProvider>
-            </NextQueryParamProvider>
-          </LocaleProvider>
-        </ServiceWorkerProvider>
-      </AlertProvider>
-    </ThemeProvider>
-  </>
-);
-
-export default App;
+export default MyApp

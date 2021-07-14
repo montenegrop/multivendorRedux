@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_app render without errors 1`] = `
+<MyApp
+  Component={[Function]}
+  pageProps={Object {}}
+>
+  <Provider
+    store={
+      Object {
+        "@@observable": [Function],
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <Component>
+      <div>
+        Page example
+      </div>
+    </Component>
+  </Provider>
+</MyApp>
+`;
