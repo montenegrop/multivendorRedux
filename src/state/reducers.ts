@@ -1,11 +1,9 @@
 import { type } from "os"
 import { combineReducers } from "redux"
 
-import count from "./reducers/countReducer"
+import combinedReducers from "./reducers/index"
 
-const reducers = combineReducers({
-  count,
-})
+const reducers = combineReducers(combinedReducers)
 
 export default reducers
 export type RootState = ReturnType<typeof reducers>

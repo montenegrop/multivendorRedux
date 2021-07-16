@@ -1,8 +1,8 @@
 import { INCREMENT } from "./actions/count"
-import countSaga from "./sagas/count"
+import allSagas from "./sagas/index"
 
 export const sagasMiddleware = ({ getState, dispatch }) => {
-  const sagas = [countSaga].map((saga) => saga(dispatch))
+  const sagas = allSagas.map((saga) => saga(dispatch))
 
   return (next) => (action) => {
     const result = next(action)
