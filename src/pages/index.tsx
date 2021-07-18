@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <button onClick={onClick}>nombre del vendor</button>
-      <div>{name}</div>
+      <div className="warning">{name}</div>
       {loading && <div>loading</div>}
     </div>
   )

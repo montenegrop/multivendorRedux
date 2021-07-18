@@ -4,7 +4,7 @@ import type { AppProps, AppContext } from "next/app"
 import { getOrCreateStore } from "../state/store"
 import { EnhancedStore } from "@reduxjs/toolkit"
 import Head from "next/head"
-
+import "../styles/main.scss"
 function MyApp({
   Component,
   pageProps,
