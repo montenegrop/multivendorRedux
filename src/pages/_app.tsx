@@ -5,6 +5,10 @@ import { getOrCreateStore } from "../state/store"
 import { EnhancedStore } from "@reduxjs/toolkit"
 import Head from "next/head"
 import "../styles/main.scss"
+import "../styles/images.scss"
+import "../styles/text.scss"
+import "../styles/tables.scss"
+
 function MyApp({
   Component,
   pageProps,

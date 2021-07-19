@@ -1,0 +1,28 @@
+.my_banner_height_200px {
+  img {
+    max-height: 200px;
+  }
+}
+
+.has-bg-img {
+  background: "https://bulma.io/images/placeholders/128x128.png" center center;
+  background-size: cover;
+}
+
+.hero {
+  &.has-background {
+    position: relative;
+    overflow: hidden;
+  }
+  &-background {
+    z-index: -1;
+    position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    &.is-transparent {
+      opacity: 0.3;
+    }
+  }
+}
