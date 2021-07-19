@@ -9,6 +9,9 @@ export default function Home() {
   }
   const name = useSelector<RootState>((state) => state.serviceProvider.name)
   const loading = useSelector<RootState>((state) => state.serviceProvider.loading)
+  const banner_image = "https://http2.mlstatic.com/D_NQ_905027-MLA46750656973_072021-OO.webp"
+  const avatar_image =
+    "https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg"
   return (
     <div>
       {/* <section>
@@ -19,20 +22,17 @@ export default function Home() {
       <div className="columns">
         <div className="column is-2"></div>
         <div className="column">
-          <section className="hero is-small has-background">
-            <img
-              src="https://www.fillmurray.com/1920/1080"
-              alt="fill background"
-              className="hero-background"
-            />
-            <div className="hero-body">
+          <section
+            className="my_banner-service_provider is-flex is-align-items-flex-end"
+            style={{ backgroundImage: `url(${banner_image})` }}
+          >
+            <div className="is-flex is-align-items-center">
               <figure className="image is-96x96">
-                <img
-                  className="is-rounded"
-                  src="https://bulma.io/images/placeholders/128x128.png"
-                />
+                <img className="is-rounded" src={avatar_image} />
               </figure>
-              <h1 className="my_1px_black_stroke title has-text-warning">Título de la empresa</h1>
+              <h2 className="my_1px_black_stroke title is-3 has-text-warning">
+                Título de la empresa
+              </h2>
             </div>
           </section>
           <section className="columns">
