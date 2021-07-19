@@ -1,0 +1,43 @@
+@import "~bulma/sass/base/_all";
+
+.my_table {
+  &-light_titles {
+    tbody {
+      tr {
+        th,
+        td {
+          color: $grey;
+        }
+      }
+    }
+  }
+  &-no_borders {
+    tbody {
+      tr {
+        th,
+        td {
+          border: none;
+        }
+      }
+    }
+  }
+  &-right {
+    tbody {
+      tr {
+        td {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+// .my_table_no_borders {
+//   table {
+//     tbody {
+//       .table td {
+//         border: none;
+//       }
+//     }
+//   }
+// }
