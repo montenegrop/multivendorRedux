@@ -13,7 +13,7 @@ export const ServicesTable = ({ services_data }) => {
       <tbody>
         {services_data.map((service_data, index) => {
           return (
-            <tr>
+            <tr key={`tr-${service_data.name}`}>
               <th>
                 <ServiceButton onClick={() => {}}>{service_data.name}</ServiceButton>
               </th>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Avatar } from "../components/Avatar"
 import { ContactTable } from "../components/ContactTable"
@@ -9,6 +9,9 @@ import { RootState } from "../state/reducers"
 
 export default function Home() {
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
+  }, [])
   const onClick = () => {
     dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
   }

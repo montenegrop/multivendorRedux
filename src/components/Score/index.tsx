@@ -5,8 +5,9 @@ import { StarFilled } from "./StarFilled"
 export const Score = ({ score }) => {
   var rows = []
   for (var i = 0; i < 5; i++) {
-    console.log(score)
-    rows.push(i < score ? <StarFilled /> : <StarEmpty />)
+    rows.push(
+      i < score ? <StarFilled key={`star-filled-${i}`} /> : <StarEmpty key={`star-empty-${i}`} />
+    )
   }
   return <div className="stars-no_wrap">{rows}</div>
 }
