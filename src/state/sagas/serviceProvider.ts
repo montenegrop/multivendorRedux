@@ -36,11 +36,9 @@ export default (dispatch) => {
       }
       try {
         const data = await request(API_URI, query, variables)
-        console.log(data)
         dispatch(SERVICE_PROVIDER_SUCCESS(data.vendor))
         /// llamada a API de graphql
       } catch (error) {
-        console.log(error)
         dispatch(SERVICE_PROVIDER_ERROR("error de service provider"))
       }
     },

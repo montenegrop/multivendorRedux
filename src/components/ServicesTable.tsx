@@ -7,10 +7,11 @@ export const ServicesTable = ({ services_data }) => {
     { name: "Montenegro", score: 3 },
     { name: "jose", score: 4 },
   ]
+  console.log(services_data)
   return (
     <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
       <tbody>
-        {example.map((service_data, index) => {
+        {services_data.map((service_data, index) => {
           return (
             <tr>
               <th>
