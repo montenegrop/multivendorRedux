@@ -8,6 +8,6 @@ const initialState = {
 
 export default createReducer(initialState, (builder) => {
   builder.addCase(serviceProviderActions.SERVICE_PROVIDER_SUCCESS, (state, { payload }) => {
-    state.services = payload?.services?.edges.map(({ node }) => ({ name: node.name, score: 3 }))
+    state.services = payload.services.edges.map(({ node }) => ({ name: node.name, score: 3 }))
   })
 })

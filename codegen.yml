@@ -1,0 +1,6 @@
+overwrite: true
+schema: "https://construirte-api-staging.herokuapp.com/graphql/"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
