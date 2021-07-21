@@ -13,6 +13,21 @@ export default (dispatch) => {
         query serviceProvider($id: ID!) {
           vendor(id: $id) {
             name
+            mainImage {
+              url
+              alt
+            }
+            avatarImage {
+              url
+              alt
+            }
+            services(first: 5) {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
           }
         }
       `
@@ -21,7 +36,7 @@ export default (dispatch) => {
       }
       try {
         const data = await request(API_URI, query, variables)
-        console.log(payload)
+        console.log(data)
         dispatch(SERVICE_PROVIDER_SUCCESS(data.vendor))
         /// llamada a API de graphql
       } catch (error) {

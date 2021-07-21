@@ -1,4 +1,9 @@
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Avatar } from "../components/Avatar"
+import { ContactTable } from "../components/ContactTable"
+import { ServiceButton } from "../components/ServiceButton"
+import { ServicesTable } from "../components/ServicesTable"
 import { SERVICE_PROVIDER_INIT } from "../state/actions/serviceProvider"
 import { RootState } from "../state/reducers"
 
@@ -23,89 +28,44 @@ export default function Home() {
         <div className="column is-2"></div>
         <div className="column">
           <section
-            className="my_banner-service_provider is-flex is-align-items-flex-end"
+            className="mb-3 my_banner-service_provider is-flex is-align-items-flex-end"
             style={{ backgroundImage: `url(${banner_image})` }}
           >
-            <div className="is-flex is-align-items-center">
-              <figure className="image is-96x96">
-                <img className="is-rounded" src={avatar_image} />
-              </figure>
-              <h2 className="my_1px_black_stroke title is-3 has-text-warning">
-                Título de la empresa
+            <div className="is-flex is-align-items-center mb-3 ml-3">
+              <Avatar image_url={avatar_image}></Avatar>
+              <h2 className="my_1px_black_stroke title is-3 has-text-warning ml-3">
+                Leopoldo Lugones
               </h2>
             </div>
           </section>
-          <section className="columns">
+          <section className="mb-3 columns">
             <div className="column">
-              <h2 className="title has-text-grey-light has-background-light mb-0 has-text-centered">
+              <h2 className="title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
                 CONTACTO
               </h2>
-              <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
-                <tbody>
-                  <tr>
-                    <th>Teléfono</th>
-                    <td>+23211231321</td>
-                  </tr>
-                  <tr>
-                    <th>Celular</th>
-                    <td>3121111111</td>
-                  </tr>
-                  <tr>
-                    <th>Dirección</th>
-                    <td>San luis 4433</td>
-                  </tr>
-                  <tr>
-                    <th>Ciudad</th>
-                    <td>Capital Federal</td>
-                  </tr>
-                  <tr>
-                    <th>Email</th>
-                    <td>cacho_castaña@hotmail.com</td>
-                  </tr>
-                  <tr>
-                    <th>Redes</th>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+              <ContactTable contact_data={{}}></ContactTable>
             </div>
             <div className="column">
-              <h2 className="title has-text-grey-light has-background-light mb-0 has-text-centered">
-                Servicios
+              <h2 className="title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
+                SERVICIOS
               </h2>
-              <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
-                <tbody>
-                  <tr>
-                    <th>Teléfono</th>
-                    <td>+23211231321</td>
-                  </tr>
-                  <tr>
-                    <th>Celular</th>
-                    <td>3121111111</td>
-                  </tr>
-                  <tr>
-                    <th>Dirección</th>
-                    <td>San luis 4433</td>
-                  </tr>
-                  <tr>
-                    <th>Ciudad</th>
-                    <td>Capital Federal</td>
-                  </tr>
-                  <tr>
-                    <th>Email</th>
-                    <td>cacho_castaña@hotmail.com</td>
-                  </tr>
-                  <tr>
-                    <th>Redes</th>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+              <ServicesTable services_data={{}}></ServicesTable>
             </div>
+          </section>
+          <section className="mb-3 columns">
+            <div className="column">
+              <button className="button is-rounded is-primary">Contratar</button>
+            </div>
+            <div className="column"></div>
+          </section>
+
+          <section className="section ml-6">
+            <ServiceButton onClick={onClick}>nombre</ServiceButton>
           </section>
           <button onClick={onClick}>nombre del vendor</button>
           <div className="warning">{name}</div>
           {loading && <div>loading</div>}
+          <div className="App"></div>
         </div>
         <div className="column is-2"></div>
       </div>
