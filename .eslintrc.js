@@ -51,7 +51,8 @@ module.exports = {
           },
         ],
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+        "prettier/prettier": ["off", { singleQuote: true }],
+        // "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
       },
     },
   ],
