@@ -1,5 +1,3 @@
-import serviceProvider from "./serviceProviderReducer"
-import serviceProviderServices from "./serviceProviderServicesReducer"
-import serviceProviderImages from "./serviceProviderImagesReducer"
+import serviceProviderReducers from "./serviceProvider"
 
-export default { serviceProvider, serviceProviderServices, serviceProviderImages }
+export default serviceProviderReducers

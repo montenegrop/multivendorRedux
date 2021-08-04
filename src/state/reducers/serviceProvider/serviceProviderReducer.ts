@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
-import * as serviceProviderActions from "../actions/serviceProvider"
+import * as serviceProviderActions from "../../actions/serviceProvider"
 
 const initialState = {
   name: <string>"",
