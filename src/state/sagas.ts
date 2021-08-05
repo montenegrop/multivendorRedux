@@ -1,4 +1,3 @@
-import { INCREMENT } from "./actions/count"
 import allSagas from "./sagas/index"
 
 export const sagasMiddleware = ({ getState, dispatch }) => {

@@ -1,4 +1,4 @@
-export const ContactTable = ({ contact_data }) => {
+export const ContactTable = ({ _contact_data }) => {
   return (
     <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
       <tbody>

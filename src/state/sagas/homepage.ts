@@ -4,7 +4,7 @@ import { HOMEPAGE_ERROR, HOMEPAGE_INIT, HOMEPAGE_SUCCESS } from "../actions/home
 
 export default (dispatch) => {
   return {
-    [HOMEPAGE_INIT.type]: async (state, payload) => {
+    [HOMEPAGE_INIT.type]: async (_state, _payload) => {
       const query = gql`
         query homepageData {
           categories(
