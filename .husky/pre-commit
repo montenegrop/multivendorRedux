@@ -3,3 +3,4 @@
 
 # eliminado este test de yarn:
 # yarn type-check && yarn lint && yarn test
+npm run lint
