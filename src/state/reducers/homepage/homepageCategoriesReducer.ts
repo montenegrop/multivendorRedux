@@ -16,6 +16,7 @@ export default createReducer(initialState, (builder) => {
       url: node.backgroundImage.url,
       alt: node.backgroundImage.alt,
     }))
+    state.loading = false
   })
   builder.addCase(homepageActions.HOMEPAGE_INIT, (state) => {
     state.loading = true
