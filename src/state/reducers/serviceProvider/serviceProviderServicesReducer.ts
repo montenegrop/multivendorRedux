@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit"
-import * as serviceProviderActions from "../actions/serviceProvider"
-import { Service } from "../actions/serviceProvider"
+import * as serviceProviderActions from "../../actions/serviceProvider"
+import { Service } from "../../actions/serviceProvider"
 
 const initialState = {
   services: <Service[]>[],

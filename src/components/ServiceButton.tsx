@@ -1,10 +1,4 @@
-export const ServiceButton = ({
-  children: label,
-  onClick,
-}: {
-  children: string
-  onClick: () => void
-}) => {
+export const ServiceButton = ({ children: label }: { children: string; onClick: () => void }) => {
   return (
     <div className="service_button-shadow">
       <div className="service_button-border">

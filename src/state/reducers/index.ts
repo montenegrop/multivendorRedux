@@ -1,5 +1,4 @@
-import serviceProvider from "./serviceProviderReducer"
-import serviceProviderServices from "./serviceProviderServicesReducer"
-import serviceProviderImages from "./serviceProviderImagesReducer"
+import serviceProviderReducers from "./serviceProvider"
+import homepageReducers from "./homepage"
 
-export default { serviceProvider, serviceProviderServices, serviceProviderImages }
+export default { ...serviceProviderReducers, ...homepageReducers }

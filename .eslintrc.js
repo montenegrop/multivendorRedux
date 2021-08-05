@@ -51,7 +51,13 @@ module.exports = {
           },
         ],
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        // "prettier/prettier": ["off", { singleQuote: true }],
         "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+        ],
+        "@typescript-eslint/no-empty-function": "warn",
       },
     },
   ],
