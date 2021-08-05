@@ -3,8 +3,8 @@ import { StarEmpty } from "./StarEmpty"
 import { StarFilled } from "./StarFilled"
 
 export const Score = ({ score }) => {
-  var rows = []
-  for (var i = 0; i < 5; i++) {
+  const rows = []
+  for (let i = 0; i < 5; i++) {
     rows.push(
       i < score ? <StarFilled key={`star-filled-${i}`} /> : <StarEmpty key={`star-empty-${i}`} />
     )
