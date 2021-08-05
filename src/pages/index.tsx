@@ -4,6 +4,7 @@ import { Avatar } from "../components/Avatar"
 import { ContactTable } from "../components/ContactTable"
 import { ServiceButton } from "../components/ServiceButton"
 import { ServicesTable } from "../components/ServicesTable"
+import { HOMEPAGE_INIT } from "../state/actions/homepage"
 import { SERVICE_PROVIDER_INIT } from "../state/actions/serviceProvider"
 import { RootState } from "../state/reducers"
 
@@ -13,7 +14,7 @@ export default function Home() {
     dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
   }, [])
   const onClick = () => {
-    dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
+    dispatch(HOMEPAGE_INIT())
   }
   const name = useSelector<RootState>((state) => state.serviceProvider.name)
   const loading = useSelector<RootState>((state) => state.serviceProvider.loading)
