@@ -22,7 +22,6 @@ export default function Home() {
   const banner_image = "https://http2.mlstatic.com/D_NQ_905027-MLA46750656973_072021-OO.webp"
   const avatar_image =
     "https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg"
-  console.log(services_data, 21)
   return (
     <div>
       {/* <section>
