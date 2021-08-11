@@ -9,7 +9,14 @@ import { SERVICE_PROVIDER_INIT } from "../state/actions/serviceProvider"
 import { RootState } from "../state/reducers"
 import Layout from "./Layout"
 
+import { useRouter } from "next/router"
+import Link from "next/link"
+import Modal from "react-modal"
+
 export default function Home() {
+  Modal.setAppElement("#__next")
+  const router = useRouter()
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
@@ -23,6 +30,7 @@ export default function Home() {
   const banner_image = "https://http2.mlstatic.com/D_NQ_905027-MLA46750656973_072021-OO.webp"
   const avatar_image =
     "https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg"
+  const hireStep = 1
   return (
     <Layout>
       <section
@@ -50,7 +58,9 @@ export default function Home() {
       </section>
       <section className="mb-3 columns">
         <div className="column">
-          <button className="button is-rounded is-primary">Contratar</button>
+          <Link href={`/?step=${hireStep}}`} as={`/contratar/1`}>
+            <a className="button is-rounded is-primary">contratar</a>
+          </Link>
         </div>
         <div className="column"></div>
       </section>
@@ -62,6 +72,19 @@ export default function Home() {
       <div className="warning">{name}</div>
       {loading && <div>loading</div>}
       <div className="App"></div>
+
+      <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/")}>
+        Dentro del Modal
+      </Modal>
+
+      {/* bulma modal: */}
+      {/* <div className="modal is-active">
+          <div className="modal-background" />
+          <div className="modal-content has-background-white px-5 py-5">
+            <h3 className="title mb-6">modal</h3>
+          </div>
+          <button className="modal-close is-large" aria-label="close"></button>
+        </div> */}
     </Layout>
   )
 }
