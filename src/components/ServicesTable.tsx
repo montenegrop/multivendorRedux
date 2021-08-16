@@ -3,7 +3,6 @@ import { Score } from "./Score"
 import { ServiceButton } from "./ServiceButton"
 
 export const ServicesTable = ({ services_data }) => {
-  console.log(services_data)
   return (
     <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
       <tbody>
