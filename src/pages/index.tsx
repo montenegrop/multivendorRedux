@@ -58,7 +58,7 @@ export default function Home() {
       </section>
       <section className="mb-3 columns">
         <div className="column">
-          <Link href={`/?step=${hireStep}}`} as={`/contratar/1`}>
+          <Link href={`/?step=${hireStep}`}>
             <a className="button is-rounded is-primary">contratar</a>
           </Link>
         </div>
