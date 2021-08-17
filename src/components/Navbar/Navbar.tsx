@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <Link href="/main">
+        <Link href="/">
           <a className={`navbar-item navbar_logo`}>
             <Logo />
           </a>
