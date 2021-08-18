@@ -6,6 +6,6 @@ export type Image = {
   alt: string
 }
 
-export const STORE_INIT = createAction("STORE_INIT")
+export const STORE_INIT = createAction<{ id: string }>("STORE_INIT")
 export const STORE_SUCCESS = createAction<Vendor>("STORE_SUCCESS")
 export const STORE_ERROR = createAction<string>("STORE_ERROR")

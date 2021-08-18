@@ -1,12 +1,17 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
+import { STORE_INIT } from "../../state/actions/store"
 import { RootState } from "../../state/reducers"
 
 const CategoryGrid = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(HOMEPAGE_INIT())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(STORE_INIT({ id: "VmVuZG9yOjE=" }))
   }, [dispatch])
 
   const homepageCategories = useSelector((state: RootState) => state.homepageCategories.categories)

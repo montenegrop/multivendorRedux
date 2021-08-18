@@ -8,7 +8,7 @@ import {
 
 export default (dispatch) => {
   return {
-    [SERVICE_PROVIDER_INIT.type]: async (state, payload) => {
+    [SERVICE_PROVIDER_INIT.type]: async (_state, payload) => {
       const query = gql`
         query serviceProvider($id: ID!) {
           vendor(id: $id) {

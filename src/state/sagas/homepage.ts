@@ -24,7 +24,6 @@ export default (dispatch) => {
           }
         }
       `
-
       try {
         const data = await request(API_URI, query)
         dispatch(HOMEPAGE_SUCCESS(data.categories))
