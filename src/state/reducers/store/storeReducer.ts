@@ -25,5 +25,6 @@ export default createReducer(initialState, (builder) => {
   })
   builder.addCase(storeActions.STORE_ERROR, (state, { payload }) => {
     state.error = payload
+    state.loading = false
   })
 })

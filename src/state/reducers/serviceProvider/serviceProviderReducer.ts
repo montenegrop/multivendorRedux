@@ -18,5 +18,6 @@ export default createReducer(initialState, (builder) => {
   })
   builder.addCase(serviceProviderActions.SERVICE_PROVIDER_ERROR, (state, { payload }) => {
     state.error = payload
+    state.loading = false
   })
 })

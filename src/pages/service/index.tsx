@@ -6,6 +6,7 @@ import { ServiceButton } from "../../components/ServiceButton"
 import { ServicesTable } from "../../components/ServicesTable"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { SERVICE_PROVIDER_INIT } from "../../state/actions/serviceProvider"
+
 import { RootState } from "../../state/reducers"
 import Layout from "../Layout"
 
@@ -13,6 +14,7 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 import Modal from "react-modal"
 import Navbar from "../../components/Navbar/Navbar"
+import { CATEGORY_INIT } from "../../state/actions/category"
 
 export default function Home() {
   Modal.setAppElement("#__next")
@@ -21,6 +23,9 @@ export default function Home() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
+  }, [])
+  useEffect(() => {
+    dispatch(CATEGORY_INIT({ id: "Q2F0ZWdvcnk6MzA=", channel: "default-channel" }))
   }, [])
   const onClick = () => {
     dispatch(HOMEPAGE_INIT())
