@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import Category from "../../pages/category"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { RootState } from "../../state/reducers"
 
@@ -29,6 +30,7 @@ const CategoryGrid = () => {
             )
           })}
       </div>
+      <Category />
     </div>
   )
 }

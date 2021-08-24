@@ -2,7 +2,6 @@ import React from "react"
 import Slider from "../components/Slide/Slider"
 import CategoryGrid from "../components/CategoryGrid/CategoryGrid"
 import Navbar from "../components/Navbar/Navbar"
-
 const Home = () => {
   const SliderData = [
     {
