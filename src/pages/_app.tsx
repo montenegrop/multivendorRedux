@@ -5,6 +5,7 @@ import { getOrCreateStore } from "../state/store"
 import { EnhancedStore } from "@reduxjs/toolkit"
 import Head from "next/head"
 import "../styles/main.scss"
+import Layout from "./Layout"
 
 function MyApp({
   Component,
@@ -17,7 +18,9 @@ function MyApp({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   )
 }

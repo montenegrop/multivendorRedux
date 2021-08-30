@@ -6,14 +6,10 @@ import { ServiceButton } from "../../components/ServiceButton"
 import { ServicesTable } from "../../components/ServicesTable"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { SERVICE_PROVIDER_INIT } from "../../state/actions/serviceProvider"
-
 import { RootState } from "../../state/reducers"
-import Layout from "../Layout"
-
 import { useRouter } from "next/router"
 import Link from "next/link"
 import Modal from "react-modal"
-import Navbar from "../../components/Navbar/Navbar"
 import { CATEGORY_INIT } from "../../state/actions/category"
 import Basic from "./RequestServiceForm"
 
@@ -40,69 +36,55 @@ export default function Home() {
   const hireStep = 1
   return (
     <>
-      <Navbar />
-      <Layout>
-        <section
-          className="mb-3 my_banner-service_provider is-flex is-align-items-flex-end"
-          style={{ backgroundImage: `url(${banner_image})` }}
-        >
-          <div className="is-flex is-align-items-center mb-3 ml-3">
-            <Avatar image_url={avatar_image}></Avatar>
-            <h2 className="my_1px_black_stroke title is-3 has-text-warning ml-3">
-              Leopoldo Lugones
-            </h2>
-          </div>
-        </section>
-        <section className="mb-3 columns">
-          <div className="column">
-            <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
-              CONTACTO
-            </h2>
-            <ContactTable _contact_data={{}}></ContactTable>
-          </div>
-          <div className="column">
-            <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
-              SERVICIOS
-            </h2>
-            <ServicesTable services_data={services_data}></ServicesTable>
-          </div>
-        </section>
-        <section className="mb-3 columns">
-          <div className="column">
-            <Link href={`/service?step=${hireStep}`}>
-              <a className="button is-rounded is-primary">contratar</a>
-            </Link>
-          </div>
-          <div className="column"></div>
-        </section>
+      <section
+        className="mb-3 my_banner-service_provider is-flex is-align-items-flex-end"
+        style={{ backgroundImage: `url(${banner_image})` }}
+      >
+        <div className="is-flex is-align-items-center mb-3 ml-3">
+          <Avatar image_url={avatar_image}></Avatar>
+          <h2 className="my_1px_black_stroke title is-3 has-text-warning ml-3">Leopoldo Lugones</h2>
+        </div>
+      </section>
+      <section className="mb-3 columns">
+        <div className="column">
+          <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
+            CONTACTO
+          </h2>
+          <ContactTable _contact_data={{}}></ContactTable>
+        </div>
+        <div className="column">
+          <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
+            SERVICIOS
+          </h2>
+          <ServicesTable services_data={services_data}></ServicesTable>
+        </div>
+      </section>
+      <section className="mb-3 columns">
+        <div className="column">
+          <Link href={`/service?step=${hireStep}`}>
+            <a className="button is-rounded is-primary">contratar</a>
+          </Link>
+        </div>
+        <div className="column"></div>
+      </section>
 
-        <section>
-          <button className="button" onClick={onClick}>
-            modal de contratar
-          </button>
-        </section>
+      <section>
+        <button className="button" onClick={onClick}>
+          modal de contratar
+        </button>
+      </section>
 
-        <section className="section ml-6">
-          <ServiceButton onClick={onClick}>nombre</ServiceButton>
-        </section>
-        <button onClick={onClick}>nombre del vendor</button>
-        <div className="warning">{name}</div>
-        {loading && <div>loading</div>}
-        <div className="App"></div>
+      <section className="section ml-6">
+        <ServiceButton onClick={onClick}>nombre</ServiceButton>
+      </section>
+      <button onClick={onClick}>nombre del vendor</button>
+      <div className="warning">{name}</div>
+      {loading && <div>loading</div>}
+      <div className="App"></div>
 
-        <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/service")}>
-          <Basic services={services_data}></Basic>
-        </Modal>
-
-        {/* bulma modal: */}
-        {/* <div className="modal is-active">
-          <div className="modal-background" />
-          <div className="modal-content has-background-white px-5 py-5">
-            <h3 className="title mb-6">modal</h3>
-          </div>
-          <button className="modal-close is-large" aria-label="close"></button>
-        </div> */}
-      </Layout>
+      <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/service")}>
+        <Basic services={services_data}></Basic>
+      </Modal>
     </>
   )
 }

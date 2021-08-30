@@ -1,6 +1,4 @@
 import React, { useEffect } from "react"
-import Layout from "../Layout"
-import Navbar from "../../components/Navbar/Navbar"
 import TiendaBanner from "./TiendaBanner"
 import TiendaNavbar from "./TiendaNavbar"
 import { useDispatch, useSelector } from "react-redux"
@@ -18,11 +16,8 @@ const Tienda = () => {
 
   return (
     <>
-      <Navbar />
-      <Layout>
-        {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
-        <TiendaNavbar />
-      </Layout>
+      {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
+      <TiendaNavbar />
     </>
   )
 }

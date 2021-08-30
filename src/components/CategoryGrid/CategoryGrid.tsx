@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Category from "../../pages/category"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { RootState } from "../../state/reducers"
 
@@ -22,15 +21,17 @@ const CategoryGrid = () => {
                 className="column is-one-quarter-desktop is-half-tablet grid_card"
                 key={category.id}
               >
-                <span className="grid_overlay">
-                  <img className="grid_img" src={category.url} alt={category.alt}></img>
-                  <h3 className="grid_category_name">{category.name}</h3>
-                </span>
+                <div className="grid_img_container">
+                  <div className="grid_img" style={{ backgroundImage: `url(${category.url})` }}>
+                    <div className="grid_item_name">
+                      <p>{category.name}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             )
           })}
       </div>
-      <Category />
     </div>
   )
 }
