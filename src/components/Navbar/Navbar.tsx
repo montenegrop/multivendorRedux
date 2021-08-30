@@ -52,31 +52,31 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-      </div>
-      <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <button
-                className="button is-primary navbar_user"
-                onClick={() => {
-                  logear()
-                }}
-              >
-                {usuario.data && usuario.data.user.email}{" "}
-                <div className="navbar_user_icon">
-                  <UserIcon />
-                </div>
-              </button>
-              <button className="button is-primary" onClick={() => onClose(!isOpen)}>
-                MIS SERVICIOS
-              </button>
-              <a className="button is-primary">
-                <Shop />
-              </a>
-              <a className="button is-primary navbar_cart">
-                <Cart />
-              </a>
+        <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <button
+                  className="button is-primary navbar_user"
+                  onClick={() => {
+                    logear()
+                  }}
+                >
+                  {usuario.data && usuario.data.user.email}{" "}
+                  <div className="navbar_user_icon">
+                    <UserIcon />
+                  </div>
+                </button>
+                <button className="button is-primary" onClick={() => onClose(!isOpen)}>
+                  MIS SERVICIOS
+                </button>
+                <a className="button is-primary">
+                  <Shop />
+                </a>
+                <a className="button is-primary navbar_cart">
+                  <Cart />
+                </a>
+              </div>
             </div>
           </div>
           <ModalComponent isOpen={isOpen} onClose={onClose} />
