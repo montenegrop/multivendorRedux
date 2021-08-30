@@ -15,7 +15,6 @@ const Category = () => {
   useEffect(() => {
     dispatch(CATEGORY_INIT({ id: "Q2F0ZWdvcnk6MzA=", channel: "default-channel" }))
   }, [dispatch])
-  console.log(categRedux)
 
   return (
     <>

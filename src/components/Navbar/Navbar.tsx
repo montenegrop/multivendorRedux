@@ -9,8 +9,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
 import { LOG_IN } from "../../state/actions/loggin"
 
+import ModalComponent from "../Modal/container/Modal"
+
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
+  const [isOpen, onClose] = useState(false)
 
   const dispatch = useDispatch()
   const logear = () => {
@@ -63,7 +66,9 @@ const Navbar = () => {
                   <UserIcon />
                 </div>
               </button>
-              <a className="button is-primary">MIS SERVICIOS</a>
+              <button className="button is-primary" onClick={() => onClose(!isOpen)}>
+                MIS SERVICIOS
+              </button>
               <a className="button is-primary">
                 <Shop />
               </a>
@@ -72,6 +77,7 @@ const Navbar = () => {
               </a>
             </div>
           </div>
+          <ModalComponent isOpen={isOpen} onClose={onClose} />
         </div>
       </div>
     </nav>
