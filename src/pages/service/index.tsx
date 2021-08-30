@@ -15,6 +15,7 @@ import Link from "next/link"
 import Modal from "react-modal"
 import Navbar from "../../components/Navbar/Navbar"
 import { CATEGORY_INIT } from "../../state/actions/category"
+import Basic from "./RequestServiceForm"
 
 export default function Home() {
   Modal.setAppElement("#__next")
@@ -32,7 +33,7 @@ export default function Home() {
   }
   const name = useSelector<RootState>((state) => state.serviceProvider.name)
   const loading = useSelector<RootState>((state) => state.serviceProvider.loading)
-  const services_data = useSelector<RootState>((state) => state.serviceProviderServices.services)
+  const services_data = useSelector((state: RootState) => state.serviceProviderServices.services)
   const banner_image = "https://http2.mlstatic.com/D_NQ_905027-MLA46750656973_072021-OO.webp"
   const avatar_image =
     "https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg"
@@ -68,11 +69,17 @@ export default function Home() {
         </section>
         <section className="mb-3 columns">
           <div className="column">
-            <Link href={`/?step=${hireStep}`}>
+            <Link href={`/service?step=${hireStep}`}>
               <a className="button is-rounded is-primary">contratar</a>
             </Link>
           </div>
           <div className="column"></div>
+        </section>
+
+        <section>
+          <button className="button" onClick={onClick}>
+            modal de contratar
+          </button>
         </section>
 
         <section className="section ml-6">
@@ -83,8 +90,8 @@ export default function Home() {
         {loading && <div>loading</div>}
         <div className="App"></div>
 
-        <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/")}>
-          Dentro del Modal
+        <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/service")}>
+          <Basic services={services_data}></Basic>
         </Modal>
 
         {/* bulma modal: */}

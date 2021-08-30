@@ -1,0 +1,25 @@
+.string-input {
+  border-width: 0 0 2px 0;
+  border-color: $secondary;
+  &:hover {
+    border-color: $secondary;
+  }
+  &:focus {
+    box-shadow: none;
+    border-color: $secondary;
+  }
+}
+
+.select {
+  .choice-input {
+    border-width: 0 0 2px 0;
+    border-color: $secondary;
+    &:focus {
+      box-shadow: none;
+      border-color: $secondary;
+    }
+    &:hover {
+      border-color: $secondary;
+    }
+  }
+}

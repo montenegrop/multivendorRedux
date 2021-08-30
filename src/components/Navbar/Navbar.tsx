@@ -5,9 +5,19 @@ import Cart from "./Cart"
 import Shop from "./Shop"
 import UserIcon from "./UserIcon"
 
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "../../state/reducers"
+import { LOG_IN } from "../../state/actions/loggin"
+
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
-  const userName = "Carlos"
+
+  const dispatch = useDispatch()
+  const logear = () => {
+    dispatch(LOG_IN({ user: "cboero111@gmail.com", password: "admin" }))
+  }
+
+  const usuario = useSelector((state: RootState) => state.loggin)
 
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
@@ -42,12 +52,17 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <a className="button is-primary navbar_user">
-                {userName}{" "}
+              <button
+                className="button is-primary navbar_user"
+                onClick={() => {
+                  logear()
+                }}
+              >
+                {usuario.data && usuario.data.user.email}{" "}
                 <div className="navbar_user_icon">
                   <UserIcon />
                 </div>
-              </a>
+              </button>
               <a className="button is-primary">MIS SERVICIOS</a>
               <a className="button is-primary">
                 <Shop />

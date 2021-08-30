@@ -8,6 +8,7 @@ export const ServiceButton = ({ children: label }: { children: string; onClick: 
   )
 }
 
+// corregir:
 // <button onClick={onClick} className="service_button">
 // {children}
 // </button>
