@@ -1,0 +1,16 @@
+.filter {
+  width: 20%;
+  height: 100%;
+  ul {
+    list-style: none;
+  }
+}
+.product_card {
+  text-align: center;
+  img {
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+  }
+  border: rgba(0, 0, 0, 0.116) solid 1px;
+}
