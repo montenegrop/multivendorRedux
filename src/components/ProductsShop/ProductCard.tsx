@@ -17,6 +17,11 @@ const ProductCard = ({ name, price, weight }) => {
           {name} {weight}kg
         </p>
       </div>
+      <div className="vendor">
+        <p>
+          vendido por <strong>Carlos</strong>
+        </p>
+      </div>
     </div>
   )
 }

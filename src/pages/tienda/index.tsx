@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import TiendaBanner from "./TiendaBanner"
 import TiendaNavbar from "./TiendaNavbar"
 import { useDispatch, useSelector } from "react-redux"
@@ -8,11 +8,10 @@ import Filters from "../../components/ProductsShop/Filters"
 import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
 
 const Tienda = () => {
-  const [filter, setFilter] = useState("low")
+  //const [filter, setFilter] = useState("low")
   /*   const [price, setPrice] = useState("is-hidden")
   const [weight, setWeight] = useState("is-hidden")
   const [name, setName] = useState("is-hidden") */
-  setFilter("low")
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -34,6 +33,7 @@ const Tienda = () => {
     { id: 8, name: "Arena", price: 3000, weight: 600 },
     { id: 9, name: "Arena", price: 90000, weight: 600 },
   ]
+  const filter = "low"
   const filterData = data.sort((a, b) => {
     if (filter == "low") return a.price - b.price
     else return b.price - a.price
