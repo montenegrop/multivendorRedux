@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const ProductCard = ({ id, name, price, weight }) => {
+const ProductCard = ({ name, price, weight }) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleMouseHover = () => {
     setIsOpen(!isOpen)
@@ -13,16 +13,18 @@ const ProductCard = ({ id, name, price, weight }) => {
       />
       <div className="product_desc">
         <strong>$ {price} + imp</strong>
-        <p>{name}</p>
-        <p>{weight}kg</p>
-        <p>{id}</p>
+        <p>
+          {name} {weight}kg
+        </p>
       </div>
-
-      {/* <details open={isOpen}>
-        <summary hidden={true}></summary>
-        <p>{price}</p>
-      </details> */}
     </div>
   )
 }
 export default ProductCard
+
+{
+  /* <details open={isOpen}>
+        <summary hidden={true}></summary>
+        <p>{price}</p>
+      </details> */
+}

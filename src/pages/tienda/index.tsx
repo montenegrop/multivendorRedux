@@ -9,13 +9,22 @@ import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
 
 const Tienda = () => {
   const [filter, setFilter] = useState("low")
+  /*   const [price, setPrice] = useState("is-hidden")
+  const [weight, setWeight] = useState("is-hidden")
+  const [name, setName] = useState("is-hidden") */
+  setFilter("low")
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(STORE_INIT({ id: "VmVuZG9yOjE=" }))
   }, [dispatch])
   const data = [
-    { id: 1, name: "Arena", price: 5000, weight: 600 },
+    {
+      id: 1,
+      name: "ArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArenaArena",
+      price: 5000,
+      weight: 600,
+    },
     { id: 2, name: "Porlan", price: 8000, weight: 600 },
     { id: 3, name: "Cal", price: 1000, weight: 600 },
     { id: 4, name: "Arena", price: 6000, weight: 600 },
@@ -29,7 +38,15 @@ const Tienda = () => {
     if (filter == "low") return a.price - b.price
     else return b.price - a.price
   })
-
+  const hanldeClicPrice = () => {
+    document.querySelector(".price_list").classList.toggle("is-hidden")
+  }
+  const hanldeClicName = () => {
+    document.querySelector(".name_list").classList.toggle("is-hidden")
+  }
+  const hanldeClicWeight = () => {
+    document.querySelector(".weight_list").classList.toggle("is-hidden")
+  }
   const userData = useSelector((state: RootState) => state.store)
 
   return (
@@ -37,7 +54,11 @@ const Tienda = () => {
       {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
       <TiendaNavbar />
       <div className="shop">
-        <Filters setFilter={setFilter} />
+        <Filters
+          hanldeClicPrice={hanldeClicPrice}
+          hanldeClicName={hanldeClicName}
+          hanldeClicWeight={hanldeClicWeight}
+        />
         <ProductsContainer filterData={filterData} />
       </div>
     </>

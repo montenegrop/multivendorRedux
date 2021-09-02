@@ -3,15 +3,9 @@ import ProductCard from "./ProductCard"
 const ProductsContainer = ({ filterData }) => {
   return (
     <div className="products">
-      {filterData.map((item, index) => {
+      {filterData.map((item) => {
         return (
-          <ProductCard
-            id={item.id}
-            name={item.name}
-            price={item.price}
-            weight={item.weight}
-            key={index}
-          />
+          <ProductCard name={item.name} price={item.price} weight={item.weight} key={item.id} />
         )
       })}
     </div>
