@@ -1,0 +1,28 @@
+.carousel-shop {
+  height: 200px;
+  width: 100%;
+}
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.slider-carousel-products {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-product {
+  margin: 20px;
+
+  img {
+    min-width: 150px;
+    height: 150px;
+    overflow: hidden;
+  }
+}

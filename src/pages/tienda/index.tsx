@@ -6,6 +6,7 @@ import { STORE_INIT } from "../../state/actions/store"
 import { RootState } from "../../state/reducers"
 import Filters from "../../components/ProductsShop/Filters"
 import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
+import CarouselContainer from "../../components/ProductsShop/CarouselContainer"
 
 const Tienda = () => {
   //const [filter, setFilter] = useState("low")
@@ -40,12 +41,15 @@ const Tienda = () => {
   })
   const hanldeClicPrice = () => {
     document.querySelector(".price_list").classList.toggle("is-hidden")
+    document.querySelector("#icon-price").classList.toggle("rotate")
   }
   const hanldeClicName = () => {
     document.querySelector(".name_list").classList.toggle("is-hidden")
+    document.querySelector("#icon-name").classList.toggle("rotate")
   }
   const hanldeClicWeight = () => {
     document.querySelector(".weight_list").classList.toggle("is-hidden")
+    document.querySelector("#icon-weight").classList.toggle("rotate")
   }
   const userData = useSelector((state: RootState) => state.store)
 
@@ -54,12 +58,17 @@ const Tienda = () => {
       {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
       <TiendaNavbar />
       <div className="shop">
-        <Filters
-          hanldeClicPrice={hanldeClicPrice}
-          hanldeClicName={hanldeClicName}
-          hanldeClicWeight={hanldeClicWeight}
-        />
-        <ProductsContainer filterData={filterData} />
+        <div className="carousel-shop">
+          <CarouselContainer />
+        </div>
+        <div className="store">
+          <Filters
+            hanldeClicPrice={hanldeClicPrice}
+            hanldeClicName={hanldeClicName}
+            hanldeClicWeight={hanldeClicWeight}
+          />
+          <ProductsContainer filterData={filterData} />
+        </div>
       </div>
     </>
   )
