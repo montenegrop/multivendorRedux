@@ -3,10 +3,8 @@ import CarouselProduct from "./Carousel"
 const CarouselContainer = () => {
   return (
     <div className="carousel">
-      <button className="button" id="">
-        After
-      </button>
-      <div className="slider-carousel-products">
+      <button className="button">&#10094;</button>
+      <div className="slider-carousel-products right">
         <CarouselProduct />
         <CarouselProduct />
         <CarouselProduct />
@@ -17,7 +15,7 @@ const CarouselContainer = () => {
         <CarouselProduct />
         <CarouselProduct />
       </div>
-      <button className="button">Prev</button>
+      <button className="button">&#10095;</button>
     </div>
   )
 }

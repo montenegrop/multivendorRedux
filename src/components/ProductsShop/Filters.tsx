@@ -1,4 +1,4 @@
-const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight }) => {
+const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight, refreshFiltersSelected }) => {
   return (
     <div className="filter">
       <ul>
@@ -18,12 +18,24 @@ const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight }) => {
           <ul className="price_list is-hidden">
             <li>
               <label>
-                <input type="radio" name="price" id="low" /> Menor Precio
+                <input
+                  type="radio"
+                  name="price"
+                  id="low"
+                  onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Price")}
+                />{" "}
+                Menor Precio
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="price" id="hight" /> Mayor Precio
+                <input
+                  type="radio"
+                  name="price"
+                  id="hight"
+                  onClick={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
+                />{" "}
+                Mayor Precio
               </label>
             </li>
           </ul>
@@ -44,12 +56,24 @@ const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight }) => {
           <ul className="name_list is-hidden">
             <li>
               <label>
-                <input type="radio" name="name" id="order" /> A-Z
+                <input
+                  type="radio"
+                  name="name"
+                  id="order"
+                  onClick={() => refreshFiltersSelected("Ordenado A-Z", "Ordenado Z-A")}
+                />{" "}
+                A-Z
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="name" id="reverse" /> Z-A
+                <input
+                  type="radio"
+                  name="name"
+                  id="reverse"
+                  onClick={() => refreshFiltersSelected("Ordenado Z-A", "Ordenado A-Z")}
+                />{" "}
+                Z-A
               </label>
             </li>
           </ul>
@@ -71,12 +95,24 @@ const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight }) => {
           <ul className="weight_list is-hidden">
             <li>
               <label>
-                <input type="radio" name="weight" id="light" /> Mas Liviano
+                <input
+                  type="radio"
+                  name="weight"
+                  id="light"
+                  onClick={() => refreshFiltersSelected("Mas Liviano", "Mas Pesado")}
+                />
+                Mas Liviano
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="weight" id="heavy" /> Mas Pesado
+                <input
+                  type="radio"
+                  name="weight"
+                  id="heavy"
+                  onClick={() => refreshFiltersSelected("Mas Pesado", "Mas Liviano")}
+                />
+                Mas Pesado
               </label>
             </li>
           </ul>

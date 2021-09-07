@@ -4,15 +4,11 @@ import TiendaNavbar from "./TiendaNavbar"
 import { useDispatch, useSelector } from "react-redux"
 import { STORE_INIT } from "../../state/actions/store"
 import { RootState } from "../../state/reducers"
-import Filters from "../../components/ProductsShop/Filters"
 import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
 import CarouselContainer from "../../components/ProductsShop/CarouselContainer"
+import FilterContainer from "../../components/ProductsShop/FilterContainer"
 
 const Tienda = () => {
-  //const [filter, setFilter] = useState("low")
-  /*   const [price, setPrice] = useState("is-hidden")
-  const [weight, setWeight] = useState("is-hidden")
-  const [name, setName] = useState("is-hidden") */
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -34,23 +30,6 @@ const Tienda = () => {
     { id: 8, name: "Arena", price: 3000, weight: 600 },
     { id: 9, name: "Arena", price: 90000, weight: 600 },
   ]
-  const filter = "low"
-  const filterData = data.sort((a, b) => {
-    if (filter == "low") return a.price - b.price
-    else return b.price - a.price
-  })
-  const hanldeClicPrice = () => {
-    document.querySelector(".price_list").classList.toggle("is-hidden")
-    document.querySelector("#icon-price").classList.toggle("rotate")
-  }
-  const hanldeClicName = () => {
-    document.querySelector(".name_list").classList.toggle("is-hidden")
-    document.querySelector("#icon-name").classList.toggle("rotate")
-  }
-  const hanldeClicWeight = () => {
-    document.querySelector(".weight_list").classList.toggle("is-hidden")
-    document.querySelector("#icon-weight").classList.toggle("rotate")
-  }
   const userData = useSelector((state: RootState) => state.store)
 
   return (
@@ -62,12 +41,8 @@ const Tienda = () => {
           <CarouselContainer />
         </div>
         <div className="store">
-          <Filters
-            hanldeClicPrice={hanldeClicPrice}
-            hanldeClicName={hanldeClicName}
-            hanldeClicWeight={hanldeClicWeight}
-          />
-          <ProductsContainer filterData={filterData} />
+          <FilterContainer />
+          <ProductsContainer data={data} />
         </div>
       </div>
     </>

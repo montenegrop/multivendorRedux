@@ -4,14 +4,15 @@
 }
 .carousel {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
 }
 .slider-carousel-products {
   position: absolute;
   top: 0;
-  left: 0;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -24,5 +25,14 @@
     min-width: 150px;
     height: 150px;
     overflow: hidden;
+  }
+}
+.button {
+  z-index: 10;
+  border-radius: 50%;
+}
+@for $i from 1 to 5 {
+  .right-#{$i} {
+    right: 150px * $i;
   }
 }

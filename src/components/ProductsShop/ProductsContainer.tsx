@@ -1,9 +1,9 @@
 import ProductCard from "./ProductCard"
 
-const ProductsContainer = ({ filterData }) => {
+const ProductsContainer = ({ data }) => {
   return (
     <div className="products">
-      {filterData.map((item) => {
+      {data.map((item) => {
         return (
           <ProductCard name={item.name} price={item.price} weight={item.weight} key={item.id} />
         )
