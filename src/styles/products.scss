@@ -17,7 +17,9 @@
   }
 }
 .products {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-auto-rows: 320px;
   position: relative;
   justify-content: center;
   width: 70%;
