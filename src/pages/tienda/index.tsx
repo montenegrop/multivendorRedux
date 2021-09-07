@@ -30,6 +30,18 @@ const Tienda = () => {
     { id: 8, name: "Arena", price: 3000, weight: 600 },
     { id: 9, name: "Arena", price: 90000, weight: 600 },
   ]
+  const carouselImages: { image: string; page: number }[] = [
+    { image: "http://lorempixel.com/400/200/sports/1/", page: 1 },
+    { image: "http://lorempixel.com/400/200/sports/2/", page: 1 },
+    { image: "http://lorempixel.com/400/200/sports/3/", page: 1 },
+    { image: "http://lorempixel.com/400/200/sports/4/", page: 1 },
+    { image: "http://lorempixel.com/400/200/sports/5/", page: 2 },
+    { image: "http://lorempixel.com/400/200/sports/6/", page: 2 },
+    { image: "http://lorempixel.com/400/200/sports/7/", page: 2 },
+    { image: "http://lorempixel.com/400/200/sports/8/", page: 2 },
+    { image: "http://lorempixel.com/400/200/sports/9/", page: 3 },
+    { image: "http://lorempixel.com/400/200/sports/10/", page: 3 },
+  ]
   const userData = useSelector((state: RootState) => state.store)
 
   return (
@@ -38,7 +50,7 @@ const Tienda = () => {
       <TiendaNavbar />
       <div className="shop">
         <div className="carousel-shop">
-          <CarouselContainer />
+          <CarouselContainer carouselImages={carouselImages} />
         </div>
         <div className="store">
           <FilterContainer />

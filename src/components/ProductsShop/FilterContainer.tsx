@@ -26,11 +26,12 @@ const FilterContainer = () => {
   }
 
   return (
-    <div>
-      {filtCheck.map((item, index) => {
-        return <FilterCard filter={item} key={index} />
-      })}
-
+    <div className="filter-colum">
+      <div className="filter-card-container">
+        {filtCheck.map((item, index) => {
+          return <FilterCard filter={item} key={index} />
+        })}
+      </div>
       <Filters
         hanldeClicPrice={hanldeClicPrice}
         hanldeClicName={hanldeClicName}

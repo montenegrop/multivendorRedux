@@ -22,7 +22,7 @@ const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight, refreshFil
                   type="radio"
                   name="price"
                   id="low"
-                  onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Price")}
+                  onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
                 />{" "}
                 Menor Precio
               </label>

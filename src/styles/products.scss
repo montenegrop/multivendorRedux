@@ -3,10 +3,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.filter {
-  width: 20%;
+.filter-colum {
   min-width: 100px;
-  max-width: 200px;
+  width: 30%;
+}
+.filter {
   ul {
     margin-left: 10px;
     list-style: none;
@@ -19,9 +20,22 @@
   display: flex;
   position: relative;
   justify-content: center;
-  width: 80%;
+  width: 70%;
   flex-wrap: wrap;
   background-color: rgb(250, 250, 250);
+}
+@media only screen and (max-width: 562px) {
+  .store {
+    justify-content: center;
+  }
+  .products {
+    width: 100%;
+  }
+  .filter-colum {
+    width: 100%;
+    max-width: none;
+    display: block;
+  }
 }
 .product_card {
   background-color: white;
@@ -29,6 +43,7 @@
   text-align: center;
   min-width: 150px;
   width: 25%;
+  height: 275px;
   margin: 10px 2%;
   padding: 10px 5px 0 5px;
   border-radius: 10px;
@@ -62,6 +77,8 @@
   .product_desc p {
     max-height: 70px;
   }
+  height: 300px;
+  z-index: 10px;
 }
 
 .vendor {
@@ -90,7 +107,11 @@
     margin-bottom: 0 !important;
   }
 }
+.filter-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 .filter-card {
   background-color: #f3f3f3;
-  margin-bottom: 5px;
+  margin: 5px;
 }
