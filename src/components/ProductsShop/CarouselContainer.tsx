@@ -4,7 +4,7 @@ import CarouselProduct from "./Carousel"
 const CarouselContainer = ({ carouselImages }) => {
   const [page, setPage] = useState<number>(1)
   const maxPage = useMemo(() => {
-    let max: number = 1
+    let max = 1
     carouselImages.forEach((item) => {
       if (item.page > max) {
         max = item.page

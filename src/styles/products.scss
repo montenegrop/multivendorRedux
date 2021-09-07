@@ -9,7 +9,7 @@
 }
 .filter {
   ul {
-    margin-left: 10px;
+    margin-left: 0px;
     list-style: none;
   }
   li ul {
@@ -114,4 +114,12 @@
 .filter-card {
   background-color: #f3f3f3;
   margin: 5px;
+  display: flex;
+  button {
+    margin-left: 3px;
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50% !important;
+  }
 }

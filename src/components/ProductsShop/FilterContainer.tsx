@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Filters from "../../components/ProductsShop/Filters"
+import ClearFiltersButton from "./ClearFiltersButton"
 import FilterCard from "./FiltersSelected"
 const FilterContainer = () => {
   const [filtCheck, setFiltCheck] = useState([])
@@ -24,6 +25,9 @@ const FilterContainer = () => {
       setFiltCheck(newFilterCheck)
     }
   }
+  const clearFilters = () => {
+    setFiltCheck([])
+  }
 
   return (
     <div className="filter-colum">
@@ -32,6 +36,7 @@ const FilterContainer = () => {
           return <FilterCard filter={item} key={index} />
         })}
       </div>
+      <ClearFiltersButton filtCheck={filtCheck} clearFilters={clearFilters} />
       <Filters
         hanldeClicPrice={hanldeClicPrice}
         hanldeClicName={hanldeClicName}
