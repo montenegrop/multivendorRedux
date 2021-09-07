@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { STORE_INIT } from "../../state/actions/store"
 import { RootState } from "../../state/reducers"
 import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
-import CarouselContainer from "../../components/ProductsShop/CarouselContainer"
+//import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 import FilterContainer from "../../components/ProductsShop/FilterContainer"
 
 const Tienda = () => {
@@ -30,7 +30,7 @@ const Tienda = () => {
     { id: 8, name: "Arena", price: 3000, weight: 600 },
     { id: 9, name: "Arena", price: 90000, weight: 600 },
   ]
-  const carouselImages: { image: string; page: number }[] = [
+  /* const carouselImages: { image: string; page: number }[] = [
     { image: "http://lorempixel.com/400/200/sports/1/", page: 1 },
     { image: "http://lorempixel.com/400/200/sports/2/", page: 1 },
     { image: "http://lorempixel.com/400/200/sports/3/", page: 1 },
@@ -41,7 +41,7 @@ const Tienda = () => {
     { image: "http://lorempixel.com/400/200/sports/8/", page: 2 },
     { image: "http://lorempixel.com/400/200/sports/9/", page: 3 },
     { image: "http://lorempixel.com/400/200/sports/10/", page: 3 },
-  ]
+  ] */
   const userData = useSelector((state: RootState) => state.store)
 
   return (
@@ -49,9 +49,9 @@ const Tienda = () => {
       {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
       <TiendaNavbar />
       <div className="shop">
-        <div className="carousel-shop">
+        {/* <div className="carousel-shop">
           <CarouselContainer carouselImages={carouselImages} />
-        </div>
+        </div> */}
         <div className="store">
           <FilterContainer />
           <ProductsContainer data={data} />
