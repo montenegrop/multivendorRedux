@@ -49,7 +49,7 @@ const Tienda = () => {
       {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
       <TiendaNavbar />
       <div className="shop">
-        {/* <div className="carousel-shop">
+        {/*  <div className="carousel-shop">
           <CarouselContainer carouselImages={carouselImages} />
         </div> */}
         <div className="store">
