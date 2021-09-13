@@ -2,23 +2,29 @@ import { useMemo, useState } from "react"
 import CarouselProduct from "./Carousel"
 
 const CarouselContainer = ({ carouselImages }) => {
-  const [page, setPage] = useState<number>(1)
+  const [page, setPage] = useState<number>(0)
   const maxPage = useMemo(() => {
-    let max = 1
-    carouselImages.forEach((item) => {
-      if (item.page > max) {
-        max = item.page
-      }
-    })
-    return max
+    if (carouselImages.length < 4) {
+      return 0
+    } else {
+      return carouselImages.length - 5
+    }
   }, [carouselImages])
   const increasePage = () => {
-    if (maxPage !== page) {
+    if (page !== maxPage) {
+      const carouselProducts = document.querySelectorAll(".carousel-product")
+      carouselProducts.forEach((item) => {
+        item.className = `carousel-product right-${page + 1}`
+      })
       setPage(page + 1)
     }
   }
   const decreasePage = () => {
-    if (page !== 1) {
+    if (page !== 0) {
+      const carouselProducts = document.querySelectorAll(".carousel-product")
+      carouselProducts.forEach((item) => {
+        item.className = `carousel-product right-${page - 1}`
+      })
       setPage(page - 1)
     }
   }
@@ -27,9 +33,9 @@ const CarouselContainer = ({ carouselImages }) => {
       <button className="button" onClick={decreasePage}>
         &#10094;
       </button>
-      <div className="slider-carousel-products right">
+      <div className="slider-carousel-products">
         {carouselImages.map((item, index) => {
-          if (page == item.page) return <CarouselProduct image={item.image} key={index} />
+          return <CarouselProduct image={item.image} key={index} />
         })}
       </div>
       <button className="button" onClick={increasePage}>
