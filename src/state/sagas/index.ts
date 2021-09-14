@@ -3,5 +3,5 @@ import serviceProvider from "./serviceProvider"
 import store from "./store"
 import category from "./category"
 import loggin from "./loggin"
-
-export default [serviceProvider, homepage, store, category, loggin]
+import serviceProviders from "./serviceProviders"
+export default [serviceProvider, homepage, store, category, loggin, serviceProviders]
