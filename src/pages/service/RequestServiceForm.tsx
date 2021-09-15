@@ -116,7 +116,13 @@ const Basic = ({ services }: BasicProps) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => <FormContent {...props} servicios={services.map((service) => service.name)} />}
+        {(props) => (
+          <FormContent
+            _handleBlur={() => {}}
+            {...props}
+            servicios={services.map((service) => service.name)}
+          />
+        )}
       </Formik>
     </div>
   )
