@@ -15,7 +15,6 @@ export const FieldString = ({
   _touched: any
   onChange: () => void
 }) => {
-  console.log(88, errors, 99)
   return (
     <div className="field is-horizontal">
       <div className="field-label is-normal">
@@ -38,7 +37,6 @@ export const FieldString = ({
           </div>
         </div>
       </div>
-      {/* {errors.name && touched.name && errors.name} */}
     </div>
   )
 }

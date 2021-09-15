@@ -4,6 +4,7 @@ import Logo from "./Logo"
 import Cart from "./Cart"
 import Shop from "./Shop"
 import UserIcon from "./UserIcon"
+import LoginForm from "./LoginForm"
 
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
@@ -14,6 +15,7 @@ import ModalComponent from "../Modal/container/Modal"
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
   const [isOpen, onClose] = useState(false)
+  const [isOpenLogin, setIsOpenLogin] = useState(false)
 
   const dispatch = useDispatch()
   const logear = () => {
@@ -21,6 +23,14 @@ const Navbar = () => {
   }
 
   const usuario = useSelector((state: RootState) => state.loggin)
+
+  // function openModalLogin() {
+  //   setIsOpenLogin(true)
+  // }
+
+  function closeModalLogin() {
+    setIsOpenLogin(false)
+  }
 
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
@@ -60,6 +70,7 @@ const Navbar = () => {
                   className="button is-primary navbar_user"
                   onClick={() => {
                     logear()
+                    setIsOpenLogin(true)
                   }}
                 >
                   {usuario.data && usuario.data.user.email}{" "}
@@ -80,6 +91,7 @@ const Navbar = () => {
             </div>
           </div>
           <ModalComponent isOpen={isOpen} onClose={onClose} />
+          <LoginForm isOpen={isOpenLogin} onRequestClose={closeModalLogin} />
         </div>
       </div>
     </nav>
