@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react"
-import CarouselProduct from "./Carousel"
+import CarouselProduct from "./CarouselProduct"
 
-const CarouselContainer = ({ carouselImages }) => {
+const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
   const [page, setPage] = useState<number>(0)
   const maxPage = useMemo(() => {
-    if (carouselImages.length < 4) {
+    if (carouselImages.length < numberOfImagesToShow) {
       return 0
     } else {
-      return carouselImages.length - 5
+      return carouselImages.length - numberOfImagesToShow
     }
   }, [carouselImages])
   const increasePage = () => {
@@ -34,8 +34,8 @@ const CarouselContainer = ({ carouselImages }) => {
         &#10094;
       </button>
       <div className="slider-carousel-products">
-        {carouselImages.map((item, index) => {
-          return <CarouselProduct image={item.image} key={index} />
+        {carouselImages.map((item) => {
+          return <CarouselProduct image={item.image} key={`carouse-product-${item.image}`} />
         })}
       </div>
       <button className="button" onClick={increasePage}>
