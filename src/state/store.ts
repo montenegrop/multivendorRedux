@@ -11,7 +11,12 @@ export const initializeStore = (preloadedState?) => {
     reducer: rootReducers,
     preloadedState,
     devTools: DEBUG,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagasMiddleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: ["persist/PERSIST"],
+        },
+      }).concat(sagasMiddleware),
   })
 }
 
