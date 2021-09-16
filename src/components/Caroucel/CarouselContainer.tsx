@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from "react"
 import { useWindowSize } from "../../hooks/useWindowWidth"
 import CarouselProduct from "./CarouselProduct"
 
-const CarouselContainer = ({ carouselImages, _numberOfImagesToShow }) => {
+const CarouselContainer = ({ carouselImages }) => {
   useWindowSize()
   const [page, setPage] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>()

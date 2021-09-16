@@ -53,7 +53,7 @@ const Tienda = () => {
       <TiendaNavbar />
       <div className="shop">
         <div className="carousel-shop">
-          <CarouselContainer carouselImages={carouselImages} numberOfImagesToShow={5} />
+          <CarouselContainer carouselImages={carouselImages} />
         </div>
         <div className="store">
           <FilterContainer />
