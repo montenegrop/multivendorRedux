@@ -1,6 +1,6 @@
 const CarouselProduct = ({ image }) => {
   return (
-    <div className="carousel-product right-0">
+    <div className="carousel-product">
       <img src={image} alt=" " />
     </div>
   )

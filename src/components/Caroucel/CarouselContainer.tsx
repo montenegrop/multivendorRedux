@@ -12,19 +12,11 @@ const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
   }, [carouselImages])
   const increasePage = () => {
     if (page !== maxPage) {
-      const carouselProducts = document.querySelectorAll(".carousel-product")
-      carouselProducts.forEach((item) => {
-        item.className = `carousel-product right-${page + 1}`
-      })
       setPage(page + 1)
     }
   }
   const decreasePage = () => {
     if (page !== 0) {
-      const carouselProducts = document.querySelectorAll(".carousel-product")
-      carouselProducts.forEach((item) => {
-        item.className = `carousel-product right-${page - 1}`
-      })
       setPage(page - 1)
     }
   }
@@ -33,9 +25,9 @@ const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
       <button className="button" onClick={decreasePage}>
         &#10094;
       </button>
-      <div className="slider-carousel-products">
-        {carouselImages.map((item) => {
-          return <CarouselProduct image={item.image} key={`carouse-product-${item.image}`} />
+      <div className={`slider-carousel-products margin-left-${page}`}>
+        {carouselImages.map((item, index) => {
+          return <CarouselProduct image={item.image} key={`carouse-product-${index}`} />
         })}
       </div>
       <button className="button" onClick={increasePage}>
