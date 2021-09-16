@@ -1,15 +1,38 @@
+import React from "react"
 import { useMemo, useState } from "react"
+import { useMediaQuery } from "react-responsive"
 import CarouselProduct from "./CarouselProduct"
-
 const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
   const [page, setPage] = useState<number>(0)
+  const xlWidth = useMediaQuery({
+    query: "(min-width: 1200px)",
+  })
+  const lgWidth = useMediaQuery({
+    query: "(min-width: 956px)",
+  })
+  const mdWidth = useMediaQuery({
+    query: "(min-width: 760px)",
+  })
+  const smWidth = useMediaQuery({
+    query: "(min-width: 480px)",
+  })
+  const xsWidth = useMediaQuery({
+    query: "(min-width:320px",
+  })
+
+  const screenWidths = [xlWidth, lgWidth, mdWidth, smWidth, xsWidth]
+  console.log(screenWidths)
+
   const maxPage = useMemo(() => {
-    if (carouselImages.length < numberOfImagesToShow) {
+    const hiddenImages = screenWidths.filter((item) => {
+      return item == false
+    }).length
+    if (carouselImages.length < numberOfImagesToShow + hiddenImages) {
       return 0
     } else {
-      return carouselImages.length - numberOfImagesToShow
+      return carouselImages.length - numberOfImagesToShow + hiddenImages
     }
-  }, [carouselImages])
+  }, [carouselImages, screenWidths])
   const increasePage = () => {
     if (page !== maxPage) {
       setPage(page + 1)
