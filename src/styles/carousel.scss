@@ -23,7 +23,6 @@
   width: 100%;
   transition-property: margin-left;
   transition-duration: 500ms;
-  overflow: hidden;
 }
 @for $i from 0 through 20 {
   .margin-left-#{$i} {
