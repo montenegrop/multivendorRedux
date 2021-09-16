@@ -1,15 +1,35 @@
-import { useMemo, useState } from "react"
+import { useMemo, useRef, useState } from "react"
+import { useWindowSize } from "../../hooks/useWindowWidth"
 import CarouselProduct from "./CarouselProduct"
 
-const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
+const CarouselContainer = ({ carouselImages, _numberOfImagesToShow }) => {
+  useWindowSize()
   const [page, setPage] = useState<number>(0)
+  const containerRef = useRef<HTMLDivElement>()
+  const productsRef = useRef<HTMLDivElement>()
+
+  const containerWidth = containerRef.current?.offsetWidth || 1
+  const productsWidth = productsRef.current?.scrollWidth || 1
+
+  const widthOfEachImage = productsWidth / carouselImages.length
+  const numberOfImagesToShow = containerWidth / widthOfEachImage
+
   const maxPage = useMemo(() => {
     if (carouselImages.length < numberOfImagesToShow) {
       return 0
     } else {
-      return carouselImages.length - numberOfImagesToShow
+      return Math.ceil(carouselImages.length / numberOfImagesToShow - 1)
     }
-  }, [carouselImages])
+  }, [carouselImages, numberOfImagesToShow])
+
+  const marginLeft = useMemo(() => {
+    if (containerRef.current) {
+      const p = page === maxPage ? carouselImages.length / numberOfImagesToShow - 1 : page
+      return `-${containerWidth * p}px`
+    }
+    return 0
+  }, [containerWidth, productsWidth, page, maxPage])
+
   const increasePage = () => {
     if (page !== maxPage) {
       setPage(page + 1)
@@ -21,11 +41,11 @@ const CarouselContainer = ({ carouselImages, numberOfImagesToShow }) => {
     }
   }
   return (
-    <div className="carousel">
+    <div className="carousel" ref={containerRef}>
       <button className="button" onClick={decreasePage}>
         &#10094;
       </button>
-      <div className={`slider-carousel-products margin-left-${page}`}>
+      <div className={`slider-carousel-products`} ref={productsRef} style={{ marginLeft }}>
         {carouselImages.map((item, index) => {
           return <CarouselProduct image={item.image} key={`carouse-product-${index}`} />
         })}
