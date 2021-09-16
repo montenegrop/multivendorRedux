@@ -5,11 +5,11 @@ import categoryReducers from "./category"
 import logginReducers from "./loggin"
 import persistReducer from "redux-persist/lib/persistReducer"
 import storage from "redux-persist/lib/storage"
-import serviceProvidersReducer from "./serviceProviders/serviceProvidersReducer"
+import serviceProvidersReducers from "./serviceProviders"
 
 export default {
   ...serviceProviderReducers,
-  ...serviceProvidersReducer,
+  ...serviceProvidersReducers,
   ...homepageReducers,
   ...storeReducers,
   ...logginReducers,

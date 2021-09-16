@@ -12,10 +12,9 @@ const CategoryGrid = () => {
 
   const homepageCategories = useSelector((state: RootState) => state.homepageCategories.categories)
 
-  const dispatch2 = useDispatch()
   useEffect(() => {
-    dispatch2(SERVICE_PROVIDERS_INIT())
-  }, [dispatch2])
+    dispatch(SERVICE_PROVIDERS_INIT())
+  }, [dispatch])
   const serviceProviders = useSelector((state: RootState) => state)
   console.log(serviceProviders)
 

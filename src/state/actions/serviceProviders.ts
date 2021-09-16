@@ -23,6 +23,6 @@ export type Vendor = {
 }
 export const SERVICE_PROVIDERS_INIT = createAction("SERVICE_PROVIDERS_INIT")
 export const SERVICE_PROVIDERS_SUCCESS = createAction<VendorCountableConnection>(
-  "SERVICE_PROVIDER_SUCCESS"
+  "SERVICE_PROVIDERS_SUCCESS"
 )
-export const SERVICE_PROVIDERS_ERROR = createAction<string>("SERVICE_PROVIDER_ERROR")
+export const SERVICE_PROVIDERS_ERROR = createAction<string>("SERVICE_PROVIDERS_ERROR")
