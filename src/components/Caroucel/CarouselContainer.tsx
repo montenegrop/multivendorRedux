@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useWindowSize } from "../../hooks/useWindowWidth"
 import CarouselProduct from "./CarouselProduct"
 
@@ -22,6 +22,12 @@ const CarouselContainer = ({ carouselImages }) => {
     }
   }, [carouselImages, numberOfImagesToShow])
 
+  useEffect(() => {
+    if (page > maxPage) {
+      setPage(maxPage)
+    }
+  }, [maxPage, page, setPage])
+
   const marginLeft = useMemo(() => {
     if (containerRef.current) {
       const p = page === maxPage ? carouselImages.length / numberOfImagesToShow - 1 : page
@@ -40,6 +46,7 @@ const CarouselContainer = ({ carouselImages }) => {
       setPage(page - 1)
     }
   }
+
   return (
     <div className="carousel" ref={containerRef}>
       <button className="button" onClick={decreasePage}>
