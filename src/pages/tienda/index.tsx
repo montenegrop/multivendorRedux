@@ -7,15 +7,12 @@ import { RootState } from "../../state/reducers"
 import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
 import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 import FilterContainer from "../../components/ProductsShop/FilterContainer"
-import { useRouter } from "next/router"
 
 const Tienda = () => {
   const dispatch = useDispatch()
-  const router = useRouter()
-  // const vendor_id = "VmVuZG9yOjE="
 
   useEffect(() => {
-    dispatch(STORE_INIT({ id: router.query.vendorId }))
+    dispatch(STORE_INIT({ id: "VmVuZG9yOjE=" }))
   }, [dispatch])
   const data = [
     {
