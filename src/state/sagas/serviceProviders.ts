@@ -10,8 +10,8 @@ export default (dispatch) => {
   return {
     [SERVICE_PROVIDERS_INIT.type]: async (_state) => {
       const query = gql`
-        query serviceProvider (first: 5) {
-          vendors {
+        query serviceProvider {
+          vendors(first: 5) {
             edges {
               node {
                 id
@@ -39,9 +39,10 @@ export default (dispatch) => {
       `
       try {
         const data = await request(API_URI, query)
-        dispatch(SERVICE_PROVIDERS_SUCCESS(data.vendor))
+        dispatch(SERVICE_PROVIDERS_SUCCESS(data.vendors))
       } catch (error) {
         dispatch(SERVICE_PROVIDERS_ERROR("error de service provider"))
+        console.log(error)
       }
     },
   }
