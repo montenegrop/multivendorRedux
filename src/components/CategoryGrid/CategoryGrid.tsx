@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { SERVICE_PROVIDERS_INIT } from "../../state/actions/serviceProviders"
 import { RootState } from "../../state/reducers"
+import Link from "next/link"
 
 const CategoryGrid = () => {
   const dispatch = useDispatch()
@@ -29,11 +30,13 @@ const CategoryGrid = () => {
                 key={category.id}
               >
                 <div className="grid_img_container">
-                  <div className="grid_img" style={{ backgroundImage: `url(${category.url})` }}>
-                    <div className="grid_item_name">
-                      <p>{category.name}</p>
+                  <Link as={`categoria/${category.id}`} href="/categoria/[categoryId]">
+                    <div className="grid_img" style={{ backgroundImage: `url(${category.url})` }}>
+                      <div className="grid_item_name">
+                        <p>{category.name}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             )

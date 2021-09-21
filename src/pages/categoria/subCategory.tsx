@@ -2,7 +2,7 @@ const SubCategory = ({ item }) => {
   return (
     <div className="subcategory_container">
       <div className="textInImage">
-        <img src={item.node.backgroundImage.url} alt={item.node.backgroundImage.alt} />
+        <img src={item.node.backgroundImage?.url} alt={item.node.backgroundImage?.alt} />
         <div className="texto">
           <p>{item.node.name}</p>
         </div>
