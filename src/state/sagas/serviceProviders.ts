@@ -11,7 +11,7 @@ export default (dispatch) => {
     [SERVICE_PROVIDERS_INIT.type]: async (_state) => {
       const query = gql`
         query serviceProvider {
-          vendors(first: 5) {
+          vendors(first: 4) {
             edges {
               node {
                 id

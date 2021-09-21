@@ -1,4 +1,8 @@
-import ServiceContainer from "../../components/ServicesProviders/ServicesContainer"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import ProviderContainer from "../../components/ServicesProviders/ProviderContainer"
+import { SERVICE_PROVIDERS_INIT } from "../../state/actions/serviceProviders"
+import { RootState } from "../../state/reducers"
 /* const data = [
   {
     name: "Juan",
@@ -41,30 +45,18 @@ import ServiceContainer from "../../components/ServicesProviders/ServicesContain
       "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
   },
 ] */
-const imagesForGrid = [
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-]
-const bannerImage = "https://brandme.la/wp-content/uploads/2018/01/Idealightbulbs.jpg"
+
+//const bannerImage = "https://brandme.la/wp-content/uploads/2018/01/Idealightbulbs.jpg"
 const Servicios = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(SERVICE_PROVIDERS_INIT())
+  }, [dispatch])
+  const serviceProviders = useSelector((state: RootState) => state.serviceProviders.providers)
   return (
     <>
-      <ServiceContainer bannerImage={bannerImage} data={imagesForGrid} />
-      {/* <ProviderContainer prestadores={data} /> */}
+      {/* <ServiceContainer bannerImage={bannerImage} data={imagesForGrid} /> */}
+      {serviceProviders && <ProviderContainer prestadores={serviceProviders} />}
     </>
   )
 }
