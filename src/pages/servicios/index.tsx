@@ -50,7 +50,7 @@ import { RootState } from "../../state/reducers"
 const Servicios = () => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(SERVICE_PROVIDERS_INIT())
+    dispatch(SERVICE_PROVIDERS_INIT({ numberOfCharacters: 5 }))
   }, [dispatch])
   const serviceProviders = useSelector((state: RootState) => state.serviceProviders.providers)
   return (

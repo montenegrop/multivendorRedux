@@ -8,10 +8,10 @@ import {
 
 export default (dispatch) => {
   return {
-    [SERVICE_PROVIDERS_INIT.type]: async (_state) => {
+    [SERVICE_PROVIDERS_INIT.type]: async (_state, payload) => {
       const query = gql`
         query serviceProvider {
-          vendors(first: 4) {
+          vendors(first: $numberOfCharacters) {
             edges {
               node {
                 id
@@ -37,8 +37,11 @@ export default (dispatch) => {
           }
         }
       `
+      const variables = {
+        numberOfCharacters: payload.numberOfCharacters,
+      }
       try {
-        const data = await request(API_URI, query)
+        const data = await request(API_URI, query, variables)
         dispatch(SERVICE_PROVIDERS_SUCCESS(data.vendors))
       } catch (error) {
         dispatch(SERVICE_PROVIDERS_ERROR("error de service provider"))
