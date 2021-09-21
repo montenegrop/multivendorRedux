@@ -10,7 +10,7 @@ export default (dispatch) => {
   return {
     [SERVICE_PROVIDERS_INIT.type]: async (_state) => {
       const query = gql`
-        query serviceProvider {
+        query serviceProvider (first: 5) {
           vendors {
             edges {
               node {
