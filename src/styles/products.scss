@@ -1,0 +1,126 @@
+.store {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.filter-colum {
+  min-width: 100px;
+  width: 30%;
+}
+.filter {
+  ul {
+    margin-left: 0px;
+    list-style: none;
+  }
+  li ul {
+    list-style: none;
+  }
+}
+.products {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 280px;
+  grid-gap: 30px;
+  position: relative;
+  width: 70%;
+  background-color: rgb(250, 250, 250);
+}
+@media only screen and (max-width: 562px) {
+  .store {
+    justify-content: center;
+  }
+  .products {
+    width: 100%;
+  }
+  .filter-colum {
+    width: 100%;
+    max-width: none;
+    display: block;
+  }
+}
+.product_card {
+  background-color: white;
+  position: relative;
+  text-align: center;
+  min-width: 150px;
+  width: 100%;
+  height: 275px;
+  padding: 10px 5px 0 5px;
+  border-radius: 10px;
+  border: rgba(0, 0, 0, 0.116) solid 1px;
+  word-wrap: break-word;
+  img {
+    width: 200px;
+    height: auto;
+  }
+}
+.product_desc {
+  text-align: left;
+  padding: 10px;
+  margin-bottom: 20px;
+  strong {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  p {
+    margin: 0 !important;
+    font-weight: 400;
+    max-height: 45px;
+    overflow: hidden;
+    transition-property: max-height;
+    transition-duration: 100ms;
+  }
+}
+.product_card:hover {
+  border-top: rgb(255, 103, 0) solid 5px;
+  box-shadow: 1px 1px 5px rgb(130, 129, 129);
+  .product_desc p {
+    max-height: 70px;
+  }
+  height: 300px;
+  z-index: 10px;
+}
+
+.vendor {
+  text-align: end;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  p {
+    font-size: 10px;
+  }
+}
+.icon {
+  transition-property: transform(rotate);
+  transition-duration: 500ms;
+}
+.icon.rotate {
+  transform: rotate(90deg);
+}
+.sub-filter {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin-bottom: 0 !important;
+  }
+}
+.filter-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filter-card {
+  background-color: #f3f3f3;
+  margin: 5px;
+  display: flex;
+  button {
+    margin-left: 3px;
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50% !important;
+  }
+}

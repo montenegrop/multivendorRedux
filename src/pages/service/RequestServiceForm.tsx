@@ -12,6 +12,7 @@ type FormErrors = {
   email?: string
   password?: string
   service?: string
+  checkbox?: boolean
 }
 
 const validate = (values) => {
@@ -56,11 +57,33 @@ const FormContent = ({
       <FieldChoice
         name="service"
         options={servicios}
-        value={values.service}
+        _value={values.service}
         errors={errors}
         _touched={touched}
         onChange={handleChange}
       ></FieldChoice>
+
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label htmlFor="string-id-email" className="label">
+            label-checkbox
+            {values.checkbox}
+          </label>
+        </div>
+        <div className="field-body">
+          <div className="field is-narrow">
+            <div className="control">
+              <input
+                id="string-id-email"
+                className="checkbox"
+                type="checkbox"
+                name="checkbox"
+                value={values.checkbox}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <FieldString
         type="password"
@@ -79,7 +102,10 @@ const FormContent = ({
 }
 
 const Basic = ({ services }: BasicProps) => {
-  const initialValues = useMemo(() => ({ email: "sds@ds.com", password: "", service: "" }), [])
+  const initialValues = useMemo(
+    () => ({ email: "sds@ds.com", password: "", service: "", checkbox: true }),
+    []
+  )
   return (
     <div>
       <h1>Contratar</h1>
@@ -90,7 +116,13 @@ const Basic = ({ services }: BasicProps) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => <FormContent {...props} servicios={services.map((service) => service.name)} />}
+        {(props) => (
+          <FormContent
+            _handleBlur={() => {}}
+            {...props}
+            servicios={services.map((service) => service.name)}
+          />
+        )}
       </Formik>
     </div>
   )

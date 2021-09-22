@@ -1,0 +1,43 @@
+.carousel-shop {
+  height: 200px;
+  max-height: 400px;
+  width: 100%;
+}
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
+  .button {
+    z-index: 10;
+    border-radius: 50%;
+  }
+}
+.slider-carousel-products {
+  position: absolute;
+  height: auto;
+  top: 0;
+  display: flex;
+  width: 100%;
+  transition-property: margin-left;
+  transition-duration: 500ms;
+}
+@for $i from 0 through 20 {
+  .margin-left-#{$i} {
+    margin-left: $i * -240px;
+  }
+}
+
+.carousel-product {
+  margin: 20px;
+  height: 150px;
+  min-width: 200px;
+  img {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+}
