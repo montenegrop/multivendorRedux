@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
-import { SERVICE_PROVIDERS_INIT } from "../../state/actions/serviceProviders"
 import { RootState } from "../../state/reducers"
 import Link from "next/link"
 
@@ -12,13 +11,6 @@ const CategoryGrid = () => {
   }, [dispatch])
 
   const homepageCategories = useSelector((state: RootState) => state.homepageCategories.categories)
-
-  useEffect(() => {
-    dispatch(SERVICE_PROVIDERS_INIT())
-  }, [dispatch])
-  const serviceProviders = useSelector((state: RootState) => state)
-  console.log(serviceProviders)
-
   return (
     <div className="grid_container">
       <div className="columns is-centered is-multiline grid_grid">

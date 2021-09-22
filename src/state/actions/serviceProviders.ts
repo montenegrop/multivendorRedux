@@ -21,7 +21,8 @@ export type Vendor = {
     }[]
   }
 }
-export const SERVICE_PROVIDERS_INIT = createAction("SERVICE_PROVIDERS_INIT")
+export const SERVICE_PROVIDERS_INIT =
+  createAction<{ numberOfProviders: number }>("SERVICE_PROVIDERS_INIT")
 export const SERVICE_PROVIDERS_SUCCESS = createAction<VendorCountableConnection>(
   "SERVICE_PROVIDERS_SUCCESS"
 )

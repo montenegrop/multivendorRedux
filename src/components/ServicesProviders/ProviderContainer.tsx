@@ -1,10 +1,16 @@
 import PrestadorComponent from "./ProviderComponent"
 
-const ProviderContainer = ({ prestadores }) => {
+const ProviderContainer = ({ providers, observe, maxProviders }) => {
   return (
-    <div className="prestadores-container">
-      {prestadores.map((item, index) => {
-        return <PrestadorComponent prestador={item} key={index} />
+    <div className="providers-container">
+      {providers.map((item, index) => {
+        if (index !== maxProviders - 1) return <PrestadorComponent prestador={item} key={index} />
+        else
+          return (
+            <div ref={observe} key={index}>
+              <PrestadorComponent prestador={item} />
+            </div>
+          )
       })}
     </div>
   )

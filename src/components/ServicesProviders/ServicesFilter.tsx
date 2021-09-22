@@ -1,48 +1,76 @@
-const ServicesFilter = ({ handleDropdownOpen }) => {
+const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilter }) => {
   return (
     <div className="filter-provider-bar is-flex is-justify-content-space-around">
-      <div className="dropdown " id="profesion-dropdown">
+      <div className={`dropdown ${profFilter}`} id="profesion-dropdown">
         <div className="drop-down-trigger">
           <button
             className="button is-small filter-button"
             id="profession-button"
-            onClick={handleDropdownOpen}
+            onClick={() => handleToggleDropdown("profesion")}
           >
             Profesion
           </button>
         </div>
         <div className="dropdown-menu">
           <div className="dropdown-content">
-            <div className="dropdown-item">Ferretero</div>
-            <div className="dropdown-item">Electricista</div>
-            <div className="dropdown-item">Plomero</div>
-            <div className="dropdown-item">Fontanero</div>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="ironmonger-chkbx" /> Ferretero
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="electrician-chkbx" /> Electricista
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="plumber-chkbx" /> Plomero
+            </label>
           </div>
         </div>
       </div>
-      <div className="dropdown " id="profesion-dropdown">
+      <div className={`dropdown ${zoneFilter}`} id="zone-dropdown">
         <div className="drop-down-trigger">
-          <button className="button is-small filter-button">Zona</button>
+          <button
+            className="button is-small filter-button"
+            onClick={() => handleToggleDropdown("zone")}
+          >
+            Zona
+          </button>
         </div>
         <div className="dropdown-menu">
           <div className="dropdown-content">
-            <div className="dropdown-item">Centro</div>
-            <div className="dropdown-item">Zur</div>
-            <div className="dropdown-item">Este</div>
-            <div className="dropdown-item">Oeste</div>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="center-chkbx" /> Centro
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="south-chkbx" /> Sur
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="east-chkbx" /> Este
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="west-chkbx" /> Oeste
+            </label>
           </div>
         </div>
       </div>
-      <div className="dropdown " id="profesion-dropdown">
+      <div className={`dropdown ${turnFilter}`} id="turn-dropdown">
         <div className="drop-down-trigger">
-          <button className="button is-small filter-button">Horario</button>
+          <button
+            className="button is-small filter-button"
+            onClick={() => handleToggleDropdown("turn")}
+          >
+            Horario
+          </button>
         </div>
         <div className="dropdown-menu">
           <div className="dropdown-content">
-            <div className="dropdown-item">Mañana</div>
-            <div className="dropdown-item">Tarde</div>
-            <div className="dropdown-item">Noche</div>
-            <div className="dropdown-item">Todos</div>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="morning -chkbx" /> Mañana
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="afternoon -chkbx" /> Tarde
+            </label>
+            <label className="dropdown-item is-clickable">
+              <input type="checkbox" name="evening-chkbx" /> Noche
+            </label>
           </div>
         </div>
       </div>
