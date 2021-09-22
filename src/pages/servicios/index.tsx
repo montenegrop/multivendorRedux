@@ -13,7 +13,7 @@ const Servicios = () => {
     rootMargin: "1px 0px",
     // When the last item comes to the viewport
     onEnter: () => {
-      setMaxProviders(maxProviders + 4)
+      setMaxProviders(maxProviders + 5)
     },
   })
 
