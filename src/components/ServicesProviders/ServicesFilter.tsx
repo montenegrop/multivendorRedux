@@ -1,12 +1,12 @@
-const ServicesFilter = ({ handleDropdownOpen }) => {
+const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilter }) => {
   return (
     <div className="filter-provider-bar is-flex is-justify-content-space-around">
-      <div className="dropdown " id="profesion-dropdown">
+      <div className={`dropdown ${profFilter}`} id="profesion-dropdown">
         <div className="drop-down-trigger">
           <button
             className="button is-small filter-button"
             id="profession-button"
-            onClick={() => handleDropdownOpen("profesion-dropdown")}
+            onClick={() => handleToggleDropdown("profesion")}
           >
             Profesion
           </button>
@@ -25,11 +25,11 @@ const ServicesFilter = ({ handleDropdownOpen }) => {
           </div>
         </div>
       </div>
-      <div className="dropdown " id="zone-dropdown">
+      <div className={`dropdown ${zoneFilter}`} id="zone-dropdown">
         <div className="drop-down-trigger">
           <button
             className="button is-small filter-button"
-            onClick={() => handleDropdownOpen("zone-dropdown")}
+            onClick={() => handleToggleDropdown("zone")}
           >
             Zona
           </button>
@@ -51,11 +51,11 @@ const ServicesFilter = ({ handleDropdownOpen }) => {
           </div>
         </div>
       </div>
-      <div className="dropdown" id="turn-dropdown">
+      <div className={`dropdown ${turnFilter}`} id="turn-dropdown">
         <div className="drop-down-trigger">
           <button
             className="button is-small filter-button"
-            onClick={() => handleDropdownOpen("turn-dropdown")}
+            onClick={() => handleToggleDropdown("turn")}
           >
             Horario
           </button>
