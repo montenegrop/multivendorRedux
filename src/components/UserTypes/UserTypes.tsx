@@ -33,7 +33,7 @@ const UserTypes = () => {
           <div className="user_types_item_text">
             <h3>tiendas minoristas</h3>
             <p className="user_types_item_text_p">
-              crea tu tienda digital, ofrecé tu lista completa de productos en la mauor red de
+              crea tu tienda digital, ofrecé tu lista completa de productos en la mayor red de
               construcción. participá en licitaciones minoristas comprando o vendiendo
             </p>
           </div>

@@ -15,7 +15,7 @@ const Tienda = () => {
   // const vendor_id = "VmVuZG9yOjE="
 
   useEffect(() => {
-    dispatch(STORE_INIT({ id: router.query.vendorId }))
+    dispatch(STORE_INIT({ id: router.query.vendorId[0] }))
   }, [dispatch])
   const data = [
     {
