@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import { Formik } from "formik"
 import { emailValidator } from "../../shared/validators"
 import { useMemo } from "react"
 import { FieldString } from "../../components/Forms/FieldString"
 import Modal from "react-modal"
-import FacebookIcon from "./FacebookIcon"
-import GoogleIcon from "./GoogleIcon"
+import FacebookButton from "./components/FacebookButton"
+import GoogleButton from "./components/GoogleButton"
+import NewUserFormStep1 from "./NewUserFormStep1"
 
 type FormErrors = {
   email?: string
@@ -30,55 +31,44 @@ const onSubmit = (values, { setSubmitting }) => {
 }
 
 const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSubmitting }) => {
+  const [isOpenNewUser, setIsOpenNewUser] = useState(false)
+  function closeModalLogin() {
+    setIsOpenNewUser(false)
+  }
   return (
-    <form onSubmit={handleSubmit} noValidate className="login_form_container">
-      <h2 className="login_form_title">¡Bienvenido! Ingresá con tus datos</h2>
-
-      <FieldString
-        type="email"
-        name="Usuario"
-        value={values.email}
-        errors={errors}
-        _touched={touched}
-        onChange={handleChange}
-      ></FieldString>
-
-      <FieldString
-        type="password"
-        name="Contraseña"
-        value={values.password}
-        errors={errors}
-        _touched={touched}
-        onChange={handleChange}
-      ></FieldString>
-
-      <button type="submit" className="login_form_button">
-        Ingresar
-      </button>
-      <div>
-        Si no tenes cuenta <a>registrate aquí</a>
-      </div>
-      <button
-        type="submit"
-        className="login_form_button_sm login_form_button_sm_g"
-        disabled={isSubmitting}
-      >
-        <div className="login_form_icon">
-          <GoogleIcon />
+    <>
+      <form onSubmit={handleSubmit} noValidate className="login_form_container">
+        <h2 className="login_form_title">¡Bienvenido! Ingresá con tus datos</h2>
+        <FieldString
+          type="email"
+          name="Usuario"
+          value={values.email}
+          errors={errors}
+          _touched={touched}
+          onChange={handleChange}
+        ></FieldString>
+        <FieldString
+          type="password"
+          name="Contraseña"
+          value={values.password}
+          errors={errors}
+          _touched={touched}
+          onChange={handleChange}
+        ></FieldString>
+        <button type="submit" className="login_form_button">
+          Ingresar
+        </button>
+        <div>
+          Si no tenes cuenta{" "}
+          <a onClick={() => setIsOpenNewUser(true)} aria-hidden="true">
+            registrate aquí
+          </a>
         </div>
-        Ingresa con Google
-      </button>
-      <button
-        type="submit"
-        className="login_form_button_sm login_form_button_sm_f"
-        disabled={isSubmitting}
-      >
-        <div className="login_form_icon">
-          <FacebookIcon />
-        </div>
-        Ingresa con Facebook
-      </button>
-    </form>
+        <GoogleButton isSubmitting={isSubmitting} />
+        <FacebookButton isSubmitting={isSubmitting} />
+      </form>
+      <NewUserFormStep1 isOpen={isOpenNewUser} onRequestClose={closeModalLogin} />
+    </>
   )
 }
 
