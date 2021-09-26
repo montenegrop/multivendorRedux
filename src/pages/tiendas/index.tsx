@@ -7,7 +7,8 @@ import Link from "next/link"
 const TiendasPage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(TIENDAS_INIT())
+    console.log("tiuendas")
+    dispatch(TIENDAS_INIT({ tiendasAmount: 4 }))
   }, [dispatch])
 
   const tiendas = useSelector((state: RootState) => state.tiendas.stores)

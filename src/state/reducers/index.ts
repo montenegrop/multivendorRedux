@@ -9,7 +9,6 @@ import serviceProvidersReducers from "./serviceProviders"
 import tiendasReducers from "./tiendas"
 import servicesList from "./servicesList"
 
-
 export default {
   ...serviceProviderReducers,
   ...serviceProvidersReducers,
