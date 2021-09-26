@@ -10,8 +10,9 @@ export default (dispatch) => {
   return {
     [SERVICE_PROVIDERS_INIT.type]: async (_state, payload) => {
       const query = gql`
-        query serviceProvider($numberOfProviders: Int) {
-          vendors(first: $numberOfProviders) {
+        query serviciosConCategoria($numberOfProviders: Int, $servicesArray: [ID]) {
+          vendors(first: $numberOfProviders, filter: { services: $servicesArray }) {
+            totalCount
             edges {
               node {
                 id
@@ -28,7 +29,12 @@ export default (dispatch) => {
                 services(first: 5) {
                   edges {
                     node {
+                      __typename
+                      id
                       name
+                      category {
+                        id
+                      }
                     }
                   }
                 }
@@ -39,6 +45,7 @@ export default (dispatch) => {
       `
       const variables = {
         numberOfProviders: payload.numberOfProviders,
+        servicesArray: payload.servicesArray,
       }
       try {
         const data = await request(API_URI, query, variables)

@@ -2,7 +2,7 @@ import ServicesFilter from "./ServicesFilter"
 import ServicesGrid from "./ServiceProvidersGrid"
 import { useState } from "react"
 
-const ServiceContainer = ({ bannerImage, data }) => {
+const ServiceContainer = ({ bannerImage, services }) => {
   const [profFilter, setProfFilter] = useState("")
   const [zoneFilter, setZoneFilter] = useState("")
   const [turnFilter, setTurnFilter] = useState("")
@@ -28,7 +28,7 @@ const ServiceContainer = ({ bannerImage, data }) => {
         zoneFilter={zoneFilter}
         turnFilter={turnFilter}
       />
-      <ServicesGrid data={data} />
+      <ServicesGrid services={services} />
     </div>
   )
 }

@@ -2,33 +2,23 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Avatar } from "../../components/Avatar"
 import { ContactTable } from "../../components/ContactTable"
-import { ServiceButton } from "../../components/ServiceButton"
 import { ServicesTable } from "../../components/ServicesTable"
-import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { SERVICE_PROVIDER_INIT } from "../../state/actions/serviceProvider"
 import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import Modal from "react-modal"
-import { CATEGORY_INIT } from "../../state/actions/category"
 import Basic from "./RequestServiceForm"
 
-export default function Home() {
+export default function Service() {
   Modal.setAppElement("#__next")
   const router = useRouter()
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(SERVICE_PROVIDER_INIT({ id: "VmVuZG9yOjE=" }))
+    dispatch(SERVICE_PROVIDER_INIT({ id: router.query.serviceId }))
   }, [])
-  useEffect(() => {
-    dispatch(CATEGORY_INIT({ id: "Q2F0ZWdvcnk6MzA=", channel: "default-channel" }))
-  }, [])
-  const onClick = () => {
-    dispatch(HOMEPAGE_INIT())
-  }
-  const name = useSelector<RootState>((state) => state.serviceProvider.name)
-  const loading = useSelector<RootState>((state) => state.serviceProvider.loading)
+
   const services_data = useSelector((state: RootState) => state.serviceProviderServices.services)
   const banner_image = "https://http2.mlstatic.com/D_NQ_905027-MLA46750656973_072021-OO.webp"
   const avatar_image =
@@ -61,28 +51,17 @@ export default function Home() {
       </section>
       <section className="mb-3 columns">
         <div className="column">
-          <Link href={`/service?step=${hireStep}`}>
+          <Link href={`/service/${router.query.serviceId}?step=${hireStep}`}>
             <a className="button is-rounded is-primary">contratar</a>
           </Link>
         </div>
         <div className="column"></div>
       </section>
 
-      <section>
-        <button className="button" onClick={onClick}>
-          modal de contratar
-        </button>
-      </section>
-
-      <section className="section ml-6">
-        <ServiceButton onClick={onClick}>nombre</ServiceButton>
-      </section>
-      <button onClick={onClick}>nombre del vendor</button>
-      <div className="warning">{name}</div>
-      {loading && <div>loading</div>}
-      <div className="App"></div>
-
-      <Modal isOpen={!!router.query.step} onRequestClose={() => router.push("/service")}>
+      <Modal
+        isOpen={!!router.query.step}
+        onRequestClose={() => router.push(`/service/${router.query.serviceId}`)}
+      >
         <Basic services={services_data}></Basic>
       </Modal>
     </>

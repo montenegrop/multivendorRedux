@@ -1,28 +1,18 @@
 import ServiceContainer from "../../components/ServicesProviders/ServicesContainer"
-const imagesForGrid = [
-  "https://i.pinimg.com/originals/26/7a/ed/267aedb1ba9fdede0d0e1397990fe51a.jpg",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-  "https://us.123rf.com/450wm/afalken/afalken1910/afalken191001330/131434789-representaci%C3%B3n-3d-de-la-gota-de-agua-azul-brillante.jpg?ver=6",
-]
-const bannerImage = "https://brandme.la/wp-content/uploads/2018/01/Idealightbulbs.jpg"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { SERVICES_LIST_INIT } from "../../state/actions/servicesList"
+import { RootState } from "../../state/reducers"
+
 const Servicios = () => {
-  return (
-    <>
-      <ServiceContainer bannerImage={bannerImage} data={imagesForGrid} />
-    </>
-  )
+  const bannerImage = "https://brandme.la/wp-content/uploads/2018/01/Idealightbulbs.jpg"
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(SERVICES_LIST_INIT())
+  }, [])
+
+  const service_list = useSelector((state: RootState) => state.servicesList.services)
+  return <ServiceContainer bannerImage={bannerImage} services={service_list}></ServiceContainer>
 }
+
 export default Servicios

@@ -11,6 +11,7 @@ export type Image = {
   alt: string
 }
 
-export const SERVICE_PROVIDER_INIT = createAction<{ id: string }>("SERVICE_PROVIDER_INIT")
+export const SERVICE_PROVIDER_INIT =
+  createAction<{ id: string | string[] }>("SERVICE_PROVIDER_INIT")
 export const SERVICE_PROVIDER_SUCCESS = createAction<Vendor>("SERVICE_PROVIDER_SUCCESS")
 export const SERVICE_PROVIDER_ERROR = createAction<string>("SERVICE_PROVIDER_ERROR")

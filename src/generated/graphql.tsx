@@ -7118,9 +7118,8 @@ export type PasswordChange = {
   accountErrors: Array<AccountError>
 }
 
-export type PastExperience = Node & {
+export type PastExperience = {
   __typename?: "PastExperience"
-  /** The ID of the object. */
   id: Scalars["ID"]
   location?: Maybe<ExperienceLocation>
   descriptionShort: Scalars["String"]
@@ -8922,6 +8921,7 @@ export type Query = {
 }
 
 export type QueryVendorsArgs = {
+  filter?: Maybe<VendorFilterInput>
   sortBy?: Maybe<VendorSortingInput>
   before?: Maybe<Scalars["String"]>
   after?: Maybe<Scalars["String"]>
@@ -11314,6 +11314,10 @@ export enum VendorErrorCode {
   NotFound = "NOT_FOUND",
   Required = "REQUIRED",
   Unique = "UNIQUE",
+}
+
+export type VendorFilterInput = {
+  services?: Maybe<Array<Maybe<Scalars["ID"]>>>
 }
 
 /** Create a vendor image. */
