@@ -6,7 +6,9 @@ import logginReducers from "./loggin"
 import persistReducer from "redux-persist/lib/persistReducer"
 import storage from "redux-persist/lib/storage"
 import serviceProvidersReducers from "./serviceProviders"
+import tiendasReducers from "./tiendas"
 import servicesList from "./servicesList"
+
 
 export default {
   ...serviceProviderReducers,
@@ -14,6 +16,7 @@ export default {
   ...homepageReducers,
   ...storeReducers,
   ...logginReducers,
+  ...tiendasReducers,
   ...servicesList,
   category: persistReducer(
     {
