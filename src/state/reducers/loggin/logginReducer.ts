@@ -1,23 +1,25 @@
 import { createReducer } from "@reduxjs/toolkit"
 import * as logginActions from "../../actions/loggin"
-import { CreateToken } from "../../../generated/graphql"
+import { CreateToken, AccountError } from "../../../generated/graphql"
 
 const initialState = {
-  data: <CreateToken>null,
-  logeado: <boolean>false,
+  data: <CreateToken | string>null,
+  errors: <AccountError[]>[],
+  loading: <boolean>false,
 }
 
 export default createReducer(initialState, (builder) => {
   builder.addCase(logginActions.LOG_IN_SUCCESS, (state, { payload }) => {
     state.data = payload
-    state.logeado = true
+    state.errors = []
+    state.loading = false
   })
   builder.addCase(logginActions.LOG_IN, (state) => {
     state.data = null
-    state.logeado = false
+    state.loading = true
   })
-  builder.addCase(logginActions.LOG_IN_ERROR, (state) => {
-    state.data = null
-    state.logeado = false
+  builder.addCase(logginActions.LOG_IN_ERROR, (state, { payload }) => {
+    state.errors = payload
+    state.loading = false
   })
 })

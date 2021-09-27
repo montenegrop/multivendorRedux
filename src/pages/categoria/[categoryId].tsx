@@ -25,7 +25,7 @@ const Category = () => {
         {categRedux.category ? (
           <>
             <div className="subcategory_grid">
-              {categRedux.category.children.edges.map((item, index) => {
+              {categRedux.category.children?.edges.map((item, index) => {
                 return <SubCategory item={item} key={index} />
               })}
             </div>

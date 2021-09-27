@@ -6,9 +6,8 @@ import Shop from "./Shop"
 import UserIcon from "./UserIcon"
 import LoginForm from "./LoginForm"
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
-import { LOG_IN } from "../../state/actions/loggin"
 
 import ModalComponent from "../Modal/container/Modal"
 
@@ -17,12 +16,9 @@ const Navbar = () => {
   const [isOpen, onClose] = useState(false)
   const [isOpenLogin, setIsOpenLogin] = useState(false)
 
-  const dispatch = useDispatch()
-  const logear = () => {
-    dispatch(LOG_IN({ user: "cboero111@gmail.com", password: "admin" }))
-  }
+  const usuario = useSelector((state: RootState) => state.loggin.data?.user ?? "sds")
 
-  const usuario = useSelector((state: RootState) => state.loggin)
+  // x ?? b
 
   // function openModalLogin() {
   //   setIsOpenLogin(true)
@@ -69,11 +65,10 @@ const Navbar = () => {
                 <button
                   className="button is-primary navbar_user"
                   onClick={() => {
-                    logear()
                     setIsOpenLogin(true)
                   }}
                 >
-                  {usuario.data && usuario.data.user.email}{" "}
+                  {usuario && usuario.email}{" "}
                   <div className="navbar_user_icon">
                     <UserIcon />
                   </div>

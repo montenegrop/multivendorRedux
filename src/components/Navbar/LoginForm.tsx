@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import { Formik } from "formik"
 import { emailValidator } from "../../shared/validators"
 import { useMemo } from "react"
@@ -7,6 +7,9 @@ import Modal from "react-modal"
 import FacebookButton from "./components/FacebookButton"
 import GoogleButton from "./components/GoogleButton"
 import NewUserFormStep1 from "./NewUserFormStep1"
+
+import { LOG_IN } from "../../state/actions/loggin"
+import { useDispatch } from "react-redux"
 
 type FormErrors = {
   email?: string
@@ -23,13 +26,6 @@ const validate = (values) => {
   return errors
 }
 
-const onSubmit = (values, { setSubmitting }) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 2))
-    setSubmitting(false)
-  }, 400)
-}
-
 const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSubmitting }) => {
   const [isOpenNewUser, setIsOpenNewUser] = useState(false)
   function closeModalLogin() {
@@ -41,7 +37,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSu
         <h2 className="login_form_title">¡Bienvenido! Ingresá con tus datos</h2>
         <FieldString
           type="email"
-          name="Usuario"
+          name="email"
           value={values.email}
           errors={errors}
           _touched={touched}
@@ -49,7 +45,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSu
         ></FieldString>
         <FieldString
           type="password"
-          name="Contraseña"
+          name="password"
           value={values.password}
           errors={errors}
           _touched={touched}
@@ -73,10 +69,20 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSu
 }
 
 const LoginForm = ({ isOpen, onRequestClose }) => {
-  const initialValues = useMemo(() => ({ email: "cboero111@gmail.com", password: "admin" }), [])
+  const dispatch = useDispatch()
+
+  const initialValues = useMemo(() => ({ email: "", password: "" }), [])
   const customStyles = {
     overlay: { zIndex: 10 },
   }
+
+  const onSubmit = useCallback(
+    (values) => {
+      dispatch(LOG_IN({ user: values.email, password: values.password }))
+    },
+    [dispatch]
+  )
+
   return (
     <Modal
       isOpen={isOpen}
