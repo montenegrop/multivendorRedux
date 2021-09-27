@@ -16,13 +16,7 @@ const Navbar = () => {
   const [isOpen, onClose] = useState(false)
   const [isOpenLogin, setIsOpenLogin] = useState(false)
 
-  const usuario = useSelector((state: RootState) => state.loggin.data?.user ?? "sds")
-
-  // x ?? b
-
-  // function openModalLogin() {
-  //   setIsOpenLogin(true)
-  // }
+  const usuario = useSelector((state: RootState) => state.loggin.data?.user)
 
   function closeModalLogin() {
     setIsOpenLogin(false)

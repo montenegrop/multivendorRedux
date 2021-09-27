@@ -3,7 +3,7 @@ import * as logginActions from "../../actions/loggin"
 import { CreateToken, AccountError } from "../../../generated/graphql"
 
 const initialState = {
-  data: <CreateToken | string>null,
+  data: <CreateToken>null,
   errors: <AccountError[]>[],
   loading: <boolean>false,
 }
