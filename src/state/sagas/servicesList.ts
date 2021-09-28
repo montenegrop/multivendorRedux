@@ -32,7 +32,6 @@ export default (dispatch) => {
         dispatch(SERVICES_LIST_SUCCESS(data.baseProducts))
       } catch (error) {
         dispatch(SERVICES_LIST_ERROR("error de services list"))
-        console.log(error)
       }
     },
   }

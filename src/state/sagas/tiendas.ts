@@ -25,9 +25,7 @@ export default (dispatch) => {
         tiendasAmount: 15,
       }
       try {
-        console.log(1)
         const data = await request(API_URI, query, variables)
-        console.log(2)
         dispatch(TIENDAS_SUCCESS(data.vendors))
       } catch (error) {
         dispatch(TIENDAS_ERROR("error de tiendas"))

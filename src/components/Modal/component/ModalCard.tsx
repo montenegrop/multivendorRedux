@@ -1,8 +1,6 @@
 import ProgressBar from "./ProgressBar"
 
 const ModalCard = ({ id, title, body }) => {
-  console.log(body)
-
   return (
     <div className="modal_card">
       <div className="modal_header">

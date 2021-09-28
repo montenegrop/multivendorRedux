@@ -52,7 +52,6 @@ export default (dispatch) => {
         dispatch(SERVICE_PROVIDERS_SUCCESS(data.vendors))
       } catch (error) {
         dispatch(SERVICE_PROVIDERS_ERROR("error de service provider"))
-        console.log(error)
       }
     },
   }

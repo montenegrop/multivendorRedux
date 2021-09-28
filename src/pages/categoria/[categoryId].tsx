@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import CategoryBanner from "./categoryBanner"
+import Banner from "../../components/Banner"
 import Repuesto from "./repuesto"
 import SubCategory from "./subCategory"
 import { CATEGORY_INIT } from "../../state/actions/category"
@@ -9,7 +9,6 @@ import { useRouter } from "next/router"
 
 const Category = () => {
   const router = useRouter()
-  console.log(router.query.categoryId)
   const banner_image = "https://i.vimeocdn.com/video/966258373_640x360.jpg"
   const repuestoImg = "https://www.saumavw.com/_red/saumavw/userfiles/images/postventa/repe1.jpg"
   const dispatch = useDispatch()
@@ -21,7 +20,8 @@ const Category = () => {
   return (
     <>
       <div className="category_container">
-        <CategoryBanner banner_image={banner_image} category_name={categRedux.category.name} />
+        <Banner banner_image={banner_image} banner_title={categRedux.category.name} />
+        <h2 className="category_subtitle">BUSCA POR RUBRO</h2>
         {categRedux.category ? (
           <>
             <div className="subcategory_grid">

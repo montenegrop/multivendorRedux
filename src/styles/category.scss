@@ -1,14 +1,3 @@
-.bannerContainer {
-  width: 100%;
-}
-
-.categoryImg {
-  height: 40vh;
-  overflow: hidden;
-  img {
-    width: 100%;
-  }
-}
 .category_container {
   text-align: center;
 }
@@ -17,9 +6,7 @@
   margin: 20px 0;
   font-size: 30px;
 }
-.category_subtitle {
-  font-size: 20px;
-}
+
 .subcategory_grid {
   display: flex;
   justify-content: space-between;

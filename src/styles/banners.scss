@@ -5,3 +5,16 @@
     border-radius: 5px;
   }
 }
+.banner-container {
+  width: 100%;
+}
+.banner-img {
+  height: 40vh;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+.banner-subtitle {
+  font-size: 20px;
+}
