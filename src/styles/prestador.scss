@@ -15,6 +15,11 @@
   padding: 10px;
   margin: 10px 10px 10px 10px;
   cursor: pointer;
+  transition-property: opacity;
+  transition-duration: 200ms;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .prestador-image {
   border: #eca98a 2px solid;

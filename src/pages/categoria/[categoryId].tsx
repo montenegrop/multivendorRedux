@@ -9,7 +9,6 @@ import { useRouter } from "next/router"
 
 const Category = () => {
   const router = useRouter()
-  const banner_image = "https://i.vimeocdn.com/video/966258373_640x360.jpg"
   const repuestoImg = "https://www.saumavw.com/_red/saumavw/userfiles/images/postventa/repe1.jpg"
   const dispatch = useDispatch()
   const categRedux = useSelector((state: RootState) => state.category)
@@ -20,7 +19,10 @@ const Category = () => {
   return (
     <>
       <div className="category_container">
-        <Banner banner_image={banner_image} banner_title={categRedux.category.name} />
+        <Banner
+          banner_image={categRedux.category.backgroundImage.url}
+          banner_title={categRedux.category.name}
+        />
         <h2 className="category_subtitle">BUSCA POR RUBRO</h2>
         {categRedux.category ? (
           <>
