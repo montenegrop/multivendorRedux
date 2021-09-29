@@ -18,12 +18,6 @@ const ServiceContainer = ({ bannerImage, services }) => {
   const banner_title = "¡Hola! Busca el profesional que necesites en la red mas grande"
   return (
     <div className="providers-grid">
-      {/* <div className="banner-image">
-        <img src={bannerImage} alt="" />
-      </div>
-      <p className="has-text-grey is-size-3 has-text-centered mb-3">
-       ¡Hola! Busca el profesional que necesites en la red mas grande
-      </p> */}
       <Banner banner_image={bannerImage} banner_title={banner_title} />
       <ServicesFilter
         handleToggleDropdown={handleToggleDropdown}

@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <>
       <div className="buttons is-justify-content-space-around m-2">
-        <a className="button is-link">Licitaciones</a>
-        <a href="tiendas" className="button is-primary">
+        <a className="button  polygon-button secondary-color">Licitaciones</a>
+        <a href="tiendas" className="button secondary-color polygon-button">
           Tiendas
         </a>
       </div>
@@ -16,5 +16,4 @@ const Home = () => {
     </>
   )
 }
-
 export default Home

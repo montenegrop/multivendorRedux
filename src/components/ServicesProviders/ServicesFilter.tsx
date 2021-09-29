@@ -2,13 +2,14 @@ const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilt
   return (
     <div className="filter-provider-bar is-flex is-justify-content-space-around">
       <div className={`dropdown ${profFilter}`} id="profesion-dropdown">
-        <div className="drop-down-trigger">
+        <div className="dropdown-trigger">
           <button
-            className="button is-small filter-button"
+            className="button is-small filter-button is-flex is-justify-content-space-between"
             id="profession-button"
             onClick={() => handleToggleDropdown("profesion")}
           >
             Profesion
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">
@@ -26,12 +27,13 @@ const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilt
         </div>
       </div>
       <div className={`dropdown ${zoneFilter}`} id="zone-dropdown">
-        <div className="drop-down-trigger">
+        <div className="dropdown-trigger">
           <button
-            className="button is-small filter-button"
+            className="button is-small filter-button is-flex is-justify-content-space-between"
             onClick={() => handleToggleDropdown("zone")}
           >
             Zona
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">
@@ -52,12 +54,13 @@ const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilt
         </div>
       </div>
       <div className={`dropdown ${turnFilter}`} id="turn-dropdown">
-        <div className="drop-down-trigger">
+        <div className="dropdown-trigger">
           <button
-            className="button is-small filter-button"
+            className="button is-small filter-button is-flex is-justify-content-space-between"
             onClick={() => handleToggleDropdown("turn")}
           >
             Horario
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">

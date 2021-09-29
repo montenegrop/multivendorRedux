@@ -2,66 +2,34 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { TIENDAS_INIT } from "../../state/actions/tiendas"
 import { RootState } from "../../state/reducers"
-import Link from "next/link"
-import Slider from "../../components/Slide/Slider"
+import StoreCard from "../../components/Store/StoreCard"
+import Banner from "../../components/Banner"
 
 const TiendasPage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(TIENDAS_INIT({ tiendasAmount: 4 }))
   }, [dispatch])
-  const SliderData = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1546768292-fb12f6c92568?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-    },
-  ]
-  const tiendas = useSelector((state: RootState) => state.tiendas.stores)
+  const stores = useSelector((state: RootState) => state.tiendas.stores)
+  const banner_image = "https://www.24store.com.ar/static/media/logo-24-store.ba4bf5c5.png"
+  const banner_title = "Tiendas"
   return (
-    <>
-      <div className="">
-        <Slider slides={SliderData} />
+    <div className="grey-background">
+      <Banner banner_image={banner_image} banner_title={banner_title} />
+      <div className="store-links-grid">
+        <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
+        <a className="button  polygon-button secondary-color store-link">
+          VER TODAS LAS SUCURSALES
+        </a>
+        <a className="button  polygon-button secondary-color store-link">BUSCAR POR RUBRO</a>
       </div>
-      <div className="grid_container">
-        <div className="columns is-centered is-multiline grid_grid">
-          {tiendas &&
-            tiendas.map((tienda) => {
-              return (
-                <div className="column is-half grid_card" key={tienda.id}>
-                  <div className="grid_img_container">
-                    <Link href={`/tienda/${tienda.id}`}>
-                      <div
-                        className="grid_img"
-                        style={{ backgroundImage: `url(${tienda.avatarImage?.url})` }}
-                      >
-                        <div className="grid_item_name">
-                          <p>{tienda.name}</p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              )
-            })}
-        </div>
+      <div className="grid_container columns is-centered is-multiline grid_grid store-grid">
+        {stores &&
+          stores.map((store) => {
+            return <StoreCard store={store} key={store.id} />
+          })}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -4,7 +4,6 @@ export const FieldChoice = ({
   name,
   options,
   _value,
-  errors,
   _touched,
   onChange,
 }: {
