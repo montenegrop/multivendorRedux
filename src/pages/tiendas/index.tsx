@@ -4,6 +4,7 @@ import { TIENDAS_INIT } from "../../state/actions/tiendas"
 import { RootState } from "../../state/reducers"
 import StoreCard from "../../components/Store/StoreCard"
 import Banner from "../../components/Banner"
+import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 
 const TiendasPage = () => {
   const dispatch = useDispatch()
@@ -13,23 +14,41 @@ const TiendasPage = () => {
   const stores = useSelector((state: RootState) => state.tiendas.stores)
   const banner_image = "https://www.24store.com.ar/static/media/logo-24-store.ba4bf5c5.png"
   const banner_title = "Tiendas"
+  const carouselImages: { image: string }[] = [
+    { image: "http://lorempixel.com/400/200/sports/20/" },
+    { image: "http://lorempixel.com/400/200/sports/2/" },
+    { image: "http://lorempixel.com/400/200/sports/1/" },
+    { image: "http://lorempixel.com/400/200/sports/1/" },
+    { image: "http://lorempixel.com/400/200/sports/2/" },
+    { image: "http://lorempixel.com/400/200/sports/3/" },
+    { image: "http://lorempixel.com/400/200/sports/4/" },
+    { image: "http://lorempixel.com/400/200/sports/5/" },
+    { image: "http://lorempixel.com/400/200/sports/6/" },
+    { image: "http://lorempixel.com/400/200/sports/7/" },
+    { image: "http://lorempixel.com/400/200/sports/8/" },
+    { image: "http://lorempixel.com/400/200/sports/9/" },
+    { image: "http://lorempixel.com/400/200/sports/10/" },
+  ]
   return (
-    <div className="grey-background">
-      <Banner banner_image={banner_image} banner_title={banner_title} />
-      <div className="store-links-grid">
-        <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
-        <a className="button  polygon-button secondary-color store-link">
-          VER TODAS LAS SUCURSALES
-        </a>
-        <a className="button  polygon-button secondary-color store-link">BUSCAR POR RUBRO</a>
+    <>
+      <div className="grey-background">
+        <Banner banner_image={banner_image} banner_title={banner_title} />
+        <CarouselContainer carouselImages={carouselImages} />
+        <div className="store-links-grid">
+          <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
+          <a className="button  polygon-button secondary-color store-link">
+            VER TODAS LAS SUCURSALES
+          </a>
+          <a className="button  polygon-button secondary-color store-link">BUSCAR POR RUBRO</a>
+        </div>
+        <div className="grid_container columns is-centered is-multiline grid_grid store-grid">
+          {stores &&
+            stores.map((store) => {
+              return <StoreCard store={store} key={store.id} />
+            })}
+        </div>
       </div>
-      <div className="grid_container columns is-centered is-multiline grid_grid store-grid">
-        {stores &&
-          stores.map((store) => {
-            return <StoreCard store={store} key={store.id} />
-          })}
-      </div>
-    </div>
+    </>
   )
 }
 

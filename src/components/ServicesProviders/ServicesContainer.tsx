@@ -15,18 +15,21 @@ const ServiceContainer = ({ bannerImage, services }) => {
     if (id == "turn" && turnFilter == "") setTurnFilter("is-active")
     else setTurnFilter("")
   }
+
   const banner_title = "¡Hola! Busca el profesional que necesites en la red mas grande"
   return (
-    <div className="providers-grid">
-      <Banner banner_image={bannerImage} banner_title={banner_title} />
-      <ServicesFilter
-        handleToggleDropdown={handleToggleDropdown}
-        profFilter={profFilter}
-        zoneFilter={zoneFilter}
-        turnFilter={turnFilter}
-      />
-      <ServicesGrid services={services} />
-    </div>
+    <>
+      <div className="providers-grid">
+        <Banner banner_image={bannerImage} banner_title={banner_title} />
+        <ServicesFilter
+          handleToggleDropdown={handleToggleDropdown}
+          profFilter={profFilter}
+          zoneFilter={zoneFilter}
+          turnFilter={turnFilter}
+        />
+        <ServicesGrid services={services} />
+      </div>
+    </>
   )
 }
 export default ServiceContainer

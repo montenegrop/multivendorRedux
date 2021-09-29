@@ -48,18 +48,20 @@ const CarouselContainer = ({ carouselImages }) => {
   }
 
   return (
-    <div className="carousel" ref={containerRef}>
-      <button className="button" onClick={decreasePage}>
-        &#10094;
-      </button>
-      <div className={`slider-carousel-products`} ref={productsRef} style={{ marginLeft }}>
-        {carouselImages.map((item, index) => {
-          return <CarouselProduct image={item.image} key={`carouse-product-${index}`} />
-        })}
+    <div className="carousel-shop">
+      <div className="carousel" ref={containerRef}>
+        <button className="button" onClick={decreasePage}>
+          &#10094;
+        </button>
+        <div className={`slider-carousel-products`} ref={productsRef} style={{ marginLeft }}>
+          {carouselImages.map((item, index) => {
+            return <CarouselProduct image={item.image} key={`carouse-product-${index}`} />
+          })}
+        </div>
+        <button className="button" onClick={increasePage}>
+          &#10095;
+        </button>
       </div>
-      <button className="button" onClick={increasePage}>
-        &#10095;
-      </button>
     </div>
   )
 }
