@@ -1,7 +1,7 @@
 import ServicesFilter from "./ServicesFilter"
 import ServicesGrid from "./ServiceProvidersGrid"
 import { useState } from "react"
-import Banner from "../Banner"
+import { Banner } from "../Banner"
 
 const ServiceContainer = ({ bannerImage, services }) => {
   const [profFilter, setProfFilter] = useState("")
