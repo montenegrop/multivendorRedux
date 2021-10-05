@@ -8,12 +8,19 @@
   width: 30%;
 }
 .filter {
+  margin-left: 1rem;
   ul {
     margin-left: 0px;
     list-style: none;
   }
   li ul {
     list-style: none;
+  }
+  strong {
+    font-size: small;
+  }
+  label {
+    font-size: small;
   }
 }
 .products {

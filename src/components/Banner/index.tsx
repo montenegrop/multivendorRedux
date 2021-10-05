@@ -1,4 +1,4 @@
-const Banner = ({ banner_image, banner_title }) => {
+export const Banner = ({ banner_image, banner_title }) => {
   return (
     <div className="banner-container">
       <div className="banner-img">
@@ -10,4 +10,3 @@ const Banner = ({ banner_image, banner_title }) => {
     </div>
   )
 }
-export default Banner
