@@ -5,7 +5,7 @@ import ProviderContainer from "../../components/ServicesProviders/ProviderContai
 import { SERVICE_PROVIDERS_INIT } from "../../state/actions/serviceProviders"
 import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
-import Banner from "../../components/Banner"
+import { Banner } from "../../components/Banner"
 
 const ServiceProvidersPage = () => {
   const router = useRouter()
@@ -22,7 +22,6 @@ const ServiceProvidersPage = () => {
     )
   }, [maxProviders])
   const serviceProviders = useSelector((state: RootState) => state.serviceProviders.providers)
-  console.log(serviceProviders)
 
   const { observe } = useInView({
     // For better UX, we can grow the root margin so the data will be loaded earlier
