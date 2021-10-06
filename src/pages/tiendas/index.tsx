@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { TIENDAS_INIT } from "../../state/actions/tiendas"
 import { RootState } from "../../state/reducers"
 import StoreCard from "../../components/Store/StoreCard"
-import Banner from "../../components/Banner"
+import { Banner } from "../../components/Banner"
 import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 
 const TiendasPage = () => {

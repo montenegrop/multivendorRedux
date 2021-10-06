@@ -7,15 +7,17 @@ const SubCategory = ({ item }) => {
           <p>{item.node.name}</p>
         </div>
       </div>
-      <div className="subcategory_products productEfect">
-        {item.node.products.edges.map((prod, index) => {
-          return (
-            <p key={index}>
-              <strong>{prod.node.name}</strong>
-            </p>
-          )
-        })}
-      </div>
+      {item.node.products.edges.length != 0 && (
+        <div className="subcategory_products productEfect">
+          {item.node.products.edges.map((prod, index) => {
+            return (
+              <p key={index}>
+                <strong>{prod.node.name}</strong>
+              </p>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

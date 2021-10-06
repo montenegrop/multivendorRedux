@@ -9,11 +9,14 @@
   width: 100%;
 }
 .banner-img {
-  max-height: 40vh;
-  overflow: hidden;
   img {
+    max-height: 40vh;
     width: 100%;
+    object-fit: cover;
   }
+}
+.banner-title {
+  margin-bottom: 0 !important;
 }
 .banner-subtitle {
   font-size: 20px;

@@ -9,10 +9,9 @@
 
 .subcategory_grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 20px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
 }
 @media only screen and (max-width: 896px) {
   .subcategory_grid {
