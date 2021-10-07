@@ -34,3 +34,17 @@
 .service_button-shadow {
   filter: drop-shadow(1px 1px 2px $secondary);
 }
+a.polygon-button {
+  box-shadow: 0 0 50px 10px rgba(86, 216, 255, 0.61), 0 17px 50px 0 rgba(0, 0, 0, 0.541);
+}
+.polygon-button {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 15% 100%);
+  min-width: 170px;
+  padding: 0 50px;
+  margin: 0 !important;
+  box-sizing: content-box !important;
+}
+.secondary-color {
+  background-color: $secondary;
+  height: 25px;
+}

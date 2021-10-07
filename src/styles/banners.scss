@@ -5,3 +5,19 @@
     border-radius: 5px;
   }
 }
+.banner-container {
+  width: 100%;
+}
+.banner-img {
+  img {
+    max-height: 40vh;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.banner-title {
+  margin-bottom: 0 !important;
+}
+.banner-subtitle {
+  font-size: 20px;
+}

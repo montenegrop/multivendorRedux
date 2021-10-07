@@ -4,9 +4,11 @@ import React from "react"
 const ServiceGridCard = ({ service }) => {
   return (
     <Link href={`serviciosBusqueda?service=${service.id}`}>
-      <div className="provider-grid-card m-3 image grid_img">
-        <img src={service.category.backgroundImage?.url} alt="" />
-        <h5 className="h5 has-text-centered bottom-0">{service.name}</h5>
+      <div
+        className="provider-grid-card m-3 image"
+        style={{ backgroundImage: `url(${service.category.backgroundImage?.url})` }}
+      >
+        <h5 className="bottom-0 mx-auto">{service.name}</h5>
       </div>
     </Link>
   )

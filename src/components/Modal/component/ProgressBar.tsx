@@ -8,7 +8,6 @@ const ProgressBar = ({ id, index, desc, progress }) => {
     }
     progress_div = document.getElementsByClassName(`${id} ${index}`)
     for (let i = 0; i < progress; i++) {
-      console.log(progress)
       progress_div[i].classList.add("succes_progress")
     }
   }, [progress])

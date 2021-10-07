@@ -1,119 +1,97 @@
-const Filters = ({ hanldeClicPrice, hanldeClicName, hanldeClicWeight, refreshFiltersSelected }) => {
+const Filters = ({ refreshFiltersSelected }) => {
   return (
     <div className="filter">
       <ul>
         <li>
-          <div
-            className="has-background-link-light is-clickable sub-filter"
-            onClick={hanldeClicPrice}
-            onKeyDown={hanldeClicPrice}
-            role="button"
-            tabIndex={0}
-          >
-            <p className="has-text-black is-clickable ">Precio</p>
-            <p className="icon" id="icon-price">
-              &#5125;
-            </p>
-          </div>
-          <ul className="price_list is-hidden">
+          <ul className="price_list">
+            <strong>Segun Precio</strong>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="price"
-                  id="low"
-                  onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
-                />{" "}
-                Menor Precio
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
+                onKeyDown={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
+              >
+                <p id="low" className="is-clickable">
+                  Menor Precio
+                </p>
+              </div>
             </li>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="price"
-                  id="hight"
-                  onClick={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
-                />{" "}
-                Mayor Precio
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
+                onMouseDown={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
+              >
+                <p id="hight" className="is-clickable">
+                  Mayor Precio
+                </p>
+              </div>
             </li>
           </ul>
         </li>
         <li>
-          <div
-            className="has-background-link-light is-clickable sub-filter"
-            onClick={hanldeClicName}
-            onKeyDown={hanldeClicName}
-            role="button"
-            tabIndex={0}
-          >
-            <p className="has-text-black is-clickable ">Nombre</p>
-            <p className="icon" id="icon-name">
-              &#5125;
-            </p>
-          </div>
-          <ul className="name_list is-hidden">
+          <ul className="name_list">
+            <strong>Segun Orden</strong>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="name"
-                  id="order"
-                  onClick={() => refreshFiltersSelected("Ordenado A-Z", "Ordenado Z-A")}
-                />{" "}
-                A-Z
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Ordenado A-Z", "Ordenado Z-A")}
+                onMouseDown={() => refreshFiltersSelected("Ordenado A-Z", "Ordenado Z-A")}
+              >
+                <p id="order" className="is-clickable">
+                  A-Z
+                </p>
+              </div>
             </li>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="name"
-                  id="reverse"
-                  onClick={() => refreshFiltersSelected("Ordenado Z-A", "Ordenado A-Z")}
-                />{" "}
-                Z-A
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Ordenado Z-A", "Ordenado A-Z")}
+                onMouseDown={() => refreshFiltersSelected("Ordenado Z-A", "Ordenado A-Z")}
+              >
+                <p id="reverse" className="is-clickable">
+                  Z-A
+                </p>
+              </div>
             </li>
           </ul>
         </li>
         <li>
-          <div
-            className="has-background-link-light is-clickable sub-filter"
-            onClick={hanldeClicWeight}
-            onKeyDown={hanldeClicWeight}
-            role="button"
-            tabIndex={0}
-          >
-            <p className="has-text-black is-clickable ">Peso</p>
-            <p className="icon" id="icon-weight">
-              &#5125;
-            </p>
-          </div>
-
-          <ul className="weight_list is-hidden">
+          <ul className="weight_list">
+            <strong>Segun Peso</strong>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="weight"
-                  id="light"
-                  onClick={() => refreshFiltersSelected("Mas Liviano", "Mas Pesado")}
-                />
-                Mas Liviano
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Mas Liviano", "Mas Pesado")}
+                onMouseDown={() => refreshFiltersSelected("Mas Liviano", "Mas Pesado")}
+              >
+                <p id="light" className="is-clickable">
+                  Mas Liviano
+                </p>
+              </div>
             </li>
             <li>
-              <label>
-                <input
-                  type="radio"
-                  name="weight"
-                  id="heavy"
-                  onClick={() => refreshFiltersSelected("Mas Pesado", "Mas Liviano")}
-                />
-                Mas Pesado
-              </label>
+              <div
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => refreshFiltersSelected("Mas Pesado", "Mas Liviano")}
+                onMouseDown={() => refreshFiltersSelected("Mas Pesado", "Mas Liviano")}
+              >
+                <p id="heavy" className="is-clickable">
+                  Mas Pesado
+                </p>
+              </div>
             </li>
           </ul>
         </li>

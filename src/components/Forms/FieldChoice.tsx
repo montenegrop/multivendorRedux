@@ -4,7 +4,6 @@ export const FieldChoice = ({
   name,
   options,
   _value,
-  errors,
   _touched,
   onChange,
 }: {
@@ -15,7 +14,6 @@ export const FieldChoice = ({
   _touched: any
   onChange: () => void
 }) => {
-  console.log("sdsd", errors, 99)
   return (
     <div className="field is-horizontal">
       <div className="field-label is-normal">

@@ -1,14 +1,19 @@
 const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilter }) => {
   return (
-    <div className="filter-provider-bar is-flex is-justify-content-space-around">
-      <div className={`dropdown ${profFilter}`} id="profesion-dropdown">
-        <div className="drop-down-trigger">
+    <div className="filter-provider-bar is-flex is-justify-content-space-around is-flex-wrap-wrap">
+      <div
+        className={`dropdown ${profFilter}`}
+        id="profesion-dropdown"
+        onMouseEnter={() => handleToggleDropdown("profesion")}
+        onMouseLeave={() => handleToggleDropdown("profesion")}
+      >
+        <div className="dropdown-trigger my-auto">
           <button
-            className="button is-small filter-button"
+            className="button is-small filter-button is-flex is-justify-content-space-between"
             id="profession-button"
-            onClick={() => handleToggleDropdown("profesion")}
           >
             Profesion
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">
@@ -25,13 +30,16 @@ const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilt
           </div>
         </div>
       </div>
-      <div className={`dropdown ${zoneFilter}`} id="zone-dropdown">
-        <div className="drop-down-trigger">
-          <button
-            className="button is-small filter-button"
-            onClick={() => handleToggleDropdown("zone")}
-          >
+      <div
+        className={`dropdown ${zoneFilter}`}
+        id="zone-dropdown"
+        onMouseEnter={() => handleToggleDropdown("zone")}
+        onMouseLeave={() => handleToggleDropdown("zone")}
+      >
+        <div className="dropdown-trigger my-auto">
+          <button className="button is-small filter-button is-flex is-justify-content-space-between">
             Zona
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">
@@ -51,13 +59,16 @@ const ServicesFilter = ({ handleToggleDropdown, turnFilter, zoneFilter, profFilt
           </div>
         </div>
       </div>
-      <div className={`dropdown ${turnFilter}`} id="turn-dropdown">
-        <div className="drop-down-trigger">
-          <button
-            className="button is-small filter-button"
-            onClick={() => handleToggleDropdown("turn")}
-          >
+      <div
+        className={`dropdown ${turnFilter}`}
+        id="turn-dropdown"
+        onMouseEnter={() => handleToggleDropdown("turn")}
+        onMouseLeave={() => handleToggleDropdown("turn")}
+      >
+        <div className="dropdown-trigger my-auto">
+          <button className="button is-small filter-button is-flex is-justify-content-space-between">
             Horario
+            <p>&#10145;</p>
           </button>
         </div>
         <div className="dropdown-menu">
