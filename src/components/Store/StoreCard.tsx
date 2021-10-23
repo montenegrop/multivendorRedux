@@ -3,7 +3,7 @@ import React from "react"
 
 const StoreCard = ({ store }) => {
   return (
-    <Link as={`categoria/${store.id}`} href="/categoria/[categoryId]">
+    <Link href={`tienda/${store.id}`}>
       <div className="store-card is-clickable" key={store.id}>
         <div className="store-card-img">
           <img src={store.avatarImage?.url} alt="" />

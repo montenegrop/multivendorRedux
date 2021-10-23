@@ -17,7 +17,7 @@ export const FieldChoice = ({
   return (
     <div className="field is-horizontal">
       <div className="field-label is-normal">
-        <label htmlFor="choice-id" className="label">
+        <label htmlFor={`choice-${name}`} className="label">
           Department
         </label>
       </div>
@@ -25,7 +25,7 @@ export const FieldChoice = ({
         <div className="field is-narrow">
           <div className="control">
             <div className="select is-fullwidth">
-              <select id="choice-id" className="choice-input" onBlur={onChange} name={name}>
+              <select id={`choice-${name}`} className="choice-input" onBlur={onChange} name={name}>
                 {options.map((option) => (
                   <option value={option} key={option}>
                     {option}

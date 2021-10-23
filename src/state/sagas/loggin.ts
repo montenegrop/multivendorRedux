@@ -1,7 +1,16 @@
 import { request, gql } from "graphql-request"
 import { API_URI } from "../../constants"
 import { AccountErrorCode } from "../../generated/graphql"
-import { LOG_IN, LOG_IN_ERROR, LOG_IN_SUCCESS } from "../actions/loggin"
+import {
+  CREATE_USER,
+  CREATE_USER_ERROR,
+  CREATE_USER_SUCCESS,
+  LOG_IN,
+  LOG_IN_ERROR,
+  LOG_IN_SUCCESS,
+  LOG_OUT,
+  LOG_OUT_RESULT,
+} from "../actions/loggin"
 
 export default (dispatch) => {
   return {
@@ -44,6 +53,63 @@ export default (dispatch) => {
               code: AccountErrorCode.GraphqlError,
               message: "Error de LOG_IN action",
               field: "no se registra",
+            },
+          ])
+        )
+      }
+    },
+    [LOG_OUT.type]: async (_state, _payload) => {
+      const mutation = gql`
+        mutation Logout {
+          tokensDeactivateAll {
+            accountErrors {
+              message
+              code
+            }
+          }
+        }
+      `
+      try {
+        const _data = await request(API_URI, mutation)
+        dispatch(LOG_OUT_RESULT())
+      } catch (error) {
+        dispatch(LOG_OUT_RESULT())
+      }
+    },
+    [CREATE_USER.type]: async (_state, payload) => {
+      const mutation = gql`
+        mutation crearProveedor($email: String!, $password: String!, $providesServices: Boolean) {
+          accountRegister(
+            input: { email: $email, password: $password, providesServices: $providesServices }
+          ) {
+            requiresConfirmation
+            accountErrors {
+              message
+              code
+            }
+          }
+        }
+      `
+      const variables = {
+        email: payload.email,
+        password: payload.password,
+        providesServices: payload.providesServices,
+      }
+      try {
+        const data = await request(API_URI, mutation, variables)
+        if (!data.accountRegister.accountErrors.length) {
+          dispatch(CREATE_USER_SUCCESS())
+        } else {
+          dispatch(LOG_IN_ERROR(data.tokenCreate.accountErrors))
+        }
+        dispatch(CREATE_USER_SUCCESS())
+      } catch (error) {
+        dispatch(
+          CREATE_USER_ERROR([
+            {
+              code: AccountErrorCode.GraphqlError,
+              message: "Error de LOG_IN action",
+              field: "no se ha podido crear el usuario",
             },
           ])
         )

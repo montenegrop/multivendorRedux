@@ -3,7 +3,7 @@ import * as serviceProviderActions from "../../actions/serviceProvider"
 import { Image } from "../../actions/serviceProvider"
 
 const initialState = {
-  banner: <Image>null,
+  banner: <Image>{ alt: "", url: "" },
   avatar: <Image>{ alt: "", url: "" },
 }
 

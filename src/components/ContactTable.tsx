@@ -1,26 +1,31 @@
-export const ContactTable = ({ _contact_data }) => {
+export const ContactTable = (contact_data: {
+  phone: string
+  cellularPhone: string
+  email: string
+  location: { city: string; fullAddress: string }
+}) => {
   return (
     <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
       <tbody>
         <tr>
           <th>Teléfono</th>
-          <td>+23211231321</td>
+          <td>{contact_data.phone}</td>
         </tr>
         <tr>
           <th>Celular</th>
-          <td>3121111111</td>
+          <td>{contact_data.cellularPhone}</td>
         </tr>
         <tr>
           <th>Dirección</th>
-          <td>San luis 4433</td>
+          <td>{contact_data.location?.fullAddress}</td>
         </tr>
         <tr>
           <th>Ciudad</th>
-          <td>Capital Federal</td>
+          <td>{contact_data.location?.city}</td>
         </tr>
         <tr>
           <th>Email</th>
-          <td>cacho_castaña@hotmail.com</td>
+          <td>{contact_data.email}</td>
         </tr>
         <tr>
           <th>Redes</th>

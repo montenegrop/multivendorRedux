@@ -9,18 +9,24 @@ import LoginForm from "./LoginForm"
 import { useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
 
-import ModalComponent from "../Modal/container/Modal"
+import ModalServicios from "../Modal/container/ModalServicios"
+import { useRouter } from "next/router"
+import CreateUserOne from "./CreateUserOne"
+import LogoutForm from "./LogoutForm"
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
   const [isOpen, onClose] = useState(false)
-  const [isOpenLogin, setIsOpenLogin] = useState(false)
 
   const usuario = useSelector((state: RootState) => state.loggin.data?.user)
 
-  function closeModalLogin() {
-    setIsOpenLogin(false)
-  }
+  const router = useRouter()
+  const logginQuery = "loggin"
+  const logoutQuery = "logout"
+  const registerOneQuery = "create_account_one"
+  // const registerTwoQuery = "create_account_two"
+
+  const { loggin, create, logout, ...navbarCleanQuery } = router.query
 
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
@@ -59,7 +65,11 @@ const Navbar = () => {
                 <button
                   className="button is-primary navbar_user"
                   onClick={() => {
-                    setIsOpenLogin(true)
+                    if (!usuario) {
+                      router.push({ query: { ...router.query, ...{ loggin: logginQuery } } })
+                    } else {
+                      router.push({ query: { ...router.query, ...{ logout: logoutQuery } } })
+                    }
                   }}
                 >
                   {usuario && usuario.email}{" "}
@@ -79,8 +89,32 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <ModalComponent isOpen={isOpen} onClose={onClose} />
-          <LoginForm isOpen={isOpenLogin} onRequestClose={closeModalLogin} />
+          {/* onRequestClose={() => router.push(`/service/${router.query.serviceId}`)} */}
+          <ModalServicios isOpen={isOpen} onClose={onClose} />
+          <LoginForm
+            user={usuario}
+            onCloseQuery={navbarCleanQuery}
+            nextCreateModal={registerOneQuery}
+            isOpen={loggin === logginQuery}
+            onRequestClose={() => {
+              router.push({ query: navbarCleanQuery })
+            }}
+          />
+          <LogoutForm
+            user={usuario}
+            onCloseQuery={navbarCleanQuery}
+            isOpen={logout === logoutQuery && loggin != logginQuery}
+            onRequestClose={() => {
+              router.push({ query: navbarCleanQuery })
+            }}
+          />
+          <CreateUserOne
+            onCloseQuery={navbarCleanQuery}
+            isOpen={create === registerOneQuery && loggin != logginQuery}
+            onRequestClose={() => {
+              router.push({ query: navbarCleanQuery })
+            }}
+          />
         </div>
       </div>
     </nav>

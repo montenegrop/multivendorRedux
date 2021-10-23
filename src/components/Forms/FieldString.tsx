@@ -6,6 +6,7 @@ export const FieldString = ({
   value,
   errors,
   _touched,
+  label,
   onChange,
 }: {
   type: string
@@ -13,20 +14,21 @@ export const FieldString = ({
   value: any
   errors: any
   _touched: any
+  label: string
   onChange: () => void
 }) => {
   return (
     <div className="field is-horizontal">
       <div className="field-label is-normal">
-        <label htmlFor="string-id-email" className="label">
-          {name}
+        <label htmlFor={`string-${name}`} className="label">
+          {label}
         </label>
       </div>
       <div className="field-body">
         <div className="field is-narrow">
           <div className="control">
             <input
-              id="string-id-email"
+              id={`string-${name}`}
               className="input string-input"
               type={type}
               name={name}

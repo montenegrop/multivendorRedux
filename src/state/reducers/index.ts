@@ -14,14 +14,21 @@ export default {
   ...serviceProvidersReducers,
   ...homepageReducers,
   ...storeReducers,
-  ...logginReducers,
   ...tiendasReducers,
   ...servicesList,
-  category: persistReducer(
+  ...categoryReducers,
+  // category: persistReducer(
+  //   {
+  //     key: "category",
+  //     storage,
+  //   },
+  //   categoryReducers.category
+  // ),
+  loggin: persistReducer(
     {
-      key: "category",
+      key: "loggin",
       storage,
     },
-    categoryReducers.category
+    logginReducers.loggin
   ),
 }

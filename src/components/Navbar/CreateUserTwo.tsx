@@ -1,6 +1,6 @@
 import React from "react"
 import { emailValidator } from "../../shared/validators"
-import { FieldString } from "../../components/Forms/FieldString"
+import { FieldString } from "../Forms/FieldString"
 import Modal from "react-modal"
 import FacebookButton from "./components/FacebookButton"
 import GoogleButton from "./components/GoogleButton"

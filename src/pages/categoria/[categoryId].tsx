@@ -20,8 +20,8 @@ const Category = () => {
     <>
       <div className="category_container">
         <Banner
-          banner_image={categRedux.category.backgroundImage?.url}
-          banner_title={categRedux.category.name}
+          banner_image={categRedux.category?.backgroundImage?.url}
+          banner_title={categRedux.category?.name}
         />
         <h2 className="category_subtitle">BUSCA POR RUBRO</h2>
         {categRedux.category ? (

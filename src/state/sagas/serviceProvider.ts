@@ -13,6 +13,14 @@ export default (dispatch) => {
         query serviceProvider($id: ID!) {
           vendor(id: $id) {
             name
+            slug
+            phone
+            address
+            email
+            location {
+              city
+              fullAddress
+            }
             mainImage {
               url
               alt

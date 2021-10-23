@@ -1,15 +1,17 @@
-import React, { useCallback, useState } from "react"
+import React, { useEffect } from "react"
 import { Formik } from "formik"
 import { emailValidator } from "../../shared/validators"
 import { useMemo } from "react"
 import { FieldString } from "../../components/Forms/FieldString"
 import Modal from "react-modal"
-import FacebookButton from "./components/FacebookButton"
-import GoogleButton from "./components/GoogleButton"
-import NewUserFormStep1 from "./NewUserFormStep1"
+//import GoogleButton from "./components/GoogleButton"
 
 import { LOG_IN } from "../../state/actions/loggin"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useRouter } from "next/router"
+import { RootState } from "../../state/reducers"
+import GoogleButton from "./components/GoogleButton"
+import { Auth0Provider } from "@auth0/auth0-react"
 
 type FormErrors = {
   email?: string
@@ -26,16 +28,21 @@ const validate = (values) => {
   return errors
 }
 
-const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSubmitting }) => {
-  const [isOpenNewUser, setIsOpenNewUser] = useState(false)
-  function closeModalLogin() {
-    setIsOpenNewUser(false)
-  }
+const FormContent = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleSubmit,
+  nextCreateModal,
+  router,
+}) => {
   return (
     <>
       <form onSubmit={handleSubmit} noValidate className="login_form_container">
         <h2 className="login_form_title">¡Bienvenido! Ingresá con tus datos</h2>
         <FieldString
+          label="Email"
           type="email"
           name="email"
           value={values.email}
@@ -44,6 +51,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSu
           onChange={handleChange}
         ></FieldString>
         <FieldString
+          label="Contraseña"
           type="password"
           name="password"
           value={values.password}
@@ -56,32 +64,43 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, isSu
         </button>
         <div>
           Si no tenes cuenta{" "}
-          <a onClick={() => setIsOpenNewUser(true)} aria-hidden="true">
+          <a onClick={() => router.push({ query: { create: nextCreateModal } })} aria-hidden="true">
             registrate aquí
           </a>
         </div>
-        <GoogleButton isSubmitting={isSubmitting} />
-        <FacebookButton isSubmitting={isSubmitting} />
+        <Auth0Provider
+          domain="dev-zi8s--3b.us.auth0.com"
+          clientId="jQWBwLnmdwj4uaYItRBmMcSnv2JPxUtu"
+          redirectUri={window.location.origin}
+        >
+          <GoogleButton />
+          {/* <FacebookButton href={AUTH0_URI} /> */}
+        </Auth0Provider>
       </form>
-      <NewUserFormStep1 isOpen={isOpenNewUser} onRequestClose={closeModalLogin} />
     </>
   )
 }
 
-const LoginForm = ({ isOpen, onRequestClose }) => {
+const LoginForm = ({ isOpen, onRequestClose, nextCreateModal, onCloseQuery, user }) => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const initialValues = useMemo(() => ({ email: "", password: "" }), [])
   const customStyles = {
     overlay: { zIndex: 10 },
   }
+  const logginErrors = useSelector((state: RootState) => state.loggin.errors)
 
-  const onSubmit = useCallback(
-    (values) => {
-      dispatch(LOG_IN({ user: values.email, password: values.password }))
-    },
-    [dispatch]
-  )
+  useEffect(() => {
+    if (logginErrors.length == 0 && user) {
+      console.log("logginFORM")
+      router.push({ query: onCloseQuery })
+    }
+  }, [logginErrors])
+
+  const onSubmit = (values) => {
+    dispatch(LOG_IN({ user: values.email, password: values.password }))
+  }
 
   return (
     <Modal
@@ -98,7 +117,7 @@ const LoginForm = ({ isOpen, onRequestClose }) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => <FormContent {...props} />}
+        {(props) => <FormContent {...props} nextCreateModal={nextCreateModal} router={router} />}
       </Formik>
     </Modal>
   )

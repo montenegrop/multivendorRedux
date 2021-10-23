@@ -1,6 +1,5 @@
 import React from "react"
 import Navbar from "../components/Navbar/Navbar"
-import { useRouter } from "next/router"
 import Slider from "../components/Slide/Slider"
 
 const SliderData = [
@@ -27,12 +26,10 @@ const SliderData = [
 ]
 
 const Layout = ({ children }) => {
-  const router = useRouter()
-
   return (
     <>
       <Navbar />
-      {router.pathname == "/" && <Slider slides={SliderData} />}
+      <Slider slides={SliderData} />
       <main className="content">{children}</main>
     </>
   )
