@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import { emailValidator } from "../../shared/validators"
 import { FieldString } from "../Forms/FieldString"
 import Modal from "react-modal"
-import FacebookButton from "./components/FacebookButton"
-import GoogleButton from "./components/GoogleButton"
 import { Formik } from "formik"
 import { useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -45,15 +43,7 @@ const validate = (values) => {
   return errors
 }
 
-const FormContent = ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleSubmit,
-  isSubmitting,
-  loading,
-}) => {
+const FormContent = ({ values, errors, touched, handleChange, handleSubmit, loading }) => {
   return (
     <form onSubmit={handleSubmit} noValidate className="login_form_container">
       <h2 className="login_form_title">Registro: ¡Completá tus datos!</h2>
@@ -141,9 +131,6 @@ const FormContent = ({
           Crear Cuenta
         </button>
       </div>
-
-      <GoogleButton isSubmitting={isSubmitting} />
-      <FacebookButton isSubmitting={isSubmitting} />
     </form>
   )
 }
