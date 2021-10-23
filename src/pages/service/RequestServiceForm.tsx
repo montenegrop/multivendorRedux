@@ -46,6 +46,7 @@ const FormContent = ({
   return (
     <form onSubmit={handleSubmit} noValidate>
       <FieldString
+        label="Email"
         type="email"
         name="email"
         value={values.email}
@@ -86,6 +87,7 @@ const FormContent = ({
       </div>
 
       <FieldString
+        label="Contraseña"
         type="password"
         name="password"
         value={values.password}
