@@ -8,6 +8,7 @@ import storage from "redux-persist/lib/storage"
 import serviceProvidersReducers from "./serviceProviders"
 import tiendasReducers from "./tiendas"
 import servicesList from "./servicesList"
+import contratarReducer from "./forms"
 
 export default {
   ...serviceProviderReducers,
@@ -17,6 +18,7 @@ export default {
   ...tiendasReducers,
   ...servicesList,
   ...categoryReducers,
+  ...contratarReducer,
   // category: persistReducer(
   //   {
   //     key: "category",

@@ -8,12 +8,12 @@ import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import Modal from "react-modal"
-import Basic from "./RequestServiceForm"
+import ContratarForm from "./RequestServiceForm"
+import { contratarPrimero, contratarSegundo } from "../../constants"
 
 export default function Service() {
   Modal.setAppElement("#__next")
   const router = useRouter()
-  console.log(router, 999)
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -28,6 +28,7 @@ export default function Service() {
   const cellularPhone = useSelector((state: RootState) => state.serviceProvider.cellularPhone)
   const email = useSelector((state: RootState) => state.serviceProvider.email)
   const location = useSelector((state: RootState) => state.serviceProvider.location)
+  const initialValuesContratar = useSelector((state: RootState) => state.contratar)
   // const contact_data = {
   //   phone: phone,
   //   cellularPhone: cellularPhone,
@@ -35,7 +36,7 @@ export default function Service() {
   //   location: location,
   // }
   ;("https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg")
-  const hireStep = 1
+
   return (
     <>
       <section
@@ -68,18 +69,61 @@ export default function Service() {
       </section>
       <section className="mb-3 columns">
         <div className="column">
-          <Link href={`/service/${router.query.serviceId}?step=${hireStep}`}>
+          <Link
+            scroll={false}
+            href={{
+              pathname: "/service/[serviceId]",
+              query: { serviceId: router.query.serviceId, contratar: contratarPrimero },
+            }}
+          >
             <a className="button is-rounded is-primary">contratar</a>
           </Link>
         </div>
         <div className="column"></div>
       </section>
-
       <Modal
-        isOpen={!!router.query.step}
+        isOpen={router.query.contratar === contratarPrimero}
         onRequestClose={() => router.push(`/service/${router.query.serviceId}`)}
+        style={{
+          content: {
+            width: "80%",
+            height: "100vh",
+            position: "relative",
+            left: "10%",
+            padding: "15px 0px",
+            overflow: "scroll",
+            paddingBottom: "100px",
+          },
+          overlay: { zIndex: 1000 },
+        }}
       >
-        <Basic services={services_data}></Basic>
+        <ContratarForm
+          services={services_data}
+          initialValues={initialValuesContratar}
+        ></ContratarForm>
+      </Modal>
+      <Modal
+        isOpen={router.query.contratar === contratarSegundo}
+        onRequestClose={() => router.push(`/service/${router.query.serviceId}`)}
+        style={{
+          content: {
+            width: "80%",
+            position: "relative",
+            top: "40vh",
+            left: "10%",
+            padding: "15px 0px",
+          },
+          overlay: { zIndex: 1500 },
+        }}
+      >
+        <div className="has-text-centered">
+          <h1 className="is-size-4">
+            ¿Desea confirmar el envío de solicitud de servicio de ELECTRICIDAD #12412412 a OSVALDO
+            PEREZ?
+          </h1>
+          <img src="/images/checkImage.png" alt="" width={50} className="mr-6 is-clickable" />
+          <img src="/images/cancelImage.png" alt="" width={50} className="is-clickable" />
+        </div>
       </Modal>
     </>
   )

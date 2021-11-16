@@ -39,9 +39,16 @@ const FormContent = ({
 }) => {
   return (
     <>
-      <form onSubmit={handleSubmit} noValidate className="login_form_container">
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className="is-flex is-flex-direction-column is-justify-content-center login-modal has-text-centered"
+      >
         <h2 className="login_form_title">¡Bienvenido! Ingresá con tus datos</h2>
+
         <FieldString
+          values={null}
+          onBlur={null}
           label="Email"
           type="email"
           name="email"
@@ -51,6 +58,8 @@ const FormContent = ({
           onChange={handleChange}
         ></FieldString>
         <FieldString
+          values={null}
+          onBlur={null}
           label="Contraseña"
           type="password"
           name="password"
@@ -59,12 +68,21 @@ const FormContent = ({
           _touched={touched}
           onChange={handleChange}
         ></FieldString>
-        <button type="submit" className="login_form_button">
+
+        <button type="submit" className="button mx-auto is-primary login-buttons">
           Ingresar
         </button>
         <div>
           Si no tenes cuenta{" "}
-          <a onClick={() => router.push({ query: { create: nextCreateModal } })} aria-hidden="true">
+          <a
+            onClick={() => {
+              const { loggin: _loggin, ...newRouter } = router.query
+              router.push({
+                query: { ...newRouter, ...{ create: nextCreateModal } },
+              })
+            }}
+            aria-hidden="true"
+          >
             registrate aquí
           </a>
         </div>
@@ -86,9 +104,7 @@ const LoginForm = ({ isOpen, onRequestClose, nextCreateModal, onCloseQuery, user
   const router = useRouter()
 
   const initialValues = useMemo(() => ({ email: "", password: "" }), [])
-  const customStyles = {
-    overlay: { zIndex: 10 },
-  }
+
   const logginErrors = useSelector((state: RootState) => state.loggin.errors)
 
   useEffect(() => {
@@ -107,8 +123,19 @@ const LoginForm = ({ isOpen, onRequestClose, nextCreateModal, onCloseQuery, user
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       ariaHideApp={false}
-      className="login_form_modal"
-      style={customStyles}
+      className=""
+      style={{
+        content: {
+          width: "70%",
+          height: "75vh",
+          padding: "30px",
+          top: "15%",
+          left: "15%",
+          opacity: 15,
+          borderRadius: "20px",
+        },
+        overlay: { zIndex: 1000 },
+      }}
     >
       <Formik
         validateOnChange={false}

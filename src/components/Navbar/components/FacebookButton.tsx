@@ -1,5 +1,5 @@
 import React from "react"
-import FacebookIcon from "./FacebookIcon"
+import FacebookIcon from "../../Icons/FacebookIcon"
 
 const FacebookButton = ({ href }) => {
   return (

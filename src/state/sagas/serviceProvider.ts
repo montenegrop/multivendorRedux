@@ -32,6 +32,7 @@ export default (dispatch) => {
             services(first: 5) {
               edges {
                 node {
+                  id
                   name
                 }
               }

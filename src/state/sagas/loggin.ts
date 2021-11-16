@@ -83,6 +83,19 @@ export default (dispatch) => {
             input: { email: $email, password: $password, providesServices: $providesServices }
           ) {
             requiresConfirmation
+
+            user {
+              firstName
+              lastName
+              isActive
+              isStaff
+              id
+              email
+              firstName
+              vendorId
+              identification
+              typeOfIdentification
+            }
             accountErrors {
               message
               code
@@ -94,6 +107,9 @@ export default (dispatch) => {
         email: payload.email,
         password: payload.password,
         providesServices: payload.providesServices,
+        firstname: payload.firstname,
+        lastName: payload.lastname,
+        identification: payload.identification,
       }
       try {
         const data = await request(API_URI, mutation, variables)
@@ -108,8 +124,8 @@ export default (dispatch) => {
           CREATE_USER_ERROR([
             {
               code: AccountErrorCode.GraphqlError,
-              message: "Error de LOG_IN action",
-              field: "no se ha podido crear el usuario",
+              message: "no se ha podido crear el usuario",
+              field: "Error de CREATE_USER_INIT action",
             },
           ])
         )

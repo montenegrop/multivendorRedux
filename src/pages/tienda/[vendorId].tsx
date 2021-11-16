@@ -8,6 +8,7 @@ import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
 import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 import FilterContainer from "../../components/ProductsShop/FilterContainer"
 import { useRouter } from "next/router"
+import WspContactButton from "../../components/ProductsShop/WspContactButton"
 
 const Tienda = () => {
   const dispatch = useDispatch()
@@ -49,7 +50,6 @@ const Tienda = () => {
     { image: "http://lorempixel.com/400/200/sports/10/" },
   ]
   const userData = useSelector((state: RootState) => state.store)
-
   return (
     <>
       {userData.avatar && userData.banner && <TiendaBanner userData={userData} />}
@@ -61,6 +61,7 @@ const Tienda = () => {
         <div className="store">
           <FilterContainer />
           <ProductsContainer data={data} />
+          <WspContactButton />
         </div>
       </div>
     </>

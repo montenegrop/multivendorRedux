@@ -3,6 +3,7 @@ import { Vendor } from "../../generated/graphql"
 
 export type Service = {
   name: string
+  id: string
   score: number
 }
 

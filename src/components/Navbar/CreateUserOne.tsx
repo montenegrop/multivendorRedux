@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
 import { CREATE_USER } from "../../state/actions/loggin"
+import CreateCompanyModal from "../Modal/CreateCompanyModal"
 
 type FormErrors = {
   firstName?: string
@@ -44,12 +45,18 @@ const validate = (values) => {
 }
 
 const FormContent = ({ values, errors, touched, handleChange, handleSubmit, loading }) => {
+  const [companyModal, setCompanyModal] = useState(false)
+  const handleClicModal = () => {
+    setCompanyModal(!companyModal)
+  }
   return (
-    <form onSubmit={handleSubmit} noValidate className="login_form_container">
-      <h2 className="login_form_title">Registro: ¡Completá tus datos!</h2>
-      <a>Crear Cuenta empresa</a>
-      <div className="login_form_fields_container">
-        <div className="login_form_fields_row">
+    <form onSubmit={handleSubmit} noValidate className="has-text-centered" id="register-modal">
+      <h2 className="is-size-3 mb-4">Registro: ¡Completá tus datos!</h2>
+      <a onClick={handleClicModal} role="button" tabIndex={0} onKeyDown={() => {}}>
+        Crear Cuenta empresa
+      </a>
+      <div className="grid-2col">
+        <div className="mx-auto">
           <FieldString
             label="Nombre"
             type="text"
@@ -59,6 +66,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             _touched={touched}
             onChange={handleChange}
           ></FieldString>
+        </div>
+        <div className="mx-auto">
           <FieldString
             label="Apellido"
             type="text"
@@ -69,7 +78,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             onChange={handleChange}
           ></FieldString>
         </div>
-        <div className="login_form_fields_row">
+        <div className="mx-auto">
           <FieldString
             label="Tipo de documento"
             type="text"
@@ -79,6 +88,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             _touched={touched}
             onChange={handleChange}
           ></FieldString>
+        </div>
+        <div className="mx-auto">
           <FieldString
             label="Número de Documento"
             type="number"
@@ -89,7 +100,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             onChange={handleChange}
           ></FieldString>
         </div>
-        <div className="login_form_fields_row">
+        <div className="mx-auto">
           <FieldString
             label="Usuario"
             type="email"
@@ -99,6 +110,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             _touched={touched}
             onChange={handleChange}
           ></FieldString>
+        </div>
+        <div className="mx-auto">
           <FieldString
             label="Contraseña"
             type="password"
@@ -109,28 +122,52 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             onChange={handleChange}
           ></FieldString>
         </div>
-
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              Soy proveedor de servicios
-              <input
-                id="checkbox-proveedor"
-                className="checkbox ml-1"
-                type="checkbox"
-                name="serviceProvider"
-                value={values.serviceProvider}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" className="login_form_button" disabled={loading}>
-          {loading}
-          Crear Cuenta
-        </button>
       </div>
+      <div className="field">
+        <div className="control">
+          <label className="checkbox">
+            Soy proveedor de servicios
+            <input
+              id="checkbox-proveedor"
+              className="checkbox ml-1"
+              type="checkbox"
+              name="serviceProvider"
+              value={values.serviceProvider}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        className="button is-large polygon-button secondary-color"
+        disabled={loading}
+      >
+        {loading}
+        Crear Cuenta
+      </button>
+
+      <Modal
+        isOpen={companyModal}
+        onRequestClose={handleClicModal}
+        ariaHideApp={false}
+        style={{
+          content: {
+            width: "70%",
+            height: "75vh",
+            padding: "30px",
+            top: "15%",
+            left: "15%",
+            opacity: 15,
+            borderRadius: "20px",
+            marginBottom: "150px",
+          },
+          overlay: { zIndex: 500 },
+        }}
+      >
+        <CreateCompanyModal />
+      </Modal>
     </form>
   )
 }
@@ -150,9 +187,6 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
     }),
     []
   )
-  const customStyles = {
-    overlay: { zIndex: 10 },
-  }
 
   const logginErrors = useSelector((state: RootState) => state.loggin.errors)
   const loading = useSelector((state: RootState) => state.loggin.loading)
@@ -167,7 +201,6 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
   }, [created])
 
   const onSubmit = (values) => {
-    console.log(values)
     dispatch(
       CREATE_USER({
         email: values.email,
@@ -184,7 +217,18 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
       onRequestClose={onRequestClose}
       ariaHideApp={false}
       className="login_form_modal"
-      style={customStyles}
+      style={{
+        content: {
+          width: "70%",
+          height: "75vh",
+          top: "15%",
+          padding: "30px",
+          left: "15%",
+          opacity: 15,
+          borderRadius: "20px",
+        },
+        overlay: { zIndex: 100 },
+      }}
     >
       <Formik
         validateOnChange={false}

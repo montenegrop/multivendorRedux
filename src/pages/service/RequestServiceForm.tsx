@@ -1,35 +1,48 @@
 import React from "react"
 import { Formik } from "formik"
-import { emailValidator } from "../../shared/validators"
-import { useMemo } from "react"
+import { dateValidator } from "../../shared/validators"
 import { FieldString } from "../../components/Forms/FieldString"
-import { FieldChoice } from "../../components/Forms/FieldChoice"
 import { Service } from "../../state/actions/serviceProvider"
+import { FieldChoice } from "../../components/Forms/FieldChoice"
+import { FORM_CONTRATAR_INIT } from "../../state/actions/forms"
+import { useDispatch } from "react-redux"
+import { ContratarType } from "../../state/reducers/forms/contratarReducer"
 
-type BasicProps = { services: Service[] }
+type BasicProps = { services: Service[]; initialValues: ContratarType }
 
 type FormErrors = {
-  email?: string
-  password?: string
   service?: string
-  checkbox?: boolean
+  date?: string
+  hour?: string
+  address?: string
+  location?: string
+  checkbox?: string
+  description?: string
 }
 
 const validate = (values) => {
   const errors: FormErrors = {}
-  if (!values.email) {
-    errors.email = "Required"
-  } else if (emailValidator(values.email)) {
-    errors.email = "Invalid email address"
+  if (!values.service) {
+    errors.service = "Obligatorio"
+  }
+  if (!values.date) {
+    errors.date = "Obligatorio"
+  } else if (dateValidator(values.date)) {
+    errors.date = "Ingrese una fecha mayor a la actual"
+  }
+  if (!values.hour) {
+    errors.hour = "Obligatorio"
+  }
+  if (!values.address) {
+    errors.address = "Obligatorio"
+  }
+  if (!values.location) {
+    errors.location = "Obligatorio"
+  }
+  if (!values.checkbox == true) {
+    errors.checkbox = "Debe aceptar los terminos y condiciones"
   }
   return errors
-}
-
-const onSubmit = (values, { setSubmitting }) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 2))
-    setSubmitting(false)
-  }, 400)
 }
 
 const FormContent = ({
@@ -38,79 +51,140 @@ const FormContent = ({
   errors,
   touched,
   handleChange,
-  _handleBlur,
+  handleFieldBlur,
   handleSubmit,
   isSubmitting,
   /* and other goodies */
 }) => {
+  servicios
+  isSubmitting
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <FieldString
-        label="Email"
-        type="email"
-        name="email"
-        value={values.email}
-        errors={errors}
-        _touched={touched}
-        onChange={handleChange}
-      ></FieldString>
+    <form onSubmit={handleSubmit} noValidate className="p-5">
+      <div className="hire-modal">
+        <div className="hire-modal-inputs">
+          <FieldChoice
+            values={values}
+            options={servicios}
+            label="SERVICIOS"
+            name="service"
+            value={values.service}
+            errors={errors}
+            _touched={touched}
+            onChange={handleChange}
+            onBlur={handleFieldBlur}
+          ></FieldChoice>
 
-      <FieldChoice
-        name="service"
-        options={servicios}
-        _value={values.service}
-        errors={errors}
-        _touched={touched}
-        onChange={handleChange}
-      ></FieldChoice>
+          <FieldString
+            values={values}
+            label="LOCALIDAD"
+            type="text"
+            name="location"
+            value={values.location}
+            errors={errors}
+            _touched={touched}
+            onChange={handleChange}
+            onBlur={handleFieldBlur}
+          ></FieldString>
 
-      <div className="field is-horizontal">
-        <div className="field-label is-normal">
-          <label htmlFor="string-id-email" className="label">
-            label-checkbox
-            {values.checkbox}
-          </label>
-        </div>
-        <div className="field-body">
-          <div className="field is-narrow">
-            <div className="control">
-              <input
-                id="string-id-email"
-                className="checkbox"
-                type="checkbox"
-                name="checkbox"
-                value={values.checkbox}
-              />
+          <FieldString
+            values={values}
+            label="DIRECCIÓN"
+            type="text"
+            name="address"
+            value={values.address}
+            errors={errors}
+            _touched={touched}
+            onChange={handleChange}
+            onBlur={handleFieldBlur}
+          ></FieldString>
+
+          <FieldString
+            values={values}
+            label="FECHA"
+            type="date"
+            name="date"
+            value={values.date}
+            errors={errors}
+            _touched={touched}
+            onChange={handleChange}
+            onBlur={handleFieldBlur}
+          ></FieldString>
+
+          <FieldString
+            values={values}
+            label="HORA"
+            type="time"
+            name="hour"
+            value={values.hour}
+            errors={errors}
+            _touched={touched}
+            onChange={handleChange}
+            onBlur={handleFieldBlur}
+          ></FieldString>
+
+          <div className="field is-horizontal">
+            <div className="field-label is-normal">
+              <label htmlFor="terminos-contratar" className="label has-text-left">
+                Terminos y condiciones
+              </label>
+            </div>
+            <div className="field-body">
+              <div className="field is-narrow">
+                <div className="control">
+                  <input
+                    id="terminos-contratar"
+                    className="checkbox"
+                    type="checkbox"
+                    name="checkbox"
+                    checked={values.checkbox}
+                    value={values.checkbox}
+                    onChange={handleChange}
+                    onBlur={() => handleFieldBlur(values)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="control">
+          <textarea
+            id="id-description"
+            name="description"
+            value={values.description}
+            onChange={handleChange}
+            onBlur={() => handleFieldBlur(values)}
+            className="textarea has-fixed-size"
+            placeholder="Explicá en máximo 50 palabras cual es tu necesidad (si ya te has puesto en contacto con el prestador, indicale)"
+          ></textarea>
+        </div>
       </div>
-
-      <FieldString
-        label="Contraseña"
-        type="password"
-        name="password"
-        value={values.password}
-        errors={errors}
-        _touched={touched}
-        onChange={handleChange}
-      ></FieldString>
-
-      <button type="submit" disabled={isSubmitting}>
-        Submit
+      <button className="button mt-5 is-primary" type="submit">
+        Enviar Solicitud
       </button>
     </form>
   )
 }
 
-const Basic = ({ services }: BasicProps) => {
-  const initialValues = useMemo(
-    () => ({ email: "sds@ds.com", password: "", service: "", checkbox: true }),
-    []
-  )
+const ContratarForm = ({ services, initialValues }: BasicProps) => {
+  const dispatch = useDispatch()
+
+  const onSubmit = (values) => {
+    dispatch(FORM_CONTRATAR_INIT(values))
+  }
+
+  const onFieldBlur = (values) => {
+    dispatch(FORM_CONTRATAR_INIT(values))
+  }
+
   return (
-    <div>
-      <h1>Contratar</h1>
+    <div className="p-5">
+      <h1 className="is-size-4">¡VAMOS A CONTRATAR SERVICIO!</h1>
+      <p>
+        Estoy generando una solicitud de servicio para el profesional
+        <strong>
+          {" OSVALDO PERES"} (DNI: {"41526396"})
+        </strong>
+      </p>
       <Formik
         validateOnChange={false}
         validateOnBlur={false}
@@ -118,16 +192,10 @@ const Basic = ({ services }: BasicProps) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => (
-          <FormContent
-            _handleBlur={() => {}}
-            {...props}
-            servicios={services.map((service) => service.name)}
-          />
-        )}
+        {(props) => <FormContent {...props} servicios={services} handleFieldBlur={onFieldBlur} />}
       </Formik>
     </div>
   )
 }
 
-export default Basic
+export default ContratarForm
