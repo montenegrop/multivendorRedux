@@ -11,7 +11,7 @@ const FacebookButton = ({ href }) => {
       rel="noreferrer"
     >
       <div className="login_form_icon">
-        <FacebookIcon />
+        <FacebookIcon size="100px" />
       </div>
       Ingresa con Facebook
     </a>
