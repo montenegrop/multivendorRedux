@@ -58,6 +58,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
       <div className="grid-2col">
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Nombre"
             type="text"
             name="firstName"
@@ -69,6 +71,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
         </div>
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Apellido"
             type="text"
             name="lastname"
@@ -80,6 +84,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
         </div>
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Tipo de documento"
             type="text"
             name="docType"
@@ -91,6 +97,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
         </div>
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Número de Documento"
             type="number"
             name="docNumber"
@@ -102,6 +110,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
         </div>
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Usuario"
             type="email"
             name="email"
@@ -113,6 +123,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
         </div>
         <div className="mx-auto">
           <FieldString
+            values={null}
+            onBlur={null}
             label="Contraseña"
             type="password"
             name="password"
