@@ -9,6 +9,7 @@ import serviceProvidersReducers from "./serviceProviders"
 import tiendasReducers from "./tiendas"
 import servicesList from "./servicesList"
 import contratarReducer from "./forms"
+import productCategoryReducer from "./productCategory"
 
 export default {
   ...serviceProviderReducers,
@@ -19,6 +20,7 @@ export default {
   ...servicesList,
   ...categoryReducers,
   ...contratarReducer,
+  ...productCategoryReducer,
   // category: persistReducer(
   //   {
   //     key: "category",
