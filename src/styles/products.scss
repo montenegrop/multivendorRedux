@@ -45,6 +45,17 @@
     max-width: none;
     display: block;
   }
+  .filter {
+    .filter-li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+  }
+  .filter-colum {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 .product_card {
   background-color: white;

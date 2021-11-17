@@ -15,6 +15,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(CATEGORY_INIT({ id: `${router.query.categoryId}`, channel: "default-channel" }))
   }, [dispatch])
+  console.log(categRedux)
 
   return (
     <>
