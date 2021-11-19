@@ -16,10 +16,24 @@ export default (dispatch) => {
               edges {
                 node {
                   name
+                  defaultVariant {
+                    pricing {
+                      price {
+                        net {
+                          amount
+                        }
+                      }
+                    }
+                  }
                   description
-                  weight {
-                    unit
-                    value
+                  productType {
+                    name
+                    productAttributes {
+                      name
+                      values {
+                        name
+                      }
+                    }
                   }
                   images {
                     alt
