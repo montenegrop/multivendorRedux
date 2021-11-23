@@ -2,6 +2,7 @@ const ProductCard = ({ name, price, weight }) => {
   return (
     <div className="product_card">
       <img
+        className="img-w-200-h-auto"
         src="https://canteraperea.com/wp-content/uploads/2020/11/BigBag-1000kg.jpg"
         alt="imagen de arena"
       />

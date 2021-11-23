@@ -71,10 +71,19 @@
   border-radius: 10px;
   border: rgba(0, 0, 0, 0.116) solid 1px;
   word-wrap: break-word;
-  img {
+  .image {
+    img {
+      object-fit: cover;
+      max-width: 200px;
+      max-height: 150px;
+    }
     width: 200px;
-    height: auto;
+    height: 150px;
   }
+}
+.img-w-200-h-auto {
+  width: 200px;
+  height: auto;
 }
 .product_desc {
   text-align: left;

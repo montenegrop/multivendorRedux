@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import React from "react"
 import Navbar from "../components/Navbar/Navbar"
 import Slider from "../components/Slide/Slider"
@@ -26,10 +27,11 @@ const SliderData = [
 ]
 
 const Layout = ({ children }) => {
+  const router = useRouter()
   return (
     <>
       <Navbar />
-      <Slider slides={SliderData} />
+      {router.pathname === "/" && <Slider slides={SliderData} />}
       <main className="content">{children}</main>
     </>
   )
