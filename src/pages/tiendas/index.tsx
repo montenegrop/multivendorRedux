@@ -33,7 +33,7 @@ const TiendasPage = () => {
     <>
       <div className="grey-background">
         <Banner banner_image={banner_image} banner_title={banner_title} />
-        <CarouselContainer carouselImages={carouselImages} />
+        <CarouselContainer data={carouselImages} />
         <div className="store-links-grid">
           <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
           <a className="button  polygon-button secondary-color store-link">
