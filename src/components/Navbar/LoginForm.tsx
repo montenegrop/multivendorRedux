@@ -10,7 +10,7 @@ import { LOG_IN } from "../../state/actions/loggin"
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router"
 import { RootState } from "../../state/reducers"
-import GoogleButton from "./components/GoogleButton"
+import { GoogleButton } from "./components/GoogleButton"
 import { Auth0Provider } from "@auth0/auth0-react"
 
 type FormErrors = {
