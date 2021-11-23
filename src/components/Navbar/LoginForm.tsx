@@ -28,6 +28,8 @@ const validate = (values) => {
   return errors
 }
 
+const googleSubmit = () => null
+
 const FormContent = ({
   values,
   errors,
@@ -91,7 +93,7 @@ const FormContent = ({
           clientId="jQWBwLnmdwj4uaYItRBmMcSnv2JPxUtu"
           redirectUri={window.location.origin}
         >
-          <GoogleButton />
+          <GoogleButton isSubmitting={googleSubmit} />
           {/* <FacebookButton href={AUTH0_URI} /> */}
         </Auth0Provider>
       </form>
