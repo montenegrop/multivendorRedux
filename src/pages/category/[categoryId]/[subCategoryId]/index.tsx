@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import FilterContainer from "../../components/ProductsShop/FilterContainer"
-import ProductsContainer from "../../components/ProductsShop/ProductsContainer"
-import WspContactButton from "../../components/ProductsShop/WspContactButton"
-import { PRODUCT_CATEGORY_INIT } from "../../state/actions/productCategory"
-import { RootState } from "../../state/reducers"
+import FilterContainer from "../../../../components/ProductsShop/FilterContainer"
+import ProductsContainer from "../../../../components/ProductsShop/ProductsContainer"
+import WspContactButton from "../../../../components/ProductsShop/WspContactButton"
+import { PRODUCT_CATEGORY_INIT } from "../../../../state/actions/productCategory"
+import { RootState } from "../../../../state/reducers"
 
 const ProductCategory = () => {
   const dispatch = useDispatch()

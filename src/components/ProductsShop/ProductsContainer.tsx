@@ -12,7 +12,7 @@ const ProductsContainer = ({ data }) => {
             {router.pathname == "/tienda/[vendorId]" && (
               <ProductCard name={item.name} price={item.price} weight={item.weight} key={item.id} />
             )}
-            {router.pathname == "/categoria/product-category" && (
+            {router.pathname == "/category/[categoryId]/[subCategoryId]" && (
               <ProductCategoryCard data={item.node} />
             )}
           </>

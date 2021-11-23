@@ -23,7 +23,7 @@ const CategoryGrid = () => {
               >
                 <div className="grid_img_container">
                   <Link
-                    href={category.name == "SERVICIOS" ? "servicios" : `categoria/${category.id}`}
+                    href={category.name == "SERVICIOS" ? "servicios" : `category/${category.id}`}
                   >
                     <div className="grid_img" style={{ backgroundImage: `url(${category.url})` }}>
                       <div className="grid_item_name">
