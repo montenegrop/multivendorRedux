@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Banner } from "../../components/Banner"
+import { Banner } from "../../../components/Banner"
 import Repuesto from "./repuesto"
 import SubCategory from "./subCategory"
-import { CATEGORY_INIT } from "../../state/actions/category"
-import { RootState } from "../../state/reducers"
+import { CATEGORY_INIT } from "../../../state/actions/category"
+import { RootState } from "../../../state/reducers"
 import { useRouter } from "next/router"
 
 const Category = () => {

@@ -1,13 +1,8 @@
-import { useState } from "react"
-
 const ProductCard = ({ name, price, weight }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const handleMouseHover = () => {
-    setIsOpen(!isOpen)
-  }
   return (
-    <div className="product_card" onMouseEnter={handleMouseHover} onMouseLeave={handleMouseHover}>
+    <div className="product_card">
       <img
+        className="img-w-200-h-auto"
         src="https://canteraperea.com/wp-content/uploads/2020/11/BigBag-1000kg.jpg"
         alt="imagen de arena"
       />
@@ -26,10 +21,3 @@ const ProductCard = ({ name, price, weight }) => {
   )
 }
 export default ProductCard
-
-{
-  /* <details open={isOpen}>
-        <summary hidden={true}></summary>
-        <p>{price}</p>
-      </details> */
-}

@@ -1,7 +1,7 @@
 const Filters = ({ refreshFiltersSelected }) => {
   return (
     <div className="filter">
-      <ul>
+      <ul className="filter-li">
         <li>
           <ul className="price_list">
             <strong>Segun Precio</strong>

@@ -20,6 +20,7 @@ export default (dispatch) => {
               edges {
                 node {
                   name
+                  id
                   level
                   backgroundImage {
                     url

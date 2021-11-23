@@ -28,12 +28,10 @@ const SliderData = [
 
 const Layout = ({ children }) => {
   const router = useRouter()
-  console.log(router)
-
   return (
     <>
       <Navbar />
-      {router.pathname == "/" && <Slider slides={SliderData} />}
+      {router.pathname === "/" && <Slider slides={SliderData} />}
 
       <main className="content">{children}</main>
     </>
