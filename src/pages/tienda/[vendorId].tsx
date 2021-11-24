@@ -34,7 +34,7 @@ const Tienda = () => {
     { id: 8, name: "Arena", price: 3000, weight: 600 },
     { id: 9, name: "Arena", price: 90000, weight: 600 },
   ]
-  const carouselImages: { image: string }[] = [
+  const dataCarousel: { image: string }[] = [
     { image: "http://lorempixel.com/400/200/sports/20/" },
     { image: "http://lorempixel.com/400/200/sports/2/" },
     { image: "http://lorempixel.com/400/200/sports/1/" },
@@ -56,7 +56,7 @@ const Tienda = () => {
       <TiendaNavbar />
       <div className="shop">
         <div className="carousel-shop">
-          <CarouselContainer carouselImages={carouselImages} />
+          <CarouselContainer data={dataCarousel} />
         </div>
         <div className="store">
           <FilterContainer />

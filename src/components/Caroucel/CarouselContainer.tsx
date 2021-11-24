@@ -1,8 +1,9 @@
+import { useRouter } from "next/router"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useWindowSize } from "../../hooks/useWindowWidth"
 import CarouselProduct from "./CarouselProduct"
 
-const CarouselContainer = ({ carouselImages }) => {
+const CarouselContainer = ({ data }) => {
   useWindowSize()
   const [page, setPage] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>()
@@ -11,16 +12,16 @@ const CarouselContainer = ({ carouselImages }) => {
   const containerWidth = containerRef.current?.offsetWidth || 1
   const productsWidth = productsRef.current?.scrollWidth || 1
 
-  const widthOfEachImage = productsWidth / carouselImages.length
+  const widthOfEachImage = productsWidth / data.length
   const numberOfImagesToShow = containerWidth / widthOfEachImage
 
   const maxPage = useMemo(() => {
-    if (carouselImages.length < numberOfImagesToShow) {
+    if (data.length < numberOfImagesToShow) {
       return 0
     } else {
-      return Math.ceil(carouselImages.length / numberOfImagesToShow - 1)
+      return Math.ceil(data.length / numberOfImagesToShow - 1)
     }
-  }, [carouselImages, numberOfImagesToShow])
+  }, [data, numberOfImagesToShow])
 
   useEffect(() => {
     if (page > maxPage) {
@@ -30,7 +31,7 @@ const CarouselContainer = ({ carouselImages }) => {
 
   const marginLeft = useMemo(() => {
     if (containerRef.current) {
-      const p = page === maxPage ? carouselImages.length / numberOfImagesToShow - 1 : page
+      const p = page === maxPage ? data.length / numberOfImagesToShow - 1 : page
       return `-${containerWidth * p}px`
     }
     return 0
@@ -46,16 +47,19 @@ const CarouselContainer = ({ carouselImages }) => {
       setPage(page - 1)
     }
   }
-
+  const router = useRouter()
   return (
     <div className="carousel-shop">
-      <div className="carousel" ref={containerRef}>
+      <div
+        className={`${router.pathname == "/product" && "has-background-white"} carousel`}
+        ref={containerRef}
+      >
         <button className="button" onClick={decreasePage}>
           &#10094;
         </button>
         <div className={`slider-carousel-products`} ref={productsRef} style={{ marginLeft }}>
-          {carouselImages.map((item, index) => {
-            return <CarouselProduct image={item.image} key={`carouse-product-${index}`} />
+          {data.map((item, index) => {
+            return <CarouselProduct data={item} key={`carouse-product-${index}`} />
           })}
         </div>
         <button className="button" onClick={increasePage}>
