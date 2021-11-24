@@ -10,7 +10,7 @@ import { LOG_IN } from "../../state/actions/loggin"
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router"
 import { RootState } from "../../state/reducers"
-import { GoogleButton } from "./components/GoogleButton"
+import GoogleButton from "./components/GoogleButton"
 import { Auth0Provider } from "@auth0/auth0-react"
 
 type FormErrors = {
@@ -27,8 +27,6 @@ const validate = (values) => {
   }
   return errors
 }
-
-const googleSubmit = () => null
 
 const FormContent = ({
   values,
@@ -93,7 +91,7 @@ const FormContent = ({
           clientId="jQWBwLnmdwj4uaYItRBmMcSnv2JPxUtu"
           redirectUri={window.location.origin}
         >
-          <GoogleButton isSubmitting={googleSubmit} />
+          <GoogleButton />
           {/* <FacebookButton href={AUTH0_URI} /> */}
         </Auth0Provider>
       </form>
