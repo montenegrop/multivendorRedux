@@ -32,7 +32,6 @@ const Layout = ({ children }) => {
     <>
       <Navbar />
       {router.pathname === "/" && <Slider slides={SliderData} />}
-
       <main className="content">{children}</main>
     </>
   )
