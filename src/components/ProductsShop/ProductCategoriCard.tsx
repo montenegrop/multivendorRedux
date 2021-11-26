@@ -1,6 +1,4 @@
 export const ProductCategoryCard = ({ data }) => {
-  console.log(data)
-
   return (
     <div className="product_card p-4">
       {data.images.length != 0 ? (

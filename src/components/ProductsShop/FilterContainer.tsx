@@ -2,7 +2,8 @@ import { useState } from "react"
 import Filters from "../../components/ProductsShop/Filters"
 import ClearFiltersButton from "./ClearFiltersButton"
 import FilterCard from "./FiltersSelected"
-const FilterContainer = () => {
+const FilterContainer = ({ filter }) => {
+  filter
   const [filtCheck, setFiltCheck] = useState([])
   const refreshFiltersSelected = (add: string, remove: string): void => {
     if (!filtCheck.includes(add)) {
