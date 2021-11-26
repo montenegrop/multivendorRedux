@@ -1,21 +1,20 @@
 export const ProductCategoryCard = ({ data }) => {
-  const img = "https://www.innaturale.com/es/wp-content/uploads/2021/09/Jardineria-salud.jpg"
+  console.log(data)
+
   return (
-    <div className="product_card">
+    <div className="product_card p-4">
       {data.images.length != 0 ? (
-        <div className="image mx-auto">
-          <img className="" src={data?.images[0].url} alt={data?.images[0].alt} />
+        <div className="image mx-auto is-flex is-flex-direction-column is-justify-content-center">
+          <img src={data?.images[0].url} alt={data?.images[0].alt} />
         </div>
       ) : (
-        <div>
-          <img className="" src={img} alt="" />
-        </div>
+        <p className="mx-auto">Sin Imagen</p>
       )}
       <p>{data.name}</p>
-      {data.description != "" ? (
-        <p>{data.description}</p>
+      {data.defaultVariant?.pricing.price.net.amount != null ? (
+        <p>{data.defaultVariant?.pricing.price.net.amount}</p>
       ) : (
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Consultar Precio</p>
       )}
     </div>
   )

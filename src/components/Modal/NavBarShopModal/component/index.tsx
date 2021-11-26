@@ -3,6 +3,7 @@ import InstagramIcon from "../../../Icons/InstagramIcon"
 import TwitterIcon from "../../../Icons/TwitterIcon"
 import YoutubeIcon from "../../../Icons/YoutubeIcon"
 import { ShopCardModalContainer } from "../container/ShopCardModalContainer"
+import Link from "next/link"
 const NavBarShopContactModal = () => {
   const vendors = [
     {
@@ -41,11 +42,17 @@ const NavBarShopContactModal = () => {
       <h1 className="is-size-1">B@B1.COM</h1>
       <p className="is-size-4">info@company</p>
       <div className="buttons is-flex is-flex-wrap-wrap ">
-        <button className="button is-large polygon-button secondary-color ">Enviar Mensaje</button>
-        <button className="button is-large polygon-button secondary-color ">Ordenar</button>
+        <button className="button is-large polygon-button secondary-color ">
+          <Link href="https://api.whatsapp.com/send?phone=+5493416756337&text=Me gustaria conseguir informacion para realizar una compra">
+            <a className="has-text-black">Enviar Mensaje</a>
+          </Link>
+        </button>
+        <button className="button is-large polygon-button secondary-color has-text-black">
+          Ordenar
+        </button>
       </div>
-      <h2 className="is-size-2">¡Seguinos en Redes!</h2>
-      <div className="is-flex is-justify-content-center">
+      <h2 className="is-size-2 has-text-black">¡Seguinos en Redes!</h2>
+      <div className="is-flex is-justify-content-center ">
         <FacebookIcon size={50} />
         <InstagramIcon size={50} />
         <YoutubeIcon size={70} />
