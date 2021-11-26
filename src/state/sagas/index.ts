@@ -7,7 +7,7 @@ import serviceProviders from "./serviceProviders"
 import tiendas from "./tiendas"
 import servicesList from "./servicesList"
 import productCategory from "./productCategory"
-
+import filtersCategory from "./filterCategory"
 export default [
   serviceProvider,
   homepage,
@@ -18,4 +18,5 @@ export default [
   servicesList,
   tiendas,
   productCategory,
+  filtersCategory,
 ]

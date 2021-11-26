@@ -2,11 +2,12 @@ import { useState } from "react"
 import Filters from "../../components/ProductsShop/Filters"
 import ClearFiltersButton from "./ClearFiltersButton"
 import FilterCard from "./FiltersSelected"
-const FilterContainer = () => {
+const FilterContainer = ({ filter }) => {
   const [filtCheck, setFiltCheck] = useState([])
   const refreshFiltersSelected = (add: string, remove: string): void => {
     if (!filtCheck.includes(add)) {
       const newFilterCheck = [...filtCheck, add]
+
       if (filtCheck.includes(remove)) {
         newFilterCheck.splice(newFilterCheck.indexOf(remove), 1)
       }
@@ -25,7 +26,7 @@ const FilterContainer = () => {
         })}
       </div>
       <ClearFiltersButton filtCheck={filtCheck} clearFilters={clearFilters} />
-      <Filters refreshFiltersSelected={refreshFiltersSelected} />
+      <Filters filters={filter} refreshFiltersSelected={refreshFiltersSelected} />
     </div>
   )
 }

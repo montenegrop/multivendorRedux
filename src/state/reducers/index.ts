@@ -10,24 +10,13 @@ import tiendasReducers from "./tiendas"
 import servicesList from "./servicesList"
 import contratarReducer from "./forms"
 import productCategoryReducer from "./productCategory"
+import filtersCategoryReducer from "./filtersCategory"
 
 export default {
-  ...serviceProviderReducers,
-  ...serviceProvidersReducers,
-  ...homepageReducers,
-  ...storeReducers,
-  ...tiendasReducers,
-  ...servicesList,
   ...categoryReducers,
   ...contratarReducer,
-  ...productCategoryReducer,
-  // category: persistReducer(
-  //   {
-  //     key: "category",
-  //     storage,
-  //   },
-  //   categoryReducers.category
-  // ),
+  ...homepageReducers,
+  ...filtersCategoryReducer,
   loggin: persistReducer(
     {
       key: "loggin",
@@ -35,4 +24,17 @@ export default {
     },
     logginReducers.loggin
   ),
+  ...productCategoryReducer,
+  ...serviceProviderReducers,
+  ...serviceProvidersReducers,
+  ...storeReducers,
+  ...tiendasReducers,
+  ...servicesList,
+  // category: persistReducer(
+  //   {
+  //     key: "category",
+  //     storage,
+  //   },
+  //   categoryReducers.category
+  // ),
 }
