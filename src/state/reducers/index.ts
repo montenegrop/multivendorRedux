@@ -12,7 +12,6 @@ import contratarReducer from "./forms"
 import productCategoryReducer from "./productCategory"
 import filtersCategoryReducer from "./filtersCategory"
 import simpleProductReducer from "./simpleProduct"
-
 export default {
   ...categoryReducers,
   ...contratarReducer,

@@ -59,7 +59,7 @@ const Tienda = () => {
           <CarouselContainer data={dataCarousel} />
         </div>
         <div className="store">
-          <FilterContainer />
+          <FilterContainer filter={"filtro_corregir:"} />
           <ProductsContainer data={data} />
           <WspContactButton />
         </div>

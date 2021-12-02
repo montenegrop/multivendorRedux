@@ -2,8 +2,6 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 export const ProductCategoryCard = ({ data }) => {
   const router = useRouter()
-  console.log(data)
-
   return (
     <Link href={`/category/${router.query.categoryId}/${router.query.subCategoryId}/${data.id}`}>
       <div className="product_card p-4">
