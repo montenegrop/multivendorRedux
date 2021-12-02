@@ -13,7 +13,7 @@ const Category = () => {
   const dispatch = useDispatch()
   const categRedux = useSelector((state: RootState) => state.category)
   useEffect(() => {
-    dispatch(CATEGORY_INIT({ id: `${router.query.categoryId}`, channel: "default-channel" }))
+    dispatch(CATEGORY_INIT({ id: router.query.categoryId, channel: "default-channel" }))
   }, [dispatch])
 
   return (

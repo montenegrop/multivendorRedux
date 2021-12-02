@@ -3,8 +3,8 @@ export const ProductData = ({ simpleProduct }) => {
     <div className="product-page-data">
       <p className="has-text-grey">Nuevo</p>
       <h1 className="is-capitalized">{simpleProduct.name}</h1>
-      <p>{simpleProduct.rating} Estrellas</p>
-      <small className="has-text-grey">78 opiniones</small>
+      <p>4 Estrellas</p>
+      <small className="has-text-grey">{simpleProduct.rating} opiniones</small>
       <p className="is-size-3">
         ${simpleProduct.defaultVariant.pricing.price.net.amount} <strong>+ imp</strong>
       </p>

@@ -49,7 +49,7 @@ const CarouselContainer = ({ data }) => {
   }
   const router = useRouter()
   return (
-    <div className="carousel-shop">
+    <div className="carousel-shop mb-6">
       <div
         className={`${router.pathname == "/product" && "has-background-white"} carousel`}
         ref={containerRef}
