@@ -12,6 +12,7 @@ import contratarReducer from "./forms"
 import productCategoryReducer from "./productCategory"
 import filtersCategoryReducer from "./filtersCategory"
 import simpleProductReducer from "./simpleProduct"
+import vendorProductsReducer from "./vendorProducts"
 
 export default {
   ...categoryReducers,
@@ -32,6 +33,7 @@ export default {
   ...storeReducers,
   ...tiendasReducers,
   ...servicesList,
+  ...vendorProductsReducer,
   // category: persistReducer(
   //   {
   //     key: "category",

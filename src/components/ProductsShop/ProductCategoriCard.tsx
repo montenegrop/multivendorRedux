@@ -1,11 +1,16 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-export const ProductCategoryCard = ({ data }) => {
+export const ProductCategoryCard = ({ data, vendor = "" }) => {
   const router = useRouter()
-  console.log(data)
-
+  const inSubCategory = router.pathname === "/category/[categoryId]/[subCategoryId]"
   return (
-    <Link href={`/category/${router.query.categoryId}/${router.query.subCategoryId}/${data.id}`}>
+    <Link
+      href={`${
+        inSubCategory
+          ? `/category/${router.query.categoryId}/${router.query.subCategoryId}/${data.id}`
+          : `/category/[categoryId]/[subCategoryId]/${data.id}`
+      }`}
+    >
       <div className="product_card p-4">
         {data.images.length != 0 ? (
           <div className="image mx-auto is-flex is-flex-direction-column is-justify-content-center">
@@ -19,6 +24,13 @@ export const ProductCategoryCard = ({ data }) => {
           <p>{data.defaultVariant?.pricing.price.net.amount}</p>
         ) : (
           <p>Consultar Precio</p>
+        )}
+        {vendor != "" && (
+          <div className="vendor">
+            <p>
+              vendido por <strong>{vendor}</strong>
+            </p>
+          </div>
         )}
       </div>
     </Link>

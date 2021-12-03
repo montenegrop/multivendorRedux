@@ -30,7 +30,7 @@ type NumberFilter = {
 
 type Filters = (NameFilter | NumberFilter)[]
 
-export const STORE_INIT = createAction<{ id: string }>("STORE_INIT")
+export const STORE_INIT = createAction<{ id: string | string[] }>("STORE_INIT")
 
 export const STORE_PRODUCT_INIT = createAction<{ filters: Filters }>("STORE_PRODUCT_INIT")
 
