@@ -1,22 +1,16 @@
 import { createReducer } from "@reduxjs/toolkit"
+import { Vendor } from "../../../generated/graphql"
 import * as storeActions from "../../actions/store"
-import { Image } from "../../actions/store"
 
 const initialState = {
   loading: <boolean>false,
   error: <string>"",
-  name: <string>"",
-  banner: <Image>null,
-  avatar: <Image>null,
-  description: <string>"",
+  vendorStore: <Vendor>null,
 }
 
 export default createReducer(initialState, (builder) => {
   builder.addCase(storeActions.STORE_SUCCESS, (state, { payload }) => {
-    state.name = payload.name
-    state.banner = { url: payload.mainImage.url, alt: payload.mainImage.alt }
-    state.avatar = { url: payload.avatarImage.url, alt: payload.avatarImage.alt }
-    state.description = payload.description
+    state.vendorStore = payload
     state.loading = false
   })
   builder.addCase(storeActions.STORE_INIT, (state) => {

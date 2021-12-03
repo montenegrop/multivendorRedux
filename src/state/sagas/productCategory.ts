@@ -15,6 +15,7 @@ export default (dispatch) => {
             products(first: 10, channel: $channel) {
               edges {
                 node {
+                  id
                   name
                   defaultVariant {
                     pricing {

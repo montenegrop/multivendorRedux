@@ -1,12 +1,12 @@
-export const ProductData = ({ product }) => {
+export const ProductData = ({ simpleProduct }) => {
   return (
     <div className="product-page-data">
-      <p className="has-text-grey">{product.state}</p>
-      <h1 className="is-capitalized">{product.title}</h1>
-      <p>{product.starts} Estrellas</p>
-      <small className="has-text-grey">{product.opinions} opiniones</small>
+      <p className="has-text-grey">Nuevo</p>
+      <h1 className="is-capitalized">{simpleProduct.name}</h1>
+      <p>4 Estrellas</p>
+      <small className="has-text-grey">{simpleProduct.rating} opiniones</small>
       <p className="is-size-3">
-        ${product.price} <strong>+ imp</strong>
+        ${simpleProduct.defaultVariant.pricing.price.net.amount} <strong>+ imp</strong>
       </p>
 
       <small className="has-text-link">Ver los metodos de pago</small>

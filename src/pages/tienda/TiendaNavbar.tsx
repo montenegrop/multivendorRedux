@@ -3,10 +3,9 @@ import Link from "next/link"
 import Modal from "react-modal"
 import NavBarShopContactModal from "../../components/Modal/NavBarShopModal/component"
 import { ShopModalCompanyContainer } from "../../components/Modal/NavBarShopModal/container/ShopModalCompanyContainer"
-const TiendaNavbar = () => {
+const TiendaNavbar = ({ userData }) => {
   const [companyModal, setCompanyModal] = useState(false)
   const [contactModal, setContactModal] = useState(false)
-
   const handleClicModal = (e) => {
     if (e.target.id == "company") {
       setCompanyModal(true)
@@ -84,7 +83,7 @@ const TiendaNavbar = () => {
         }}
       >
         {companyModal && <ShopModalCompanyContainer />}
-        {contactModal && <NavBarShopContactModal />}
+        {contactModal && <NavBarShopContactModal userData={userData} />}
       </Modal>
     </nav>
   )

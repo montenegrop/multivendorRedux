@@ -1,15 +1,16 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import CarouselContainer from "../../components/Caroucel/CarouselContainer"
-import { ProductData } from "../../components/Product/ProductData"
-import { ProductDescription } from "../../components/Product/ProductDescription"
-import { ProductFeatures } from "../../components/Product/ProductFeatures"
-import { ProductImg } from "../../components/Product/ProductImage"
-import { ProductImages } from "../../components/Product/ProductImages"
-import { SIMPLE_PRODUCT_INIT } from "../../state/actions/simpleProduct"
-import { RootState } from "../../state/reducers"
-
+import CarouselContainer from "../../../../../components/Caroucel/CarouselContainer"
+import { ProductData } from "../../../../../components/Product/ProductData"
+import { ProductDescription } from "../../../../../components/Product/ProductDescription"
+import { ProductFeatures } from "../../../../../components/Product/ProductFeatures"
+import { ProductImg } from "../../../../../components/Product/ProductImage"
+import { ProductImages } from "../../../../../components/Product/ProductImages"
+import { SIMPLE_PRODUCT_INIT } from "../../../../../state/actions/simpleProduct"
+import { RootState } from "../../../../../state/reducers"
+import { useRouter } from "next/router"
 const Product = () => {
+  const router = useRouter()
   const carouselData = [
     {
       image:
@@ -52,7 +53,7 @@ const Product = () => {
   const dispatch = useDispatch()
   const simpleProduct = useSelector((state: RootState) => state.simpleProduct)
   useEffect(() => {
-    dispatch(SIMPLE_PRODUCT_INIT({ id: "UHJvZHVjdDoxNjQ=", channel: "pesos" }))
+    dispatch(SIMPLE_PRODUCT_INIT({ id: router.query.productId, channel: "pesos" }))
   }, [dispatch])
   if (simpleProduct.loading) {
     return <p>Cargando...</p>

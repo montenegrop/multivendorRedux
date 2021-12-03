@@ -8,6 +8,8 @@ import tiendas from "./tiendas"
 import servicesList from "./servicesList"
 import productCategory from "./productCategory"
 import filtersCategory from "./filterCategory"
+import simpleProduct from "./simpleProduct"
+import vendorProducts from "./vendorProducts"
 export default [
   serviceProvider,
   homepage,
@@ -19,4 +21,6 @@ export default [
   tiendas,
   productCategory,
   filtersCategory,
+  simpleProduct,
+  vendorProducts,
 ]

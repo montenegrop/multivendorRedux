@@ -1,20 +1,12 @@
-import { useRouter } from "next/router"
-import ProductCard from "./ProductCard"
 import { ProductCategoryCard } from "./ProductCategoriCard"
 
-const ProductsContainer = ({ data }) => {
-  const router = useRouter()
+const ProductsContainer = ({ data, vendor = "" }) => {
   return (
     <div className="products">
       {data.map((item) => {
         return (
           <>
-            {router.pathname == "/tienda/[vendorId]" && (
-              <ProductCard name={item.name} price={item.price} weight={item.weight} key={item.id} />
-            )}
-            {router.pathname == "/category/[categoryId]/[subCategoryId]" && (
-              <ProductCategoryCard data={item.node} />
-            )}
+            <ProductCategoryCard data={item.node} vendor={vendor} />
           </>
         )
       })}
