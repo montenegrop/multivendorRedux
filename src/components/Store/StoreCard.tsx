@@ -16,15 +16,3 @@ const StoreCard = ({ store }) => {
   )
 }
 export default StoreCard
-/* 
-<div className="grid_img_container">
-          <Link as={`categoria/${store.id}`} href="/categoria/[categoryId]">
-            <div className="grid_img" style={{ backgroundImage: `url(${store.avatarImage?.url})` }}>
-              <p>asd</p>
-            </div>
-            <div className="grid_item_name">
-              <p>{store.name}</p>
-            </div>
-          </Link>
-        </div>
-*/
