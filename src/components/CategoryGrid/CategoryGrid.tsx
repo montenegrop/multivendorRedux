@@ -14,7 +14,7 @@ const CategoryGrid = () => {
   if (homepageCategories) {
     return (
       <div className="mb-5">
-        <h2 className="has-text-centered my-5 has-text-grey">Categorias</h2>
+        <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">Categorias</h2>
         <div className="is-flex is-justify-content-center">
           {homepageCategories.slice(0, 4).map((category, index) => {
             return <CategoryGridCard category={category} key={index} />
@@ -36,20 +36,3 @@ const CategoryGrid = () => {
 }
 
 export default CategoryGrid
-/* {homepageCategories &&
-  (homepageCategories.slice(0, 3).map((category) => {
-    return <CategoryGridCard category={category} />
-  }),
-  homepageCategories.slice(3, 5).map((category) => {
-    return <CategoryGridCard category={category} />
-  }),
-  homepageCategories.slice(5, 8).map((category) => {
-    return <CategoryGridCard category={category} />
-  }),
-  homepageCategories.slice(8, 10).map((category) => {
-    return <CategoryGridCard category={category} />
-  }),
-  homepageCategories.slice(10, 13).map((category) => {
-    return <CategoryGridCard category={category} />
-  })
-  )} */
