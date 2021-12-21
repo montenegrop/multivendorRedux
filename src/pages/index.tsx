@@ -1,6 +1,7 @@
 import React from "react"
 import CategoryGrid from "../components/CategoryGrid/CategoryGrid"
 import { HomeCard } from "../components/Modal/NavBarShopModal/component/HomeCard"
+import Partners from "../components/Partners/container"
 import UserTypes from "../components/UserTypes/UserTypes"
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
         />
       </div>
       <CategoryGrid />
+      <Partners />
       <UserTypes />
     </>
   )
