@@ -42,6 +42,14 @@ export default (dispatch) => {
                 node {
                   id
                   descriptionShort
+                  descriptionLong
+                  yearPerformed
+                  location {
+                    province
+                  }
+                  service {
+                    name
+                  }
                   pastExperienceImages(first: 5) {
                     edges {
                       node {
