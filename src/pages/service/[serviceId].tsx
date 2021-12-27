@@ -19,6 +19,9 @@ export default function Service() {
   useEffect(() => {
     dispatch(SERVICE_PROVIDER_INIT({ id: router.query.serviceId }))
   }, [])
+  const data = useSelector((state: RootState) => state.serviceProvider)
+
+  console.log(data)
 
   const services_data = useSelector((state: RootState) => state.serviceProviderServices.services)
   const banner_image = useSelector((state: RootState) => state.serviceProviderImages.banner.url)

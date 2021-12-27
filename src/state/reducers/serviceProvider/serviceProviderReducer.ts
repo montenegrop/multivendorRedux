@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
+import { PastExperienceCountableConnection } from "../../../generated/graphql"
 import * as serviceProviderActions from "../../actions/serviceProvider"
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   cellularPhone: <string>"+656555",
   loading: <boolean>false,
   error: <string>"",
+  pastExperiences: <PastExperienceCountableConnection>{},
 }
 
 export default createReducer(initialState, (builder) => {
@@ -18,6 +20,7 @@ export default createReducer(initialState, (builder) => {
     state.location = { city: payload.location?.city, fullAddress: payload.location?.fullAddress }
     state.phone = payload.phone
     state.loading = false
+    state.pastExperiences = payload.pastExperiences
   })
   builder.addCase(serviceProviderActions.SERVICE_PROVIDER_INIT, (state) => {
     state.loading = true

@@ -1,7 +1,7 @@
 import ReactStars from "react-rating-stars-component"
 const RateModal = () => {
   const ratingChanged = (newRating) => {
-    console.log(newRating)
+    newRating
   }
   return (
     <div className="rate-modal">

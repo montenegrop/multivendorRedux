@@ -5,8 +5,6 @@ import YoutubeIcon from "../../../Icons/YoutubeIcon"
 import { ShopCardModalContainer } from "../container/ShopCardModalContainer"
 import Link from "next/link"
 const NavBarShopContactModal = ({ userData }) => {
-  console.log(userData)
-
   const vendors = [
     {
       img: "https://www.redaccionmedica.com/images/destacados/-buscamos-la-recuperacion-completa-de-la-persona-con-depresion--7353.jpg",
