@@ -3,10 +3,8 @@ import InstagramIcon from "../../../Icons/InstagramIcon"
 import TwitterIcon from "../../../Icons/TwitterIcon"
 import YoutubeIcon from "../../../Icons/YoutubeIcon"
 import { ShopCardModalContainer } from "../container/ShopCardModalContainer"
-import Link from "next/link"
 const NavBarShopContactModal = ({ userData }) => {
-  console.log(userData)
-
+  userData
   const vendors = [
     {
       img: "https://www.redaccionmedica.com/images/destacados/-buscamos-la-recuperacion-completa-de-la-persona-con-depresion--7353.jpg",
@@ -41,15 +39,15 @@ const NavBarShopContactModal = ({ userData }) => {
   ]
   return (
     <div className="contact-modal-navbar has-text-centered">
-      <h1 className="is-size-1">{userData.serviceContact.fullName}</h1>
-      <p className="is-size-4">{userData.serviceContact.email}</p>
+      {/*   <h1 className="is-size-1">{userData.serviceContact.fullName}</h1> */}
+      {/* <p className="is-size-4">{userData.serviceContact.email}</p> */}
       <div className="buttons is-flex is-flex-wrap-wrap ">
         <button className="button is-large polygon-button secondary-color ">
-          <Link
+          {/* <Link
             href={`https://api.whatsapp.com/send?phone=+549${userData.serviceContact.phone}&text=Me gustaria conseguir informacion para realizar una compra`}
           >
             <a className="has-text-black">Enviar Mensaje</a>
-          </Link>
+          </Link> */}
         </button>
         <button className="button is-large polygon-button secondary-color has-text-black">
           Ordenar
