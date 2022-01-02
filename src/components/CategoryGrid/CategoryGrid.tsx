@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { RootState } from "../../state/reducers"
-import Link from "next/link"
+import { CategoryGridCard } from "./CategoryGridCard"
 
 const CategoryGrid = () => {
   const dispatch = useDispatch()
@@ -11,33 +11,28 @@ const CategoryGrid = () => {
   }, [dispatch])
 
   const homepageCategories = useSelector((state: RootState) => state.homepageCategories.categories)
-  return (
-    <div className="grid_container">
-      <div className="columns is-centered is-multiline grid_grid">
-        {homepageCategories &&
-          homepageCategories.map((category) => {
-            return (
-              <div
-                className="column is-one-quarter-desktop is-half-tablet grid_card"
-                key={category.id}
-              >
-                <div className="grid_img_container">
-                  <Link
-                    href={category.name == "SERVICIOS" ? "servicios" : `category/${category.id}`}
-                  >
-                    <div className="grid_img" style={{ backgroundImage: `url(${category.url})` }}>
-                      <div className="grid_item_name">
-                        <p>{category.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            )
+  if (homepageCategories) {
+    return (
+      <div className="mb-5">
+        <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">Categorias</h2>
+        <div className="is-flex is-justify-content-center">
+          {homepageCategories.slice(0, 4).map((category, index) => {
+            return <CategoryGridCard category={category} key={index} />
           })}
+        </div>
+        <div className="is-flex is-justify-content-center">
+          {homepageCategories.slice(4, 9).map((category, index) => {
+            return <CategoryGridCard category={category} key={index} />
+          })}
+        </div>
+        <div className="is-flex is-justify-content-center">
+          {homepageCategories.slice(9, 13).map((category, index) => {
+            return <CategoryGridCard category={category} key={index} />
+          })}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default CategoryGrid

@@ -15,6 +15,7 @@ const Tienda = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const userData = useSelector((state: RootState) => state.store)
+  const vendorProducts = useSelector((state: RootState) => state.vendorProducts)
   useEffect(() => {
     dispatch(VENDOR_PRODUCTS_INIT({ id: router.query.vendorId, channel: "pesos" }))
     dispatch(STORE_INIT({ id: router.query.vendorId }))
@@ -35,7 +36,6 @@ const Tienda = () => {
     { image: "https://placekitten.com/640/360" },
     { image: "https://placekitten.com/640/360" },
   ]
-  const vendorProducts = useSelector((state: RootState) => state.vendorProducts)
   if (vendorProducts.loading) {
     return <p>Cargando...</p>
   }

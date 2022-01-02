@@ -1,0 +1,28 @@
+.partner-img {
+  border-radius: 50%;
+  padding: 2px;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(rgb(239, 185, 122) 50%, white 50%);
+  transition: transform 500ms linear;
+  .partner-img-div {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    margin-top: 7px;
+    border-radius: 50%;
+    transition: transform 500ms linear;
+    img {
+      border-radius: 50%;
+    }
+  }
+  &:hover {
+    transform: rotate(180deg);
+    .partner-img-div {
+      transform: rotate(-180deg);
+    }
+  }
+}
+.bg-white-grey {
+  background: linear-gradient(rgb(235, 235, 235) 35%, rgb(255, 255, 255) 35%);
+}

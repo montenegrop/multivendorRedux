@@ -1,3 +1,45 @@
-.no-underline {
-  text-decoration: none;
+.color-inherit {
+  color: inherit;
+}
+@for $i from 1 through 10 {
+  .w-#{$i}per {
+    width: $i * 10%;
+  }
+}
+.w-50pp {
+  width: 50%;
+}
+.fw-700 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+.low-shadow {
+  filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.15));
+  transition: 300ms ease-in-out all;
+  &:hover {
+    filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.301));
+  }
+}
+.low-border {
+  border: 1px solid #f48a082d;
+}
+.w-180px {
+  width: 180px;
+}
+.w-220px {
+  width: 220px;
+}
+.h-180px {
+  height: 180px;
+}
+
+body,
+#__next {
+  background: rgb(235, 235, 235);
+  min-height: 100vh;
+}
+.border-radius-15px {
+  border-radius: 15px;
 }

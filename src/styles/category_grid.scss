@@ -17,7 +17,6 @@ $borderRadius: 15px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border-radius: $borderRadius;
     cursor: pointer;
     transition: $transitionValue;
     display: flex;
@@ -34,8 +33,6 @@ $borderRadius: 15px;
     font-size: 1rem;
     color: $white;
     background: linear-gradient(to top, rgba($black, 0.664), rgba($black, 0));
-    border-bottom-left-radius: $borderRadius;
-    border-bottom-right-radius: $borderRadius;
     padding: 0.5rem;
   }
 
