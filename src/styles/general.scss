@@ -43,3 +43,10 @@ body,
 .border-radius-15px {
   border-radius: 15px;
 }
+.primary-color {
+  color: $secondary !important;
+}
+.grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

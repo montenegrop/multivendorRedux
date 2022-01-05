@@ -6,7 +6,7 @@ export const PartnerCard = ({ data }) => {
           <img src={data.img} alt="" width={50} className="mt-5" />
         </div>
       </div>
-      <div className="has-text-centered">
+      <div className="has-text-centered pb-3">
         <strong>{data.name}</strong>
         <p>{data.title}</p>
       </div>
