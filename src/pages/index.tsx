@@ -1,5 +1,6 @@
 import React from "react"
 import CategoryGrid from "../components/CategoryGrid/CategoryGrid"
+import Footer from "../components/footer"
 import { HomeCard } from "../components/Modal/NavBarShopModal/component/HomeCard"
 import Partners from "../components/Partners/container"
 import UserTypes from "../components/UserTypes/UserTypes"
@@ -32,6 +33,7 @@ const Home = () => {
         <Partners />
       </div>
       <UserTypes />
+      <Footer />
     </>
   )
 }

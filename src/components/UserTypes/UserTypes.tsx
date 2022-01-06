@@ -23,8 +23,8 @@ const UserTypes = () => {
   }
   return (
     <div className="has-background-white">
-      <div className="users-content mx-auto">
-        <h2 className="has-text-centered is-uppercase has-text-weight-bold primary-color  py-5 mb-0">
+      <div className="home-content mx-auto">
+        <h2 className="has-text-centered is-uppercase has-text-weight-bold color-secondary  py-5 mb-0">
           ¿Por qué somos la mayor red de construcción?
         </h2>
         <div className="grid-2row mx-auto has-text-centered">
