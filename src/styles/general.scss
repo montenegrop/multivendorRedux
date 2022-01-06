@@ -37,9 +37,25 @@
 
 body,
 #__next {
-  background: rgb(235, 235, 235);
+  background: rgb(243, 241, 238);
   min-height: 100vh;
 }
 .border-radius-15px {
   border-radius: 15px;
+}
+.color-primary {
+  color: $primary !important;
+}
+.color-secondary {
+  color: $secondary !important;
+}
+.bg-primary {
+  background-color: $primary !important;
+}
+.bg-secondary {
+  background-color: $secondary !important;
+}
+.grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
