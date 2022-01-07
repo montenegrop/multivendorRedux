@@ -45,9 +45,9 @@ const NavBarShopContactModal = ({ userData }) => {
         <button className="button is-large polygon-button secondary-color ">
           {/* <Link
             href={`https://api.whatsapp.com/send?phone=+549${userData.serviceContact.phone}&text=Me gustaria conseguir informacion para realizar una compra`}
-          >
-            <a className="has-text-black">Enviar Mensaje</a>
-          </Link> */}
+          > */}
+          <a className="has-text-black">Enviar Mensaje</a>
+          {/* </Link> */}
         </button>
         <button className="button is-large polygon-button secondary-color has-text-black">
           Ordenar

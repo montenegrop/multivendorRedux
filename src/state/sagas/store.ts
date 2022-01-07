@@ -9,12 +9,6 @@ export default (dispatch) => {
         query store($id: ID!) {
           vendor(id: $id) {
             name
-            serviceContact {
-              fullName
-              phone
-              celphone
-              email
-            }
             mainImage {
               url
               alt
@@ -59,6 +53,7 @@ export default (dispatch) => {
         query store($id: ID!) {
           vendor(id: $id) {
             name
+            email
             mainImage {
               url
               alt
