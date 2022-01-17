@@ -77,6 +77,32 @@ export default function Service() {
             </Link>
           </div>
         </section>
+        <section>
+          <h2 className="has-text-grey-light has-text-weight-light mb-3">
+            EXPERIENCIAS CONSTRUIRTE
+          </h2>
+          <div className="is-flex is-justify-content-space-between m-2">
+            <div className="is-flex w-50per has-text-black">
+              <img
+                src="https://la.duravit.com/dimg/6269435_web2_prod_normal_2.jpg"
+                alt=""
+                width={150}
+                style={{ minWidth: "100px", objectFit: "cover" }}
+              />
+              <article style={{ width: "80%" }} className="ml-2">
+                <div className="is-flex is-justify-content-space-between">
+                  <p className="is-size-5 mb-1 is-uppercase">Plomeria</p>
+                  <p className="is-size-5 mb-1 is-uppercase">2019</p>
+                  <p className="is-size-5 mb-1 ">Rosario</p>
+                </div>
+                <p className="is-size-6">Colocacion de lavamanos</p>
+              </article>
+            </div>
+            <div>
+              <p className="has-text-warning  is-size-4">Calificacion 3/5</p>
+            </div>
+          </div>
+        </section>
         <Experiences data={vendor.data.pastExperiences} title={"TRABAJOS PREVIOS"} />
         <Modal
           isOpen={router.query.contratar === contratarPrimero}
