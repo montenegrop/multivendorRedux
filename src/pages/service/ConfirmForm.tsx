@@ -1,11 +1,11 @@
 import React from "react"
 import Modal from "react-modal"
 
-const ConfirmModal = (isOpen) => {
+const ConfirmModal = ({ modalOpen, setModalOpen }) => {
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={() => false}
+      isOpen={modalOpen}
+      onRequestClose={() => setModalOpen(!modalOpen)}
       style={{
         content: {
           width: "80%",

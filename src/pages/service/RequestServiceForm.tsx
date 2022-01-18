@@ -7,7 +7,6 @@ import { FieldChoice } from "../../components/Forms/FieldChoice"
 import { FORM_CONTRATAR_INIT } from "../../state/actions/forms"
 import { useDispatch } from "react-redux"
 import { ContratarType } from "../../state/reducers/forms/contratarReducer"
-import Modal from "react-modal"
 import ConfirmModal from "./ConfirmForm"
 type BasicProps = { services: Service[]; initialValues: ContratarType }
 
@@ -165,28 +164,8 @@ const FormContent = ({
       <button className="button mt-5 is-primary" type="submit">
         Enviar Solicitud
       </button>
-      <Modal
-        isOpen={modalOpen}
-        onRequestClose={() => {
-          setModalOpen(!modalOpen)
-        }}
-        ariaHideApp={false}
-        style={{
-          content: {
-            width: "70%",
-            height: "75vh",
-            padding: "30px",
-            top: "15%",
-            left: "15%",
-            opacity: 15,
-            borderRadius: "20px",
-            marginBottom: "150px",
-          },
-          overlay: { zIndex: 10500 },
-        }}
-      >
-        <ConfirmModal />
-      </Modal>
+
+      <ConfirmModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </form>
   )
 }

@@ -8,7 +8,7 @@ import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import Modal from "react-modal"
-/* import ContratarForm from "./RequestServiceForm" */
+import ContratarForm from "./RequestServiceForm"
 import { contratarPrimero, contratarSegundo } from "../../constants"
 
 export default function Service() {
@@ -28,7 +28,7 @@ export default function Service() {
   const cellularPhone = useSelector((state: RootState) => state.serviceProvider.cellularPhone)
   const email = useSelector((state: RootState) => state.serviceProvider.email)
   const location = useSelector((state: RootState) => state.serviceProvider.location)
-  /*   const initialValuesContratar = useSelector((state: RootState) => state.contratar) */
+  const initialValuesContratar = useSelector((state: RootState) => state.contratar)
   // const contact_data = {
   //   phone: phone,
   //   cellularPhone: cellularPhone,
@@ -88,21 +88,19 @@ export default function Service() {
           content: {
             width: "80%",
             position: "relative",
+            height: "90vh",
+            padding: "15px 0px",
+            overflow: "scroll",
             left: "10%",
-            top: "20%",
             paddingBottom: "100px",
           },
           overlay: { zIndex: 1000 },
         }}
       >
-        <div className="has-text-centered">
-          <h1 className="is-size-4">
-            ¿Desea confirmar el envío de solicitud de servicio de ELECTRICIDAD #12412412 a OSVALDO
-            PEREZ?
-          </h1>
-          <img src="/images/checkImage.png" alt="" width={50} className="mr-6 is-clickable" />
-          <img src="/images/cancelImage.png" alt="" width={50} className="is-clickable" />
-        </div>
+        <ContratarForm
+          services={services_data}
+          initialValues={initialValuesContratar}
+        ></ContratarForm>
       </Modal>
       <Modal
         isOpen={router.query.contratar === contratarSegundo}

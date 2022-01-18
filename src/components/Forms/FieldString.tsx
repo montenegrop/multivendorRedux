@@ -47,7 +47,7 @@ export const FieldString = ({
                 name={name}
                 value={value}
                 onChange={onChange}
-                onBlur={() => onBlur(values)} /* error aca */
+                /* onBlur={() => onBlur(values)} /* error aca */
               />
             )}
             {type == "date" && (
