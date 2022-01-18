@@ -42,7 +42,12 @@ const Tienda = () => {
   if (vendorProducts.error) {
     return <p>Error...</p>
   }
-  if (vendorProducts.products && !vendorProducts.loading && !vendorProducts.error) {
+  if (
+    vendorProducts.products &&
+    !vendorProducts.loading &&
+    !vendorProducts.error &&
+    userData.vendorStore
+  ) {
     return (
       <>
         {userData.vendorStore.avatarImage && userData.vendorStore.mainImage && (

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Formik } from "formik"
 import { dateValidator } from "../../shared/validators"
 import { FieldString } from "../../components/Forms/FieldString"
@@ -7,7 +7,8 @@ import { FieldChoice } from "../../components/Forms/FieldChoice"
 import { FORM_CONTRATAR_INIT } from "../../state/actions/forms"
 import { useDispatch } from "react-redux"
 import { ContratarType } from "../../state/reducers/forms/contratarReducer"
-
+import Modal from "react-modal"
+import ConfirmModal from "./ConfirmForm"
 type BasicProps = { services: Service[]; initialValues: ContratarType }
 
 type FormErrors = {
@@ -54,10 +55,13 @@ const FormContent = ({
   handleFieldBlur,
   handleSubmit,
   isSubmitting,
+  modalOpen,
+  setModalOpen,
   /* and other goodies */
 }) => {
   servicios
   isSubmitting
+
   return (
     <form onSubmit={handleSubmit} noValidate className="p-5">
       <div className="hire-modal">
@@ -161,15 +165,39 @@ const FormContent = ({
       <button className="button mt-5 is-primary" type="submit">
         Enviar Solicitud
       </button>
+      <Modal
+        isOpen={modalOpen}
+        onRequestClose={() => {
+          setModalOpen(!modalOpen)
+        }}
+        ariaHideApp={false}
+        style={{
+          content: {
+            width: "70%",
+            height: "75vh",
+            padding: "30px",
+            top: "15%",
+            left: "15%",
+            opacity: 15,
+            borderRadius: "20px",
+            marginBottom: "150px",
+          },
+          overlay: { zIndex: 10500 },
+        }}
+      >
+        <ConfirmModal />
+      </Modal>
     </form>
   )
 }
 
 const ContratarForm = ({ services, initialValues }: BasicProps) => {
+  const [modalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
 
   const onSubmit = (values) => {
     dispatch(FORM_CONTRATAR_INIT(values))
+    setModalOpen(!modalOpen)
   }
 
   const onFieldBlur = (values) => {
@@ -192,7 +220,15 @@ const ContratarForm = ({ services, initialValues }: BasicProps) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => <FormContent {...props} servicios={services} handleFieldBlur={onFieldBlur} />}
+        {(props) => (
+          <FormContent
+            {...props}
+            servicios={services}
+            handleFieldBlur={onFieldBlur}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+          />
+        )}
       </Formik>
     </div>
   )

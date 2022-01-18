@@ -1,5 +1,6 @@
-import { request, gql } from "graphql-request"
+import { gql, GraphQLClient } from "graphql-request"
 import { API_URI } from "../../constants"
+
 import {
   VENDOR_PRODUCTS_ERROR,
   VENDOR_PRODUCTS_INIT,
@@ -48,8 +49,19 @@ export default (dispatch) => {
         id: payload.id,
         channel: payload.channel,
       }
+      /* const header = {
+        authorization:
+          "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDI0NDM2NjUsImV4cCI6MTY0MjQ0Mzk2NSwidG9rZW4iOiJyWEJFUHJ6RjNQaUwiLCJlbWFpbCI6ImNib2VybzExMUBnbWFpbC5jb20iLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6IlZYTmxjam95TkE9PSIsImlzX3N0YWZmIjp0cnVlfQ.xFLuhHOwdzfmqAz7JGV4tIsl7FYUogRWpe_eeeiFx44",
+      } */
+      const graphQLClient = new GraphQLClient(API_URI, {
+        headers: {
+          authorization:
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDI0NDM2NjUsImV4cCI6MTY0MjQ0Mzk2NSwidG9rZW4iOiJyWEJFUHJ6RjNQaUwiLCJlbWFpbCI6ImNib2VybzExMUBnbWFpbC5jb20iLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6IlZYTmxjam95TkE9PSIsImlzX3N0YWZmIjp0cnVlfQ.xFLuhHOwdzfmqAz7JGV4tIsl7FYUogRWpe_eeeiFx44",
+        },
+      })
+
       try {
-        const data = await request(API_URI, query, variables)
+        const data = await graphQLClient.request(query, variables)
         dispatch(VENDOR_PRODUCTS_SUCCESS(data.products))
       } catch (error) {
         dispatch(VENDOR_PRODUCTS_ERROR("error de vendor products"))

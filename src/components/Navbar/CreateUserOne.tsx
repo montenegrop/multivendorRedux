@@ -26,21 +26,6 @@ const validate = (values) => {
   } else if (emailValidator(values.email)) {
     errors.email = "Invalid email address"
   }
-  // if (!values.firstName) {
-  //   errors.firstName = "Required"
-  // }
-  // if (!values.lastName) {
-  //   errors.lastName = "Required"
-  // }
-  // if (!values.docType) {
-  //   errors.docType = "Required"
-  // }
-  // // if (!values.docNumber) {
-  // //   errors.docNumber = "Required"
-  // // }
-  // if (!values.password) {
-  //   errors.password = "Required"
-  // }
   return errors
 }
 
