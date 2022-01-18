@@ -109,7 +109,6 @@ const LoginForm = ({ isOpen, onRequestClose, nextCreateModal, onCloseQuery, user
 
   useEffect(() => {
     if (logginErrors.length == 0 && user) {
-      console.log("logginFORM")
       router.push({ query: onCloseQuery })
     }
   }, [logginErrors])

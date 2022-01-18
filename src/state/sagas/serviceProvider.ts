@@ -37,6 +37,29 @@ export default (dispatch) => {
                 }
               }
             }
+            pastExperiences(last: 5) {
+              edges {
+                node {
+                  id
+                  descriptionShort
+                  descriptionLong
+                  yearPerformed
+                  location {
+                    province
+                  }
+                  service {
+                    name
+                  }
+                  pastExperienceImages(first: 5) {
+                    edges {
+                      node {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       `
