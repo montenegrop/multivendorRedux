@@ -1,6 +1,6 @@
 export const ExperienceRow = ({ data }) => {
   return (
-    <div className="is-flex is-justify-content-space-between">
+    <div className="is-flex is-justify-content-space-between my-4">
       <div className="is-flex w-50per has-text-black">
         <img
           src={data.pastExperienceImages.edges[0].node.url}
