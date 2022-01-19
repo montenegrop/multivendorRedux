@@ -53,7 +53,7 @@ const Product = () => {
   const dispatch = useDispatch()
   const simpleProduct = useSelector((state: RootState) => state.simpleProduct)
   useEffect(() => {
-    dispatch(SIMPLE_PRODUCT_INIT({ id: router.query.productId, channel: "pesos" }))
+    dispatch(SIMPLE_PRODUCT_INIT({ id: router.query.productId, channel: "default-channel" }))
   }, [dispatch])
   if (simpleProduct.loading) {
     return <p>Cargando...</p>

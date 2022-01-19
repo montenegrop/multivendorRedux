@@ -16,8 +16,8 @@ const ProductCategory = () => {
   const filtersRedux = useSelector((state: RootState) => state.filtersCategory)
 
   useEffect(() => {
-    dispatch(PRODUCT_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "pesos" }))
-    dispatch(FILTERS_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "pesos" }))
+    dispatch(PRODUCT_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
+    dispatch(FILTERS_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
   }, [dispatch])
 
   if (categRedux.loading || filtersRedux.loading) {
