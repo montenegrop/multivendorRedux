@@ -1,6 +1,6 @@
 export const ExperienceRow = ({ data }) => {
   return (
-    <div className="is-flex is-justify-content-space-between m-2">
+    <div className="is-flex is-justify-content-space-between">
       <div className="is-flex w-50per has-text-black">
         <img
           src={data.pastExperienceImages.edges[0].node.url}
@@ -20,7 +20,7 @@ export const ExperienceRow = ({ data }) => {
         </article>
       </div>
       <div>
-        <p className="has-text-warning  is-size-4">Calificacion 3/5</p>
+        <p className="is-size-4">Calificacion 3/5</p>
       </div>
     </div>
   )

@@ -45,7 +45,7 @@ export default function Service() {
             </h2>
           </div>
         </section>
-        <section className="mb-3 columns">
+        <section className="m-3 columns">
           <div className="column">
             <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
               CONTACTO
@@ -64,7 +64,7 @@ export default function Service() {
             <ServicesTable services_data={services_data}></ServicesTable>
           </div>
         </section>
-        <section className="mb-3 columns">
+        <section className="mb-3 p-4 columns">
           <div className="column">
             <Link
               scroll={false}
@@ -77,7 +77,7 @@ export default function Service() {
             </Link>
           </div>
         </section>
-        <section>
+        <section className="p-4">
           <h2 className="has-text-grey-light has-text-weight-light mb-3">
             EXPERIENCIAS CONSTRUIRTE
           </h2>
@@ -99,7 +99,7 @@ export default function Service() {
               </article>
             </div>
             <div>
-              <p className="has-text-warning  is-size-4">Calificacion 3/5</p>
+              <p className="is-size-4">Calificacion 3/5</p>
             </div>
           </div>
         </section>

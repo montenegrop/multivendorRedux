@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
       </div>
       <hr className="has-background-grey-light mx-6 " />
-      <div className="home-content is-flex is-justify-content-space-between is-align-items-center mx-6 px-5 pb-6">
+      <div className="home-content is-flex is-justify-content-space-between is-align-items-center mx-auto px-5 pb-6">
         <div className="is-flex is-align-content-center">
           <div className="bg-primary px-2 pt-2 pb-1 ">
             <Logo />
