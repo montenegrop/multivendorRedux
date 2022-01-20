@@ -1,45 +1,76 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Modal from "react-modal"
 import RateModalContainer from "../RateModal/container"
-const ProgressBar = ({ id, index, desc, progress }) => {
+import "react-step-progress-bar/styles.css"
+import { ProgressBar, Step } from "react-step-progress-bar"
+const ProgressBarComponent = ({ desc, progress }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const handleClicModal = () => {
     setModalOpen(!modalOpen)
   }
-  let progress_div: any = []
-  useEffect(() => {
-    if (progress > 4) {
-      progress = 4
-    }
-    progress_div = document.getElementsByClassName(`${id} ${index}`)
-    for (let i = 0; i < progress; i++) {
-      progress_div[i].classList.add("succes_progress")
-    }
-  }, [progress])
+
   return (
     <>
-      <div className="progress_descrp">
-        <p>{desc}</p>
+      <div className="progress_descrp px-5 mb-4">
+        <p className="is-size-5">{desc}</p>
+      </div>
+      <div className="px-5 mb-4">
+        <ProgressBar percent={progress * 33.34} filledBackground="#ffaa33">
+          <Step transition="scale">
+            {({ accomplished }) => (
+              <img
+                style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                width="10"
+                src="./images/Circle.png"
+                alt=""
+              />
+            )}
+          </Step>
+          <Step transition="scale">
+            {({ accomplished }) => (
+              <img
+                style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                width="10"
+                src="./images/Circle.png"
+                alt=""
+              />
+            )}
+          </Step>
+          <Step transition="scale">
+            {({ accomplished }) => (
+              <img
+                style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                width="10"
+                src="./images/Circle.png"
+                alt=""
+              />
+            )}
+          </Step>
+          <Step transition="scale">
+            {({ accomplished }) => (
+              <img
+                style={{ filter: `grayscale(${accomplished ? 0 : 80}%)`, marginRight: "10px" }}
+                width="10"
+                src="./images/Circle.png"
+                alt=""
+              />
+            )}
+          </Step>
+        </ProgressBar>
       </div>
 
-      <div className="progress_grid">
-        <div className={`progress_div left_rectangle ${id} ${index}`}></div>
-        <div className={`progress_div ${id} ${index}`}></div>
-        <div className={`progress_div ${id} ${index}`}></div>
-        <div className={`pt-2 progress_div right_rectangle ${id} ${index}`}>
-          {id === 1 && (
-            <a
-              className="is-clickable"
-              onClick={handleClicModal}
-              role="button"
-              tabIndex={0}
-              onKeyDown={() => {}}
-            >
-              Calificar
-            </a>
-          )}
-        </div>
-      </div>
+      {progress === 3 && (
+        <a
+          className="is-clickable px-5 color-secondary"
+          onClick={handleClicModal}
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => {}}
+        >
+          Calificar
+        </a>
+      )}
+      <hr style={{ backgroundColor: "rgba(211, 211, 211, 0.6)" }} />
       <Modal
         isOpen={modalOpen}
         onRequestClose={handleClicModal}
@@ -63,4 +94,4 @@ const ProgressBar = ({ id, index, desc, progress }) => {
     </>
   )
 }
-export default ProgressBar
+export default ProgressBarComponent

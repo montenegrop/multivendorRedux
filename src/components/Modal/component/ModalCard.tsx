@@ -1,26 +1,11 @@
-import ProgressBar from "./ProgressBar"
+import ProgressBarComponent from "./ProgressBar"
 
-const ModalCard = ({ id, title, body }) => {
+const ModalCard = ({ body }) => {
   return (
-    <div className="modal_card">
-      <div className="modal_header">
-        <div className="modal_title">
-          <h1>{title}</h1>
-        </div>
-      </div>
-      <div className="modal_body">
-        {body.map((item, index) => {
-          return (
-            <ProgressBar
-              desc={item.desc}
-              progress={item.progress}
-              id={id}
-              index={index}
-              key={index}
-            />
-          )
-        })}
-      </div>
+    <div className="has-background-wihte">
+      {body.map((item, index) => {
+        return <ProgressBarComponent desc={item.desc} progress={item.progress} key={index} />
+      })}
     </div>
   )
 }

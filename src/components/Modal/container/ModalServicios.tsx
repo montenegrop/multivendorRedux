@@ -1,13 +1,14 @@
 import Modal from "react-modal"
 import ModalCard from "../component/ModalCard"
+
 const ModalComponent = ({ isOpen, onClose }) => {
   const progress1 = {
     id: 1,
     title: "Calificacion Pendiente (1)",
     body: [
       {
-        desc: "4/4 - PRESTACIÓN de servicio #100001 OSVALDO PEREZ - ELECTRICIDAD  califica el trabajo PARA COMPLETAR LA EXPERIENCIA",
-        progress: 1,
+        desc: "PRESTACIÓN de servicio #100001 OSVALDO PEREZ - ELECTRICIDAD  califica el trabajo PARA COMPLETAR LA EXPERIENCIA",
+        progress: 3,
       },
     ],
   }
@@ -16,12 +17,12 @@ const ModalComponent = ({ isOpen, onClose }) => {
     title: "Trabajos a Realizar (2)",
     body: [
       {
-        desc: "2/4 - ACEPTACIÓN de servicio #100034 JUAN LOPEZ - PLOMERÍA El prestador aceptó el trabajo.",
-        progress: 3,
+        desc: "ACEPTACIÓN de servicio #100034 JUAN LOPEZ - PLOMERÍA El prestador aceptó el trabajo.",
+        progress: 2,
       },
       {
-        desc: "2/4 - ACEPTACIÓN de servicio #100052 CARLOS BOERO - CARPINTERÍA El prestador aceptó el trabajo.",
-        progress: 4,
+        desc: "ACEPTACIÓN de servicio #100052 CARLOS BOERO - CARPINTERÍA El prestador aceptó el trabajo.",
+        progress: 2,
       },
     ],
   }
@@ -31,22 +32,23 @@ const ModalComponent = ({ isOpen, onClose }) => {
         isOpen={isOpen}
         onRequestClose={() => onClose(false)}
         ariaHideApp={false}
+        id="servicesModal"
         style={{
           content: {
             width: "40%",
             height: "100vh",
             position: "relative",
             left: "60%",
-            padding: "15px 0px",
-            opacity: 15,
+            padding: "10px 0px",
+            opacity: 1,
           },
           overlay: { zIndex: 1000 },
         }}
       >
-        <>
-          <ModalCard id={progress1.id} title={progress1.title} body={progress1.body} />
-          <ModalCard id={progress2.id} title={progress2.title} body={progress2.body} />
-        </>
+        <div className="has-background-white">
+          <ModalCard body={progress1.body} />
+          <ModalCard body={progress2.body} />
+        </div>
       </Modal>
     </div>
   )
