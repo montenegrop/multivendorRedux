@@ -15,19 +15,26 @@ const CategoryGrid = () => {
     return (
       <div className="mb-5">
         <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">Categorias</h2>
-        <div className="is-flex is-justify-content-center">
-          {homepageCategories.slice(0, 4).map((category, index) => {
-            return <CategoryGridCard category={category} key={index} index={index} />
-          })}
+        <div className="category-grid-desktop">
+          <div className="is-flex is-justify-content-center category-grid-desktop">
+            {homepageCategories.slice(0, 4).map((category, index) => {
+              return <CategoryGridCard category={category} key={index} index={index} />
+            })}
+          </div>
+          <div className="is-flex is-justify-content-center">
+            {homepageCategories.slice(4, 9).map((category, index) => {
+              return <CategoryGridCard category={category} key={index} index={index + 4} />
+            })}
+          </div>
+          <div className="is-flex is-justify-content-center">
+            {homepageCategories.slice(9, 13).map((category, index) => {
+              return <CategoryGridCard category={category} key={index} index={index + 9} />
+            })}
+          </div>
         </div>
-        <div className="is-flex is-justify-content-center">
-          {homepageCategories.slice(4, 9).map((category, index) => {
-            return <CategoryGridCard category={category} key={index} index={index + 4} />
-          })}
-        </div>
-        <div className="is-flex is-justify-content-center">
-          {homepageCategories.slice(9, 13).map((category, index) => {
-            return <CategoryGridCard category={category} key={index} index={index + 9} />
+        <div className="category-grid-mobile px-5 ">
+          {homepageCategories.map((category, index) => {
+            return <CategoryGridCard category={category} key={index} index={index} mobile={true} />
           })}
         </div>
       </div>
