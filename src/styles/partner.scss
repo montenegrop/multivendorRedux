@@ -26,3 +26,17 @@
 .bg-white-grey {
   background: linear-gradient(rgb(243, 241, 238) 35%, rgb(255, 255, 255) 35%);
 }
+@media only screen and (max-width: 900px) {
+  .partners {
+    .grid-4col {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .partners {
+    .grid-4col {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

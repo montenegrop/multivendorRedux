@@ -22,7 +22,7 @@ const UserTypes = () => {
     text: "Licitaciones únicamente con mayoristas y corporativos, operaciones b2b, mejores y mas competitivos precios.",
   }
   return (
-    <div className="has-background-white">
+    <div className="has-background-white user-types">
       <div className="home-content mx-auto">
         <h2 className="has-text-centered is-uppercase has-text-weight-bold color-secondary  py-5 mb-0">
           ¿Por qué somos la mayor red de construcción?

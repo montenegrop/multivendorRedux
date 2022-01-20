@@ -28,11 +28,11 @@ const Partners = () => {
     },
   ]
   return (
-    <div className="mb-5">
+    <div className="mb-5 partners">
       <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">
         Nuestros Partners
       </h2>
-      <div className="is-flex is-justify-content-space-around">
+      <div className="grid-4col">
         {partners.map((item) => {
           return <PartnerCard data={item} key={item.id} />
         })}
