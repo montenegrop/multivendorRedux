@@ -32,6 +32,26 @@ const Category = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <div className="grid-2col">
+        <div>
+          <p>SOLO CERCA TUYO</p>
+        </div>
+        <div>
+          <p>LAS MEJORES MARCAS</p>
+          <div className="is-flex m-3 is-align-items-center is-justify-content-center">
+            <img src="../images/Marca1.png" alt="" width={70} className="mx-3" />
+            <p className="is-size-4">Finning cat</p>
+          </div>
+          <div className="is-flex m-3 is-align-items-center is-justify-content-center">
+            <img src="../images/Marca1.png" alt="" width={70} className="mx-3" />
+            <p className="is-size-4">Finning cat</p>
+          </div>
+          <div className="is-flex m-3 is-align-items-center is-justify-content-center">
+            <img src="../images/Marca1.png" alt="" width={70} className="mx-3" />
+            <p className="is-size-4">Finning cat</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

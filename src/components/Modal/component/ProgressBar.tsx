@@ -21,7 +21,7 @@ const ProgressBarComponent = ({ desc, progress }) => {
               <img
                 style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
                 width="10"
-                src="./images/Circle.png"
+                src="../images/Circle.png"
                 alt=""
               />
             )}
@@ -31,7 +31,7 @@ const ProgressBarComponent = ({ desc, progress }) => {
               <img
                 style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
                 width="10"
-                src="./images/Circle.png"
+                src="../images/Circle.png"
                 alt=""
               />
             )}
@@ -41,7 +41,7 @@ const ProgressBarComponent = ({ desc, progress }) => {
               <img
                 style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
                 width="10"
-                src="./images/Circle.png"
+                src="../images/Circle.png"
                 alt=""
               />
             )}
@@ -51,7 +51,7 @@ const ProgressBarComponent = ({ desc, progress }) => {
               <img
                 style={{ filter: `grayscale(${accomplished ? 0 : 80}%)`, marginRight: "10px" }}
                 width="10"
-                src="./images/Circle.png"
+                src="../images/Circle.png"
                 alt=""
               />
             )}
