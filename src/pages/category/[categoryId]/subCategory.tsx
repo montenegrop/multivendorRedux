@@ -4,7 +4,11 @@ const SubCategory = ({ item }) => {
   const router = useRouter()
   return (
     <Link href={`/category/${router.query.categoryId}/${item.node.id}`}>
-      <div className="subcategory_container">
+      <div
+        className={`subcategory_container ${
+          item.node.name.toLowerCase() == "repuestos" && "w-100per"
+        }`}
+      >
         <div className="textInImage">
           <img src={item.node.backgroundImage?.url} alt={item.node.backgroundImage?.alt} />
           <div className="texto">
