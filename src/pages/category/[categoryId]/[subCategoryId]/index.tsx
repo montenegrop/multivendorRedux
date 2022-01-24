@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import FilterContainer from "../../../../components/ProductsShop/FilterContainer"
 import ProductsContainer from "../../../../components/ProductsShop/ProductsContainer"
-import WspContactButton from "../../../../components/ProductsShop/WspContactButton"
 import { FILTERS_CATEGORY_INIT } from "../../../../state/actions/filtersCategory"
 import { PRODUCT_CATEGORY_INIT } from "../../../../state/actions/productCategory"
 import { RootState } from "../../../../state/reducers"
@@ -30,7 +29,6 @@ const ProductCategory = () => {
         <div className="store">
           <FilterContainer filter={filtersRedux.filtersAttributes.edges} />
           <ProductsContainer data={categRedux.category.products.edges} />
-          <WspContactButton />
         </div>
       </div>
     )
