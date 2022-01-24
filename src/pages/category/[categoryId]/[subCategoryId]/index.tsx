@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-/* import { Banner } from "../../../../components/Banner" */
 import FilterContainer from "../../../../components/ProductsShop/FilterContainer"
 import ProductsContainer from "../../../../components/ProductsShop/ProductsContainer"
 import WspContactButton from "../../../../components/ProductsShop/WspContactButton"

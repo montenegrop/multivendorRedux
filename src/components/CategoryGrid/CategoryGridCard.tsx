@@ -5,7 +5,7 @@ export const CategoryGridCard = ({ category, index, mobile = false }) => {
       <>
         <div
           className={`is-flex ${
-            !mobile && "is-flex-direction-column w-180px h-180px"
+            !mobile && "is-flex-direction-column w-180px h-180px low-shadow"
           }  has-background-white is-clickable p-3 category-grid-card`}
         >
           <img
