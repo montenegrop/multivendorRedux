@@ -9,7 +9,7 @@ export const ExperienceRow = ({ data }) => {
           style={{ minWidth: "100px", objectFit: "cover" }}
         />
         <article style={{ width: "80%" }} className="ml-2">
-          <div className="is-flex is-justify-content-space-between">
+          <div className="is-flex is-justify-content-space-between ">
             <p className="is-size-5 mb-1 is-uppercase">{data.service.name} </p>
             <p className="is-size-5 mb-1 is-uppercase">{data.yearPerformed}</p>
             <p className="is-size-5 mb-1 ">
@@ -18,9 +18,6 @@ export const ExperienceRow = ({ data }) => {
           </div>
           <p className="is-size-6">{data.descriptionShort}</p>
         </article>
-      </div>
-      <div>
-        <p className="is-size-4">Calificacion 3/5</p>
       </div>
     </div>
   )

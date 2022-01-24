@@ -9,6 +9,11 @@ export default (dispatch) => {
         query store($id: ID!) {
           vendor(id: $id) {
             name
+            socialMedia {
+              code
+              userString
+              url
+            }
             mainImage {
               url
               alt
@@ -53,6 +58,11 @@ export default (dispatch) => {
         query store($id: ID!) {
           vendor(id: $id) {
             name
+            socialMedia {
+              code
+              userString
+              url
+            }
             mainImage {
               url
               alt

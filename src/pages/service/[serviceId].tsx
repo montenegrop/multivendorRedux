@@ -70,7 +70,11 @@ export default function Service() {
               scroll={false}
               href={{
                 pathname: "/service/[serviceId]",
-                query: { serviceId: router.query.serviceId, contratar: contratarPrimero },
+                query: {
+                  serviceId: router.query.serviceId,
+                  vendor: vendor.data.name,
+                  contratar: contratarPrimero,
+                },
               }}
             >
               <a className="button is-rounded is-primary">contratar</a>
@@ -89,8 +93,8 @@ export default function Service() {
                 width={150}
                 style={{ minWidth: "100px", objectFit: "cover" }}
               />
-              <article style={{ width: "80%" }} className="ml-2">
-                <div className="is-flex is-justify-content-space-between">
+              <article style={{ width: "80%" }} className="ml-2 ">
+                <div className="is-flex is-justify-content-space-between my-auto">
                   <p className="is-size-5 mb-1 is-uppercase">Plomeria</p>
                   <p className="is-size-5 mb-1 is-uppercase">2019</p>
                   <p className="is-size-5 mb-1 ">Rosario</p>

@@ -7,6 +7,7 @@ import { FieldChoice } from "../../components/Forms/FieldChoice"
 import { FORM_CONTRATAR_INIT } from "../../state/actions/forms"
 import { useDispatch } from "react-redux"
 import { ContratarType } from "../../state/reducers/forms/contratarReducer"
+import { useRouter } from "next/router"
 
 type BasicProps = { services: Service[]; initialValues: ContratarType }
 
@@ -166,6 +167,9 @@ const FormContent = ({
 }
 
 const ContratarForm = ({ services, initialValues }: BasicProps) => {
+  const router = useRouter()
+  console.log(router)
+
   const dispatch = useDispatch()
 
   const onSubmit = (values) => {
@@ -181,9 +185,7 @@ const ContratarForm = ({ services, initialValues }: BasicProps) => {
       <h1 className="is-size-4">¡VAMOS A CONTRATAR SERVICIO!</h1>
       <p>
         Estoy generando una solicitud de servicio para el profesional
-        <strong>
-          {" OSVALDO PERES"} (DNI: {"41526396"})
-        </strong>
+        <strong>{" " + router.query.vendor} (DNI: 41526396)</strong>
       </p>
       <Formik
         validateOnChange={false}
