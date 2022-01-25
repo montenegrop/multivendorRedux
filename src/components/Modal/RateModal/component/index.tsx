@@ -8,7 +8,7 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             Verificar si el precio cobrado de <strong>mano de obra</strong> (no incluye repuestos)
             fue de <strong>$1200 por hora*</strong>
           </p>
-          {errors.qualityOfService && <p className="has-text-danger error">Eliga una opcion</p>}
+          {errors.agreedPrice && <p className="has-text-danger error">Eliga una opcion</p>}
         </div>
 
         <div className="mx-auto select">
@@ -115,9 +115,11 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
         nosotros para ayudarnos a seguir mejorando y ser tu primer eleccion
       </strong>
       <div className="rate-modal-2col-grid mb-3">
-        <div className="pt-2 " id="experience-rate">
-          <p>¿Como calificarias tu experiencia en CONSTRUIRTE?</p>
+        <div className="pt-2" id="experience-rate">
+          <p className="my-auto">¿Como calificarias tu experiencia en CONSTRUIRTE?</p>
+          {errors.experienceRating && <p className="has-text-danger error">Eliga una opcion</p>}
         </div>
+
         <div className="mx-auto select">
           <select name="experienceRating" onChange={handleChange} onBlur={null}>
             <option></option>
@@ -128,10 +130,12 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             <option>5</option>
           </select>
         </div>
-        {errors.experienceRating && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
       <div className="rate-modal-2col-grid mb-3">
-        <p>¿Te fue util CONSTRUIRTE para encontrar Prestador?</p>
+        <div className="pt-2" id="experience-rate">
+          <p className="my-auto">¿Te fue util CONSTRUIRTE para encontrar Prestador?</p>
+          {errors.useful && <p className="has-text-danger error">Eliga una opcion</p>}
+        </div>
         <div className="mx-auto select">
           <select name="useful" onChange={handleChange} onBlur={null}>
             <option></option>
@@ -139,10 +143,14 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             <option>NO</option>
           </select>
         </div>
-        {errors.useful && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
       <div className="rate-modal-2col-grid mb-3">
-        <p>¿Es la primera vez que contratas Prestador a travez de CONSTRUIRTE?</p>
+        <div className="pt-2" id="experience-rate">
+          <p className="my-auto">
+            ¿Es la primera vez que contratas Prestador a travez de CONSTRUIRTE?
+          </p>
+          {errors.firstTime && <p className="has-text-danger error">Eliga una opcion</p>}
+        </div>
         <div className="mx-auto select">
           <select name="firstTime" onChange={handleChange} onBlur={null}>
             <option></option>
@@ -150,11 +158,14 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             <option>NO</option>
           </select>
         </div>
-        {errors.firstTime && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
 
       <div className="rate-modal-2col-grid mb-3">
-        <div>¿Como te enteraste de nosotros?</div>
+        <div className="pt-2" id="experience-rate">
+          <p className="my-auto">¿Como te enteraste de nosotros?</p>
+          {errors.aboutUs && <p className="has-text-danger error">Eliga una opcion</p>}
+        </div>
+
         <div className="is-flex is-justify-content-center">
           <div className="select ">
             <select name="aboutUs" onChange={handleChange} onBlur={null}>
@@ -168,7 +179,6 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             </select>
           </div>
         </div>
-        {errors.firstTime && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
       <div className="rate-modal-2col-grid mb-3">
         <p className="pr-2">
