@@ -1,6 +1,9 @@
 export const PartnerCard = ({ data }) => {
   return (
-    <div className="bg-white-grey w-220px border-radius-15px pt-1 mx-auto">
+    <div
+      className="bg-white-grey w-220px border-radius-15px pt-1 mx-auto"
+      style={{ userSelect: "none" }}
+    >
       <div className="partner-img has-text-centered mx-auto">
         <div className="partner-img-div mx-auto">
           <img src={data.img} alt="" width={70} className="mt-1" />
