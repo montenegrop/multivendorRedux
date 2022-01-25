@@ -74,3 +74,7 @@ body,
 .RSPBprogressBar {
   height: 4px !important;
 }
+.button[disabled] {
+  opacity: 0.3;
+  pointer-events: none;
+}

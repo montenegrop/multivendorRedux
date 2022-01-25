@@ -1,9 +1,177 @@
 import { Formik } from "formik"
-import ReactStars from "react-rating-stars-component"
+const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="rate-modal-2col-grid ">
+        <p>
+          Verificar si el precio cobrado de <strong>mano de obra</strong> (no incluye repuestos) fue
+          de <strong>$1200 por hora*</strong>
+          {errors.agreedPrice && <p className="has-text-danger">Eliga una opcion</p>}
+        </p>
+        <div className="h-30px mx-auto select">
+          <select name="agreedPrice" onChange={handleChange} onBlur={null}>
+            <option></option>
+            <option>SI</option>
+            <option>NO</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <div className="rate-modal-2col-grid">
+          <div className="h-45px pt-2">
+            <p>
+              <strong>CALIDAD </strong>
+              del servicio
+              {errors.agreedPrice && <p className="has-text-danger">Eliga una opcion</p>}
+            </p>
+          </div>
+          <div className="h-30px mx-auto select">
+            <select name="qualityOfService" onChange={handleChange} onBlur={null}>
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div className="rate-modal-2col-grid">
+          <div className="h-45px  pt-2">
+            <strong>VELOCIDAD </strong>del servicio
+          </div>
+          <div className="h-30px mx-auto select">
+            <select name="speedOfService" onChange={handleChange} onBlur={null}>
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div className="rate-modal-2col-grid">
+          <div className="h-45px  pt-2">
+            <strong>PRECIO </strong>del servicio
+          </div>
+          <div className="h-30px mx-auto select">
+            <select name="priceOfTheService" onChange={handleChange} onBlur={null}>
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div className="rate-modal-2col-grid">
+          <div className="h-45px  pt-2">
+            <strong>ATENCION </strong>del servicio
+          </div>
+          <div className="h-30px mx-auto select">
+            <select name="attentionOfTheService" onChange={handleChange} onBlur={null}>
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="rate-modal-2col-grid">
+        <div className="my-auto">
+          <p>Dejanos tu comentario, opinion o queja acerca del prestador (opcional)</p>
+        </div>
+        <div className="control">
+          <textarea name="commentAboutTheLender" className="textarea is-info has-fixed-size" />
+        </div>
+      </div>
+      <br />
+      <strong>
+        Sobre CONSTRUIRTE, valoramos tu opinion por ello te molestamos con una breve encuesta sobre
+        nosotros para ayudarnos a seguir mejorando y ser tu primer eleccion
+      </strong>
+      <div className="rate-modal-2col-grid">
+        <div className="h-45px pt-2 " id="experience-rate">
+          <p>¿Como calificarias tu experiencia en CONSTRUIRTE?</p>
+        </div>
+        <div className="h-30px mx-auto select">
+          <select name="experienceRating" onChange={handleChange} onBlur={null}>
+            <option></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div className="rate-modal-2col-grid">
+        <p>¿Te fue util CONSTRUIRTE para encontrar Prestador?</p>
+        <div className="h-30px mx-auto select">
+          <select name="useful" onChange={handleChange} onBlur={null}>
+            <option></option>
+            <option>SI</option>
+            <option>NO</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div className="rate-modal-2col-grid">
+        <p>¿Es la primera vez que contratas Prestador a travez de CONSTRUIRTE?</p>
+        <div className="h-30px mx-auto select">
+          <select name="firstTime" onChange={handleChange} onBlur={null}>
+            <option></option>
+            <option>SI</option>
+            <option>NO</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="rate-modal-2col-grid  mt-5">
+        <div>¿Como te enteraste de nosotros?</div>
+        <div className="is-flex is-justify-content-center">
+          <div className="select ">
+            <select name="aboutUs" onChange={handleChange} onBlur={null}>
+              <option></option>
+              <option>Facebook</option>
+              <option>Instagram</option>
+              <option>Promocion mail</option>
+              <option>Un conocido</option>
+              <option>Publicidad calle</option>
+              <option>Publicidad web</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div className="rate-modal-2col-grid my-4">
+        <div>Dejanos tu comentario, opinion o queja sobre la plataforma CONSTRUIRTE (opcional)</div>
+        <div className="control">
+          <textarea
+            name="commentAboutTheConstruirte"
+            className="textarea is-info has-fixed-size"
+          ></textarea>
+        </div>
+      </div>
+      <button
+        className="button polygon-button secondary-color"
+        type="submit"
+        disabled={isSubmitting}
+      >
+        Calificar
+      </button>
+    </form>
+  )
+}
+
 const RateModal = () => {
-  const ratingChanged = (newRating) => {
-    console.log(newRating)
-  }
   const initialValues = {
     agreedPrice: false,
     qualityOfService: 0,
@@ -47,14 +215,14 @@ const RateModal = () => {
     if (!values.attentionOfTheService) {
       errors.attentionOfTheService = "Obligatorio"
     }
-    if (!values.experienceRating) {
-      errors.experienceRating = "Obligatorio"
-    }
     if (!values.useful) {
       errors.useful = "Obligatorio"
     }
     if (!values.firstTime) {
       errors.firstTime = "Obligatorio"
+    }
+    if (!values.experienceRating) {
+      errors.experienceRating = "Obligatorio"
     }
     if (!values.aboutUs) {
       errors.aboutUs = "Obligatorio"
@@ -63,7 +231,7 @@ const RateModal = () => {
     return errors
   }
   const onSubmit = (values) => {
-    alert(values)
+    console.log(values)
   }
   return (
     <div className="rate-modal">
@@ -94,120 +262,7 @@ const RateModal = () => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, handleChange }) => (
-          <form onSubmit={handleSubmit}>
-            <label className="checkbox">
-              <input type="checkbox" name="agreedPrice" onChange={handleChange} /> Verificar si el
-              precio cobrado de <strong>mano de obra</strong> (no incluye repuestos) fue de{" "}
-              <strong>$1200 por hora</strong>
-            </label>
-            <div className="rate-modal-2col-grid mt-6">
-              <div></div>
-              <div className="is-flex is-justify-content-center">
-                <div className="mr-6">Malo</div>
-                <div>Excelente</div>
-              </div>
-            </div>
-            <div>
-              <div className="rate-modal-2col-grid">
-                <div className="h-45px pt-2">
-                  <strong>CALIDAD </strong>del servicio
-                </div>
-                <div className="h-30px mx-auto">
-                  <ReactStars
-                    count={5}
-                    name="qualityOfService"
-                    onChange={handleChange}
-                    size={30}
-                    activeColor="#ffd700"
-                  />
-                </div>
-              </div>
-              <div className="rate-modal-2col-grid">
-                <div className="h-45px  pt-2">
-                  <strong>VELOCIDAD </strong>del servicio
-                </div>
-                <div className="h-30px mx-auto">
-                  <ReactStars count={5} onChange={ratingChanged} size={30} activeColor="#ffd700" />
-                </div>
-              </div>
-              <div className="rate-modal-2col-grid">
-                <div className="h-45px  pt-2">
-                  <strong>PRECIO </strong>del servicio
-                </div>
-                <div className="h-30px mx-auto">
-                  <ReactStars count={5} onChange={ratingChanged} size={30} activeColor="#ffd700" />
-                </div>
-              </div>
-              <div className="rate-modal-2col-grid">
-                <div className="h-45px  pt-2">
-                  <strong>ATENCION </strong>del servicio
-                </div>
-                <div className="h-30px mx-auto">
-                  <ReactStars count={5} onChange={ratingChanged} size={30} activeColor="#ffd700" />
-                </div>
-              </div>
-            </div>
-
-            <div className="rate-modal-2col-grid">
-              <div className="my-auto">
-                <p>Dejanos tu comentario, opinion o queja acerca del prestador (opcional)</p>
-              </div>
-              <div className="control">
-                <textarea className="textarea is-info has-fixed-size"></textarea>
-              </div>
-            </div>
-            <br />
-            <strong>
-              Sobre CONSTRUIRTE, valoramos tu opinion por ello te molestamos con una breve encuesta
-              sobre nosotros para ayudarnos a seguir mejorando y ser tu primer eleccion
-            </strong>
-            <div className="rate-modal-2col-grid">
-              <div className="h-45px pt-2 " id="experience-rate">
-                <p>¿Como calificarias tu experiencia en CONSTRUIRTE?</p>
-              </div>
-              <div className="h-30px mx-auto">
-                <ReactStars count={5} onChange={ratingChanged} size={30} activeColor="#ffd700" />
-              </div>
-            </div>
-            <label className="checkbox">
-              <input type="checkbox" /> ¿Te fue util CONSTRUIRTE para encontrar Prestador?
-            </label>
-            <br />
-            <br />
-            <label className="checkbox">
-              <input type="checkbox" /> ¿Es la primera vez que contratas Prestador a travez de
-              CONSTRUIRTE?
-            </label>
-
-            <div className="rate-modal-2col-grid  mt-5">
-              <div>¿Como te enteraste de nosotros?</div>
-              <div className="is-flex is-justify-content-center">
-                <div className="select ">
-                  <select>
-                    <option>Facebook</option>
-                    <option>Instagram</option>
-                    <option>Promocion mail</option>
-                    <option>Un conocido</option>
-                    <option>Publicidad calle</option>
-                    <option>Publicidad web</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className="rate-modal-2col-grid my-4">
-              <div>
-                Dejanos tu comentario, opinion o queja sobre la plataforma CONSTRUIRTE (opcional)
-              </div>
-              <div className="control">
-                <textarea className="textarea is-info has-fixed-size"></textarea>
-              </div>
-            </div>
-            <button className="button  polygon-button secondary-color" type="submit">
-              Calificar
-            </button>
-          </form>
-        )}
+        {(props) => <FormContent {...props} />}
       </Formik>
     </div>
   )
