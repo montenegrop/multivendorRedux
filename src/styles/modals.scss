@@ -148,6 +148,10 @@
     .rate-modal-2col-grid {
       display: grid;
       grid-template-columns: 1fr !important;
+      text-align: center;
+      .error {
+        margin: 0 auto;
+      }
     }
     div {
       margin-left: auto;

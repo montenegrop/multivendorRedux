@@ -1,14 +1,17 @@
 import { Formik } from "formik"
 const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="rate-modal-2col-grid ">
-        <p>
-          Verificar si el precio cobrado de <strong>mano de obra</strong> (no incluye repuestos) fue
-          de <strong>$1200 por hora*</strong>
-          {errors.agreedPrice && <p className="has-text-danger">Eliga una opcion</p>}
-        </p>
-        <div className="h-30px mx-auto select">
+    <form onSubmit={handleSubmit} className="mx-5 px-5">
+      <div className="rate-modal-2col-grid mb-3">
+        <div>
+          <p className="my-auto">
+            Verificar si el precio cobrado de <strong>mano de obra</strong> (no incluye repuestos)
+            fue de <strong>$1200 por hora*</strong>
+          </p>
+          {errors.qualityOfService && <p className="has-text-danger error">Eliga una opcion</p>}
+        </div>
+
+        <div className="mx-auto select">
           <select name="agreedPrice" onChange={handleChange} onBlur={null}>
             <option></option>
             <option>SI</option>
@@ -18,15 +21,15 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
       </div>
 
       <div>
-        <div className="rate-modal-2col-grid">
-          <div className="h-45px pt-2">
-            <p>
+        <div className="rate-modal-2col-grid mb-3">
+          <div>
+            <p className="my-auto">
               <strong>CALIDAD </strong>
               del servicio
-              {errors.agreedPrice && <p className="has-text-danger">Eliga una opcion</p>}
             </p>
+            {errors.qualityOfService && <p className="has-text-danger error">Eliga una opcion</p>}
           </div>
-          <div className="h-30px mx-auto select">
+          <div className="mx-auto select">
             <select name="qualityOfService" onChange={handleChange} onBlur={null}>
               <option></option>
               <option>1</option>
@@ -37,11 +40,15 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             </select>
           </div>
         </div>
-        <div className="rate-modal-2col-grid">
-          <div className="h-45px  pt-2">
-            <strong>VELOCIDAD </strong>del servicio
+
+        <div className="rate-modal-2col-grid mb-3">
+          <div>
+            <p className="my-auto">
+              <strong>VELOCIDAD </strong>del servicio
+            </p>
+            {errors.speedOfService && <p className="has-text-danger error">Eliga una opcion</p>}
           </div>
-          <div className="h-30px mx-auto select">
+          <div className="mx-auto select">
             <select name="speedOfService" onChange={handleChange} onBlur={null}>
               <option></option>
               <option>1</option>
@@ -52,11 +59,16 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             </select>
           </div>
         </div>
-        <div className="rate-modal-2col-grid">
-          <div className="h-45px  pt-2">
-            <strong>PRECIO </strong>del servicio
+        <div className="rate-modal-2col-grid mb-3">
+          <div>
+            <p className="my-auto">
+              <strong>PRECIO </strong>del servicio
+              {errors.priceOfTheService && (
+                <p className="has-text-danger error">Eliga una opcion</p>
+              )}
+            </p>
           </div>
-          <div className="h-30px mx-auto select">
+          <div className="mx-auto select">
             <select name="priceOfTheService" onChange={handleChange} onBlur={null}>
               <option></option>
               <option>1</option>
@@ -67,11 +79,16 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             </select>
           </div>
         </div>
-        <div className="rate-modal-2col-grid">
-          <div className="h-45px  pt-2">
-            <strong>ATENCION </strong>del servicio
+        <div className="rate-modal-2col-grid mb-3">
+          <div>
+            <p className="my-auto">
+              <strong>ATENCION </strong>del servicio
+              {errors.attentionOfTheService && (
+                <p className="has-text-danger error">Eliga una opcion</p>
+              )}
+            </p>
           </div>
-          <div className="h-30px mx-auto select">
+          <div className="mx-auto select">
             <select name="attentionOfTheService" onChange={handleChange} onBlur={null}>
               <option></option>
               <option>1</option>
@@ -84,8 +101,8 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
         </div>
       </div>
 
-      <div className="rate-modal-2col-grid">
-        <div className="my-auto">
+      <div className="rate-modal-2col-grid mb-3">
+        <div className="my-auto pr-2">
           <p>Dejanos tu comentario, opinion o queja acerca del prestador (opcional)</p>
         </div>
         <div className="control">
@@ -97,11 +114,11 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
         Sobre CONSTRUIRTE, valoramos tu opinion por ello te molestamos con una breve encuesta sobre
         nosotros para ayudarnos a seguir mejorando y ser tu primer eleccion
       </strong>
-      <div className="rate-modal-2col-grid">
-        <div className="h-45px pt-2 " id="experience-rate">
+      <div className="rate-modal-2col-grid mb-3">
+        <div className="pt-2 " id="experience-rate">
           <p>¿Como calificarias tu experiencia en CONSTRUIRTE?</p>
         </div>
-        <div className="h-30px mx-auto select">
+        <div className="mx-auto select">
           <select name="experienceRating" onChange={handleChange} onBlur={null}>
             <option></option>
             <option>1</option>
@@ -111,31 +128,32 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             <option>5</option>
           </select>
         </div>
+        {errors.experienceRating && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
-      <br />
-      <div className="rate-modal-2col-grid">
+      <div className="rate-modal-2col-grid mb-3">
         <p>¿Te fue util CONSTRUIRTE para encontrar Prestador?</p>
-        <div className="h-30px mx-auto select">
+        <div className="mx-auto select">
           <select name="useful" onChange={handleChange} onBlur={null}>
             <option></option>
             <option>SI</option>
             <option>NO</option>
           </select>
         </div>
+        {errors.useful && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
-      <br />
-      <div className="rate-modal-2col-grid">
+      <div className="rate-modal-2col-grid mb-3">
         <p>¿Es la primera vez que contratas Prestador a travez de CONSTRUIRTE?</p>
-        <div className="h-30px mx-auto select">
+        <div className="mx-auto select">
           <select name="firstTime" onChange={handleChange} onBlur={null}>
             <option></option>
             <option>SI</option>
             <option>NO</option>
           </select>
         </div>
+        {errors.firstTime && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
 
-      <div className="rate-modal-2col-grid  mt-5">
+      <div className="rate-modal-2col-grid mb-3">
         <div>¿Como te enteraste de nosotros?</div>
         <div className="is-flex is-justify-content-center">
           <div className="select ">
@@ -150,9 +168,12 @@ const FormContent = ({ handleChange, handleSubmit, isSubmitting, errors }) => {
             </select>
           </div>
         </div>
+        {errors.firstTime && <p className="has-text-danger error">Eliga una opcion</p>}
       </div>
-      <div className="rate-modal-2col-grid my-4">
-        <div>Dejanos tu comentario, opinion o queja sobre la plataforma CONSTRUIRTE (opcional)</div>
+      <div className="rate-modal-2col-grid mb-3">
+        <p className="pr-2">
+          Dejanos tu comentario, opinion o queja sobre la plataforma CONSTRUIRTE (opcional)
+        </p>
         <div className="control">
           <textarea
             name="commentAboutTheConstruirte"
