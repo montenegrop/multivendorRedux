@@ -39,11 +39,11 @@ const Partners = () => {
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 600 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 600, min: 0 },
       items: 1,
     },
   }
@@ -53,17 +53,17 @@ const Partners = () => {
       <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">
         Nuestros Partners
       </h2>
-      <div className="grid-4col">
+      <div className="grid-4col" id="partners-grid">
         {partners.map((item) => {
           return <PartnerCard data={item} key={item.id} />
         })}
       </div>
-      <div>
+      <div id="partners-carousel">
         <Carousel
           responsive={responsive}
           showDots={false}
           ssr={true}
-          removeArrowOnDeviceType={["tablet", "mobile", "desktop", "superLargeDesktop"]}
+          removeArrowOnDeviceType={["tablet", "desktop", "superLargeDesktop"]}
           itemClass="carousel-item-padding-40-px"
           className="listStyleNone"
         >

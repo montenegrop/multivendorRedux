@@ -3,8 +3,8 @@ import ContentLoader from "react-content-loader"
 export const CategorySkeleton = () => {
   return (
     <ContentLoader
-      width={300}
-      height={300}
+      width={200}
+      height={200}
       viewBox="0 0 450 400"
       backgroundColor="#f0f0f0"
       foregroundColor="#dedede"

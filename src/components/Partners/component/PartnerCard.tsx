@@ -1,7 +1,7 @@
 export const PartnerCard = ({ data }) => {
   return (
     <div
-      className="bg-white-grey w-220px border-radius-15px pt-1 mx-auto"
+      className="partner-card bg-white-grey border-radius-15px pt-1 mx-auto"
       style={{ userSelect: "none" }}
     >
       <div className="partner-img has-text-centered mx-auto">

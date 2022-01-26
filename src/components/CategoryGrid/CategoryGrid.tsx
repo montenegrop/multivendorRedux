@@ -16,12 +16,29 @@ const CategoryGrid = () => {
     return (
       <>
         <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">Categorias</h2>
-        <CategorySkeleton />
-        <CategorySkeleton />
-        <CategorySkeleton />
-        <CategorySkeleton />
-        <CategorySkeleton />
-        <CategorySkeleton />
+        <div className="category-grid-desktop">
+          <div className="is-flex is-justify-content-center"></div>
+          <div className="is-flex is-justify-content-center">
+            {["", "", ""].map((item, index) => {
+              return <CategorySkeleton key={index} />
+            })}
+          </div>
+          <div className="is-flex is-justify-content-center">
+            {["", "", "", ""].map((item, index) => {
+              return <CategorySkeleton key={index} />
+            })}
+          </div>
+          <div className="is-flex is-justify-content-center">
+            {["", "", ""].map((item, index) => {
+              return <CategorySkeleton key={index} />
+            })}
+          </div>
+        </div>
+        <div className="category-grid-mobile px-5">
+          <CategorySkeleton />
+          <CategorySkeleton />
+          <CategorySkeleton />
+        </div>
       </>
     )
   }
@@ -33,7 +50,7 @@ const CategoryGrid = () => {
     <div className="mb-5">
       <h2 className="has-text-centered my-5 has-text-grey has-text-weight-light">Categorias</h2>
       <div className="category-grid-desktop">
-        <div className="is-flex is-justify-content-center category-grid-desktop">
+        <div className="is-flex is-justify-content-center">
           {homepageCategories.categories.slice(0, 4).map((category, index) => {
             return <CategoryGridCard category={category} key={index} index={index} />
           })}
