@@ -4,10 +4,9 @@ const Footer = () => {
   return (
     <>
       <div
-        className="has-background-white footer-user-types"
+        className="has-background-white footer-user-types partners"
         style={{
           backgroundImage: `url(./images/curve.png)`,
-          backgroundSize: "100%",
           paddingTop: "150px",
         }}
       >
