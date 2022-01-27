@@ -5,13 +5,14 @@ import { RootState } from "../../state/reducers"
 import StoreCard from "../../components/Store/StoreCard"
 import { Banner } from "../../components/Banner"
 import CarouselContainer from "../../components/Caroucel/CarouselContainer"
+import { CardSkeleton } from "../../components/Skeleton/CardSkeleton"
 
 const TiendasPage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(TIENDAS_INIT({ tiendasAmount: 4 }))
   }, [dispatch])
-  const stores = useSelector((state: RootState) => state.tiendas.stores)
+  const stores = useSelector((state: RootState) => state.tiendas)
   const banner_image = "https://www.24store.com.ar/static/media/logo-24-store.ba4bf5c5.png"
   const banner_title = "Tiendas"
   const carouselImages: { image: string }[] = [
@@ -42,8 +43,18 @@ const TiendasPage = () => {
           <a className="button  polygon-button secondary-color store-link">BUSCAR POR RUBRO</a>
         </div>
         <div className="grid_container columns is-centered is-multiline grid_grid store-grid">
-          {stores &&
-            stores.map((store) => {
+          {stores.loading && (
+            <>
+              <CardSkeleton size={400} />
+              <CardSkeleton size={400} />
+              <CardSkeleton size={400} />
+              <CardSkeleton size={400} />
+            </>
+          )}
+          {!stores.error &&
+            !stores.loading &&
+            stores.stores.length !== 0 &&
+            stores.stores.map((store) => {
               return <StoreCard store={store} key={store.id} />
             })}
         </div>

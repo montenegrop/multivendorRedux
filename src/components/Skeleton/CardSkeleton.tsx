@@ -1,12 +1,12 @@
 import ContentLoader from "react-content-loader"
 
-export const CategorySkeleton = () => {
+export const CardSkeleton = ({ size = 200 }) => {
   return (
     <ContentLoader
-      width={200}
-      height={200}
+      width={size}
+      height={size}
       viewBox="0 0 450 400"
-      backgroundColor="#f0f0f0"
+      backgroundColor="rgb(206, 206, 206)"
       foregroundColor="#dedede"
     >
       <rect x="43" y="304" rx="4" ry="4" width="271" height="9" />

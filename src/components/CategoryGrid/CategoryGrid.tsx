@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HOMEPAGE_INIT } from "../../state/actions/homepage"
 import { RootState } from "../../state/reducers"
-import { CategorySkeleton } from "../Skeleton/CategorySkeleton"
+import { CardSkeleton } from "../Skeleton/CardSkeleton"
 import { CategoryGridCard } from "./CategoryGridCard"
 
 const CategoryGrid = () => {
@@ -20,24 +20,24 @@ const CategoryGrid = () => {
           <div className="is-flex is-justify-content-center"></div>
           <div className="is-flex is-justify-content-center">
             {["", "", ""].map((item, index) => {
-              return <CategorySkeleton key={index} />
+              return <CardSkeleton key={index} />
             })}
           </div>
           <div className="is-flex is-justify-content-center">
             {["", "", "", ""].map((item, index) => {
-              return <CategorySkeleton key={index} />
+              return <CardSkeleton key={index} />
             })}
           </div>
           <div className="is-flex is-justify-content-center">
             {["", "", ""].map((item, index) => {
-              return <CategorySkeleton key={index} />
+              return <CardSkeleton key={index} />
             })}
           </div>
         </div>
         <div className="category-grid-mobile px-5">
-          <CategorySkeleton />
-          <CategorySkeleton />
-          <CategorySkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
       </>
     )

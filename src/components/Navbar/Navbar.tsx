@@ -27,6 +27,7 @@ const Navbar = () => {
   // const registerTwoQuery = "create_account_two"
 
   const { loggin, create, logout, ...navbarCleanQuery } = router.query
+  console.log(usuario)
 
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
