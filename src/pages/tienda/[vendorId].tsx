@@ -50,7 +50,7 @@ const Tienda = () => {
   ) {
     return (
       <>
-        {userData.vendorStore.avatarImage && userData.vendorStore.mainImage && (
+        {userData.vendorStore?.avatarImage && userData.vendorStore.mainImage && (
           <TiendaBanner userData={userData.vendorStore} />
         )}
         <TiendaNavbar userData={userData.vendorStore} />
@@ -62,7 +62,7 @@ const Tienda = () => {
             <FilterContainer />
             <ProductsContainer
               data={vendorProducts.products.edges}
-              vendor={userData.vendorStore.name}
+              vendor={userData.vendorStore?.name}
             />
             <WspContactButton phone={userData.vendorStore.phone} />
           </div>

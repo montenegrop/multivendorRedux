@@ -17,11 +17,11 @@ const ProductCategory = () => {
     dispatch(PRODUCT_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
     dispatch(FILTERS_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
   }, [dispatch])
+  console.log(categRedux)
 
   if (categRedux.loading || filtersRedux.loading) {
     return <p className="has-text-centered is-size-1">Cargando...</p>
   }
-
   if (categRedux.category && filtersRedux.filtersAttributes) {
     return (
       <div>
