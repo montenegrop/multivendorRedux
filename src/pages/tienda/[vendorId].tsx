@@ -42,9 +42,12 @@ const Tienda = () => {
   if (vendorProducts.error) {
     return <p>Error...</p>
   }
-  console.log(vendorProducts)
-
-  if (vendorProducts.products && !vendorProducts.loading && !vendorProducts.error) {
+  if (
+    vendorProducts.products &&
+    !vendorProducts.loading &&
+    !vendorProducts.error &&
+    userData.vendorStore
+  ) {
     return (
       <>
         {userData.vendorStore?.avatarImage && userData.vendorStore.mainImage && (
@@ -61,7 +64,7 @@ const Tienda = () => {
               data={vendorProducts.products.edges}
               vendor={userData.vendorStore?.name}
             />
-            <WspContactButton />
+            <WspContactButton phone={userData.vendorStore.phone} />
           </div>
         </div>
       </>

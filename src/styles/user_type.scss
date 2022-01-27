@@ -4,8 +4,55 @@
     max-width: 400px;
   }
 }
+.footer-user-types {
+  background-size: 100%;
+}
+.user-type-carousel {
+  display: none;
+}
 .shadow {
   background: #ffffff;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
+}
+@media only screen and (max-width: 900px) {
+  .user-types {
+    .grid-3col {
+      grid-template-columns: 1fr;
+    }
+    .grid-2row {
+      grid-template-rows: 1fr;
+    }
+  }
+  .footer-user-types {
+    padding-top: 60px !important;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .user-type-grid {
+    display: none;
+  }
+  .user-type-carousel {
+    display: block !important;
+  }
+  .user-type-card {
+    height: 350px;
+    text-align: center;
+    justify-content: flex-start !important;
+  }
+
+  .subFooter {
+    display: block;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .user-type-card {
+    width: 85vw;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .footer-user-types {
+    background-size: 250% !important;
+  }
 }

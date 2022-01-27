@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Filters from "../../components/ProductsShop/Filters"
-import ClearFiltersButton from "./ClearFiltersButton"
+/* import ClearFiltersButton from "./ClearFiltersButton" */
 import FilterCard from "./FiltersSelected"
 const FilterContainer = ({ filter = {} }) => {
   const [filtCheck, setFiltCheck] = useState([])
@@ -14,18 +14,23 @@ const FilterContainer = ({ filter = {} }) => {
       setFiltCheck(newFilterCheck)
     }
   }
-  const clearFilters = () => {
-    setFiltCheck([])
+
+  const removeFilter = (filter: string): void => {
+    const filters = filtCheck
+    const index = filters.indexOf(filter)
+    filters.splice(index, 1)
+    setFiltCheck([...filters])
   }
+  console.log("Estado ", filtCheck)
 
   return (
-    <div className="filter-colum">
-      <div className="filter-card-container">
+    <div className="filter-colum ">
+      <div className="filter-card-container ml-5 mb-5">
         {filtCheck.map((item, index) => {
-          return <FilterCard filter={item} key={index} />
+          return <FilterCard filter={item} key={index} removeFilter={removeFilter} />
         })}
       </div>
-      <ClearFiltersButton filtCheck={filtCheck} clearFilters={clearFilters} />
+      {/* <ClearFiltersButton filtCheck={filtCheck} clearFilters={clearFilters} /> */}
       <Filters filters={filter} refreshFiltersSelected={refreshFiltersSelected} />
     </div>
   )

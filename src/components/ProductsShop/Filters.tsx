@@ -4,7 +4,16 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
   const router = useRouter()
   if (router.pathname == "/category/[categoryId]/[subCategoryId]") {
     return (
-      <div className="filter">
+      <div className="filter ml-5">
+        <div className="navbar-end is-expanded tienda_navbar_input_container ">
+          <div className="navbar-item tienda_navbar_input">
+            <input
+              className="input is-rounded is-normal shadow"
+              type="text"
+              placeholder="Buscar en esta tienda..."
+            />
+          </div>
+        </div>
         <ul className="filter-li">
           {filters.map((item, index) => {
             return (
@@ -37,7 +46,16 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
     )
   } else {
     return (
-      <div className="filter">
+      <div className="filter ml-5">
+        <div className="navbar-end is-expanded tienda_navbar_input_container">
+          <div className="navbar-item tienda_navbar_input p-0">
+            <input
+              className="input is-rounded is-normal"
+              type="text"
+              placeholder="Buscar en esta tienda..."
+            />
+          </div>
+        </div>
         <ul className="filter-li">
           <li>
             <ul className="price_list">

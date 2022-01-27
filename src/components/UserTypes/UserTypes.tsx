@@ -1,5 +1,6 @@
 import { UserTypeCard } from "./UserTypeCard"
-
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 const UserTypes = () => {
   const userProvider = {
     image: "users-providersIcon",
@@ -21,19 +22,57 @@ const UserTypes = () => {
     title: "Corporativos",
     text: "Licitaciones únicamente con mayoristas y corporativos, operaciones b2b, mejores y mas competitivos precios.",
   }
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 600 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 600, min: 0 },
+      items: 1,
+    },
+  }
+
   return (
-    <div className="has-background-white">
+    <div className="has-background-white user-types">
       <div className="home-content mx-auto">
         <h2 className="has-text-centered is-uppercase has-text-weight-bold color-secondary  py-5 mb-0">
           ¿Por qué somos la mayor red de construcción?
         </h2>
-        <div className="grid-2row mx-auto has-text-centered">
-          <UserTypeCard data={userProvider} />
-          <div className="grid-3col">
+        <div className="user-type-grid">
+          <div className="grid-2row mx-auto has-text-centered ">
+            <UserTypeCard data={userProvider} />
+            <div className="grid-3col">
+              <UserTypeCard data={retailer} />
+              <UserTypeCard data={wholesaler} />
+              <UserTypeCard data={corporate} />
+            </div>
+          </div>
+        </div>
+        <div className="user-type-carousel">
+          <Carousel
+            responsive={responsive}
+            showDots={false}
+            ssr={true}
+            removeArrowOnDeviceType={["tablet", "desktop", "superLargeDesktop"]}
+            itemClass="carousel-item-padding-40-px"
+            className="listStyleNone "
+          >
+            <UserTypeCard data={userProvider} />
             <UserTypeCard data={retailer} />
             <UserTypeCard data={wholesaler} />
             <UserTypeCard data={corporate} />
-          </div>
+          </Carousel>
         </div>
       </div>
     </div>

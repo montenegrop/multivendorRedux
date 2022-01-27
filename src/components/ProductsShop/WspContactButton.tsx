@@ -1,8 +1,10 @@
 import WhatsAppIcon from "../Icons/WhatsAppIcon"
 import Link from "next/link"
-const WspContactButton = () => {
+const WspContactButton = ({ phone }) => {
   return (
-    <Link href="https://api.whatsapp.com/send?phone=+5493416756337&text=Me gustaria conseguir informacion para realizar una compra">
+    <Link
+      href={`https://api.whatsapp.com/send?phone=+549${phone}&text=Me gustaria conseguir informacion para realizar una compra`}
+    >
       <div className="wsp-contact-button has-text-right">
         <p className="">Ponete en contacto</p>
         <WhatsAppIcon />

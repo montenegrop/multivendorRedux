@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request"
 import { API_URI } from "../../constants"
+
 import {
   VENDOR_PRODUCTS_ERROR,
   VENDOR_PRODUCTS_INIT,
@@ -16,15 +17,6 @@ export default (dispatch) => {
                 id
                 slug
                 name
-                defaultVariant {
-                  pricing {
-                    price {
-                      net {
-                        amount
-                      }
-                    }
-                  }
-                }
                 description
                 productType {
                   name
@@ -44,19 +36,19 @@ export default (dispatch) => {
           }
         }
       `
-      const graphQLClient = new GraphQLClient(API_URI, {
-        headers: {
-          authorization:
-            "Bearer JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDI0NDM2NjUsImV4cCI6MTY0MjQ0Mzk2NSwidG9rZW4iOiJyWEJFUHJ6RjNQaUwiLCJlbWFpbCI6ImNib2VybzExMUBnbWFpbC5jb20iLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6IlZYTmxjam95TkE9PSIsImlzX3N0YWZmIjp0cnVlfQ.xFLuhHOwdzfmqAz7JGV4tIsl7FYUogRWpe_eeeiFx44",
-        },
-      })
+      const client = new GraphQLClient(API_URI)
+
+      const requestHeaders = {
+        authorization:
+          "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDI0NDM2NjUsImV4cCI6MTY0MjQ0Mzk2NSwidG9rZW4iOiJyWEJFUHJ6RjNQaUwiLCJlbWFpbCI6ImNib2VybzExMUBnbWFpbC5jb20iLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6IlZYTmxjam95TkE9PSIsImlzX3N0YWZmIjp0cnVlfQ.xFLuhHOwdzfmqAz7JGV4tIsl7FYUogRWpe_eeeiFx44",
+      }
 
       const variables = {
         id: payload.id,
         channel: payload.channel,
       }
       try {
-        const data = await graphQLClient.request(query, variables)
+        const data = await client.request(query, variables, requestHeaders)
         dispatch(VENDOR_PRODUCTS_SUCCESS(data.products))
       } catch (error) {
         dispatch(VENDOR_PRODUCTS_ERROR("error de vendor products"))

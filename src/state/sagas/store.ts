@@ -63,6 +63,7 @@ export default (dispatch) => {
               userString
               url
             }
+            email
             mainImage {
               url
               alt

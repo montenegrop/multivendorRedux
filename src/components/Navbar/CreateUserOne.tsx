@@ -9,6 +9,7 @@ import { RootState } from "../../state/reducers"
 import { useRouter } from "next/router"
 import { CREATE_USER } from "../../state/actions/loggin"
 import CreateCompanyModal from "../Modal/CreateCompanyModal"
+import { FinishModal } from "../Modal/CreateCompanyModal/FinishModal"
 
 type FormErrors = {
   firstName?: string
@@ -26,28 +27,26 @@ const validate = (values) => {
   } else if (emailValidator(values.email)) {
     errors.email = "Invalid email address"
   }
-  // if (!values.firstName) {
-  //   errors.firstName = "Required"
-  // }
-  // if (!values.lastName) {
-  //   errors.lastName = "Required"
-  // }
-  // if (!values.docType) {
-  //   errors.docType = "Required"
-  // }
-  // // if (!values.docNumber) {
-  // //   errors.docNumber = "Required"
-  // // }
-  // if (!values.password) {
-  //   errors.password = "Required"
-  // }
   return errors
 }
 
-const FormContent = ({ values, errors, touched, handleChange, handleSubmit, loading }) => {
+const FormContent = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleSubmit,
+  loading,
+  finishModal,
+  setFinishModal,
+}) => {
   const [companyModal, setCompanyModal] = useState(false)
   const handleClicModal = () => {
     setCompanyModal(!companyModal)
+  }
+  const closeModals = () => {
+    setCompanyModal(false)
+    setFinishModal(false)
   }
   return (
     <form onSubmit={handleSubmit} noValidate className="has-text-centered" id="register-modal">
@@ -75,7 +74,7 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
             onBlur={null}
             label="Apellido"
             type="text"
-            name="lastname"
+            name="lastName"
             value={values.lastName}
             errors={errors}
             _touched={touched}
@@ -161,8 +160,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
       </button>
 
       <Modal
-        isOpen={companyModal}
-        onRequestClose={handleClicModal}
+        isOpen={companyModal || finishModal}
+        onRequestClose={closeModals}
         ariaHideApp={false}
         style={{
           content: {
@@ -178,7 +177,8 @@ const FormContent = ({ values, errors, touched, handleChange, handleSubmit, load
           overlay: { zIndex: 500 },
         }}
       >
-        <CreateCompanyModal />
+        {companyModal && <CreateCompanyModal />}
+        {finishModal && <FinishModal />}
       </Modal>
     </form>
   )
@@ -200,6 +200,7 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
     []
   )
 
+  const [finishModal, setFinishModal] = useState(false)
   const logginErrors = useSelector((state: RootState) => state.loggin.errors)
   const loading = useSelector((state: RootState) => state.loggin.loading)
   const created = useSelector((state: RootState) => state.loggin.created)
@@ -220,6 +221,7 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
         providesServices: values.serviceProvider,
       })
     )
+    setFinishModal(true)
     setCreating(true)
   }
 
@@ -249,7 +251,14 @@ const CreateUserOneForm = ({ isOpen, onRequestClose, onCloseQuery }) => {
         validate={validate}
         onSubmit={onSubmit}
       >
-        {(props) => <FormContent {...props} loading={loading} />}
+        {(props) => (
+          <FormContent
+            {...props}
+            loading={loading}
+            finishModal={finishModal}
+            setFinishModal={setFinishModal}
+          />
+        )}
       </Formik>
     </Modal>
   )

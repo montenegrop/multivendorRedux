@@ -1,6 +1,35 @@
 $transitionValue: ease-in-out 0.2s;
 $borderRadius: 15px;
 
+.category-grid-mobile {
+  display: none;
+}
+@media only screen and (max-width: 700px) {
+  .category-grid-desktop {
+    display: none;
+  }
+  .category-grid-mobile {
+    display: block;
+    border-radius: 25px !important;
+  }
+  .category-grid-card {
+    width: 100% !important;
+    height: 50px !important;
+    img {
+      width: 30px !important;
+      height: 30px !important;
+      object-fit: scale-down;
+      margin-right: 15px !important;
+    }
+    p {
+      margin: auto 0 !important;
+    }
+    .is-flex-direction-column {
+      flex-direction: row !important;
+      align-items: center;
+    }
+  }
+}
 .grid {
   &_card {
     width: 100%;
