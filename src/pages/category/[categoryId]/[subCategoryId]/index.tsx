@@ -21,7 +21,6 @@ const ProductCategory = () => {
   if (categRedux.loading || filtersRedux.loading) {
     return <p className="has-text-centered is-size-1">Cargando...</p>
   }
-  console.log(filtersRedux.filtersAttributes)
 
   if (categRedux.category && filtersRedux.filtersAttributes) {
     return (

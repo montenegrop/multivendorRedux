@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 
 const FilterCard = ({ filter, removeFilter }) => {
-  console.log(filter)
   const router = useRouter()
   if (router.pathname == "/category/[categoryId]/[subCategoryId]") {
     return (

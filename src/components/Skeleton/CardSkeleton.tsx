@@ -5,7 +5,7 @@ export const CardSkeleton = ({ size = 200 }) => {
     <ContentLoader
       width={size}
       height={size}
-      viewBox="0 0 450 400"
+      viewBox="0 50 450 400"
       backgroundColor="rgb(206, 206, 206)"
       foregroundColor="#dedede"
     >

@@ -5,6 +5,7 @@ import SubCategory from "./subCategory"
 import { CATEGORY_INIT } from "../../../state/actions/category"
 import { RootState } from "../../../state/reducers"
 import { useRouter } from "next/router"
+import { CardSkeleton } from "../../../components/Skeleton/CardSkeleton"
 
 const Category = () => {
   const router = useRouter()
@@ -13,7 +14,20 @@ const Category = () => {
   useEffect(() => {
     dispatch(CATEGORY_INIT({ id: router.query.categoryId, channel: "default-channel" }))
   }, [dispatch])
-
+  if (categRedux.loading) {
+    return (
+      <div className="category_container pb-5">
+        <CardSkeleton size={400} />
+        <h2 className="category_subtitle">BUSCA POR RUBRO</h2>
+        <div className="subcategory_grid">
+          <CardSkeleton size={400} />
+          <CardSkeleton size={400} />
+          <CardSkeleton size={400} />
+          <CardSkeleton size={400} />
+        </div>
+      </div>
+    )
+  }
   return (
     <div className="category_container pb-5">
       <Banner
