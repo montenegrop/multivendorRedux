@@ -42,6 +42,8 @@ const Tienda = () => {
   if (vendorProducts.error) {
     return <p>Error...</p>
   }
+  console.log(vendorProducts)
+
   if (vendorProducts.products && !vendorProducts.loading && !vendorProducts.error) {
     return (
       <>
