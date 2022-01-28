@@ -5,7 +5,7 @@ import Cart from "./Cart"
 import Shop from "./Shop"
 import UserIcon from "./UserIcon"
 import LoginForm from "./LoginForm"
-
+import Modal from "react-modal"
 import { useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
 
@@ -13,7 +13,10 @@ import ModalServicios from "../Modal/container/ModalServicios"
 import { useRouter } from "next/router"
 import CreateUserOne from "./CreateUserOne"
 import LogoutForm from "./LogoutForm"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+// import your icons
+import { faTimes } from "@fortawesome/free-solid-svg-icons"
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
   const [isOpen, onClose] = useState(false)
@@ -30,7 +33,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
-      <div className={`navbar_layout ${isActive ? "is-active" : ""}`}>
+      <div className={`navbar_layout `}>
         <div className="navbar-brand">
           <Link href="/">
             <a className={`navbar-item navbar_logo`}>
@@ -41,7 +44,7 @@ const Navbar = () => {
             onClick={() => {
               setIsActive(!isActive)
             }}
-            className={`navbar-burger ${isActive ? "is-active" : ""}`}
+            className={`navbar-burger`}
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -58,7 +61,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        <div className={`navbar-menu `}>
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
@@ -115,6 +118,38 @@ const Navbar = () => {
               router.push({ query: navbarCleanQuery })
             }}
           />
+          <Modal
+            isOpen={isActive}
+            onRequestClose={() => setIsActive(false)}
+            ariaHideApp={false}
+            style={{
+              content: {
+                width: "100vw",
+                height: "100vh",
+                inset: "0px",
+                position: "relative",
+                padding: "0px",
+                opacity: 1,
+              },
+              overlay: { zIndex: 90000 },
+            }}
+          >
+            <div>
+              <header className="bg-primary is-flex is-justify-content-space-between is-align-items-center px-6">
+                <Logo size={"70"} />
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-hidden="true"
+                  onClick={() => setIsActive(false)}
+                  onKeyDown={() => setIsActive(false)}
+                  className="is-clickable"
+                >
+                  <FontAwesomeIcon icon={faTimes} size="2x" color="white" />
+                </div>
+              </header>
+            </div>
+          </Modal>
         </div>
       </div>
     </nav>
