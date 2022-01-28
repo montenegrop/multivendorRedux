@@ -85,7 +85,7 @@ export default function Service() {
           <h2 className="has-text-grey-light has-text-weight-light mb-3">
             EXPERIENCIAS CONSTRUIRTE
           </h2>
-          <div className="is-flex is-justify-content-space-between m-2">
+          <div className="grid-2col  m-2">
             <div className="is-flex w-50per has-text-black">
               <img
                 src="https://la.duravit.com/dimg/6269435_web2_prod_normal_2.jpg"
@@ -94,7 +94,7 @@ export default function Service() {
                 style={{ minWidth: "100px", objectFit: "cover" }}
               />
               <article style={{ width: "80%" }} className="ml-2 ">
-                <div className="is-flex is-justify-content-space-between my-auto">
+                <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap my-auto">
                   <p className="is-size-5 mb-1 is-uppercase">Plomeria</p>
                   <p className="is-size-5 mb-1 is-uppercase">2019</p>
                   <p className="is-size-5 mb-1 ">Rosario</p>

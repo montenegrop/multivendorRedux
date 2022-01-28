@@ -9,7 +9,7 @@ export const ExperienceRow = ({ data }) => {
           style={{ minWidth: "100px", objectFit: "cover" }}
         />
         <article style={{ width: "80%" }} className="ml-2">
-          <div className="is-flex is-justify-content-space-between ">
+          <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
             <p className="is-size-5 mb-1 is-uppercase">{data.service.name} </p>
             <p className="is-size-5 mb-1 is-uppercase">{data.yearPerformed}</p>
             <p className="is-size-5 mb-1 ">
