@@ -43,7 +43,7 @@ const CategoryGrid = () => {
     )
   }
   if (homepageCategories.error) {
-    return <p>Error</p>
+    return <p>Error...</p>
   }
 
   return (
