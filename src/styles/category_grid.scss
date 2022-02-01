@@ -9,7 +9,9 @@ $borderRadius: 15px;
     display: none;
   }
   .category-grid-mobile {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 25px !important;
   }
   .category-grid-card {

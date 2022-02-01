@@ -70,3 +70,12 @@ footer {
     margin-bottom: 5px !important;
   }
 }
+.vendor-banner {
+  border-radius: 15px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.213) 7%, rgba(255, 170, 51, 1) 100%);
+  transition: all ease-in-out 200ms;
+  &:hover {
+    border-radius: 30px;
+  }
+}

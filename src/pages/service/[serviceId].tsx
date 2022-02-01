@@ -31,6 +31,7 @@ export default function Service() {
   if (vendor.error) {
     return <p>Error..</p>
   }
+
   if (!vendor.loading && !vendor.error && vendor.data) {
     return (
       <>
@@ -38,54 +39,50 @@ export default function Service() {
           className="mb-3 my_banner-service_provider is-flex is-align-items-flex-end"
           style={{ backgroundImage: `url(${banner_image})` }}
         >
-          <div className="is-flex is-align-items-center mb-3 ml-3">
+          <div className="is-flex is-align-items-center mb-3 ml-6 pl-5 vendor-banner">
             <Avatar image_url={avatar_image}></Avatar>
-            <h2 className="my_1px_black_stroke title is-3 has-text-warning ml-3">
+            <h2 className="my_1px_black_stroke ml-3 has-text-white is-capitalized">
               {vendor.data.name}
             </h2>
           </div>
         </section>
-        <section className="m-3 columns">
+        <section className="mb-3 columns">
           <div className="column">
-            <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
+            <h2 className="column_title title has-text-grey-light has-text-weight-light mb-0 has-text-centered">
               CONTACTO
             </h2>
             <ContactTable
               phone={vendor.data.phone}
               location={vendor.data.location}
               email={vendor.data.email}
-              cellularPhone={"3416"}
             ></ContactTable>
           </div>
           <div className="column">
-            <h2 className="column_title title has-text-grey-light has-text-weight-light has-background-light mb-0 has-text-centered">
+            <h2 className="column_title title has-text-grey-light has-text-weight-light mb-0 has-text-centered">
               SERVICIOS
             </h2>
             <ServicesTable services_data={services_data}></ServicesTable>
           </div>
         </section>
-        <section className="mb-3 p-4 columns">
+        <section className="mb-3 columns">
           <div className="column">
             <Link
               scroll={false}
               href={{
                 pathname: "/service/[serviceId]",
-                query: {
-                  serviceId: router.query.serviceId,
-                  vendor: vendor.data.name,
-                  contratar: contratarPrimero,
-                },
+                query: { serviceId: router.query.serviceId, contratar: contratarPrimero },
               }}
             >
-              <a className="button is-rounded is-primary">contratar</a>
+              <a className="button is-rounded is-primary ml-5">contratar</a>
             </Link>
           </div>
+          <div className="column"></div>
         </section>
-        <section className="p-4">
+        <section className="ml-5">
           <h2 className="has-text-grey-light has-text-weight-light mb-3">
             EXPERIENCIAS CONSTRUIRTE
           </h2>
-          <div className="grid-2col  m-2">
+          <div className="is-flex is-justify-content-space-between m-2">
             <div className="is-flex w-50per has-text-black">
               <img
                 src="https://la.duravit.com/dimg/6269435_web2_prod_normal_2.jpg"
@@ -94,7 +91,7 @@ export default function Service() {
                 style={{ minWidth: "100px", objectFit: "cover" }}
               />
               <article style={{ width: "80%" }} className="ml-2 ">
-                <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap my-auto">
+                <div className="is-flex is-justify-content-space-between my-auto">
                   <p className="is-size-5 mb-1 is-uppercase">Plomeria</p>
                   <p className="is-size-5 mb-1 is-uppercase">2019</p>
                   <p className="is-size-5 mb-1 ">Rosario</p>
@@ -114,11 +111,11 @@ export default function Service() {
           style={{
             content: {
               width: "80%",
-              height: "100vh",
               position: "relative",
-              left: "10%",
+              height: "90vh",
               padding: "15px 0px",
               overflow: "scroll",
+              left: "10%",
               paddingBottom: "100px",
             },
             overlay: { zIndex: 1000 },

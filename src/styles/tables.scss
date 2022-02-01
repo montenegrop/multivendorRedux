@@ -29,13 +29,11 @@
     }
   }
 }
-
-// .my_table_no_borders {
-//   table {
-//     tbody {
-//       .table td {
-//         border: none;
-//       }
-//     }
-//   }
-// }
+.table {
+  th {
+    width: 100px !important;
+  }
+  td {
+    vertical-align: bottom !important;
+  }
+}

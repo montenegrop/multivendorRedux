@@ -27,7 +27,7 @@ const Home = () => {
           </a>
           <HomeCard
             data={{
-              title: "Licitaciones",
+              title: "Proximamente",
               text: "PARTICIPÁ EN LICITACIONES MINORISTAS COMPRANDO O VENDIENDO.",
               subText: "Compará precios, ubicaciones y las mejores condiciones.",
               button: "off",
