@@ -32,7 +32,12 @@ const Navbar = () => {
   const { loggin, create, logout, ...navbarCleanQuery } = router.query
 
   return (
-    <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+    <nav
+      className="navbar is-primary"
+      role="navigation"
+      aria-label="main navigation"
+      id="principal-nav-bar"
+    >
       <div className={`navbar_layout `}>
         <div className="navbar-brand">
           <Link href="/">
@@ -134,7 +139,7 @@ const Navbar = () => {
               overlay: { zIndex: 90000 },
             }}
           >
-            <div>
+            <div id="mobile-burger-menu">
               <header className="bg-primary is-flex is-justify-content-space-between is-align-items-center px-6">
                 <Logo size={"70"} />
                 <div
@@ -148,6 +153,34 @@ const Navbar = () => {
                   <FontAwesomeIcon icon={faTimes} size="2x" color="white" />
                 </div>
               </header>
+
+              <nav className="my-5 has-text-grey p-4">
+                <p className="is-size-3  is-clickable">Inicio</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+                <p className="is-size-3 is-clickable">Mis Compras</p>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-hidden="true"
+                  onKeyDown={() => {
+                    setIsActive(false)
+                    onClose(!isOpen)
+                  }}
+                  onClick={() => {
+                    setIsActive(false)
+                    onClose(!isOpen)
+                  }}
+                >
+                  <p className="is-size-3  is-clickable">Mis Servicios</p>
+                </div>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "1px" }} />
+                <p className="is-size-3 is-clickable ">Mis Datos</p>
+                <p className="is-size-3  is-clickable">Seguridad</p>
+                <p className="is-size-3 is-clickable ">Privacidad</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+                <p className="is-size-3 is-clickable ">Salir</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+              </nav>
             </div>
           </Modal>
         </div>

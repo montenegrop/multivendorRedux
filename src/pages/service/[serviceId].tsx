@@ -46,9 +46,9 @@ export default function Service() {
             </h2>
           </div>
         </section>
-        <section className="mb-3 columns">
-          <div className="column">
-            <h2 className="column_title title has-text-grey-light has-text-weight-light mb-0 has-text-centered">
+        <section className="mb-3 columns mx-6">
+          <div className="column ">
+            <h2 className="column_title title has-text-grey-light has-text-weight-light mb-0 has-text-centered ">
               CONTACTO
             </h2>
             <ContactTable
@@ -70,7 +70,11 @@ export default function Service() {
               scroll={false}
               href={{
                 pathname: "/service/[serviceId]",
-                query: { serviceId: router.query.serviceId, contratar: contratarPrimero },
+                query: {
+                  serviceId: router.query.serviceId,
+                  contratar: contratarPrimero,
+                  vendor: vendor.data.name,
+                },
               }}
             >
               <a className="button is-rounded is-primary ml-5">contratar</a>
