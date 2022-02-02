@@ -16,10 +16,8 @@ export const HomeCard = ({ data }) => {
           height="100%"
         />
       </section>
-      <footer className="is-flex is-justify-content-space-between p-2 mt-2">
-        <div className="w-50per ">
-          <p className="has-text-grey is-size-7">{data.subText}</p>
-        </div>
+      <footer className="is-flex is-justify-content-space-between p-2 mt-2 ">
+        <p className="has-text-grey is-size-7">{data.subText}</p>
         <button
           className="button is-small my-auto secondary-color"
           disabled={data.button == "off" && true}
