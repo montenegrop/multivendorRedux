@@ -10,7 +10,11 @@ const SubCategory = ({ item }) => {
         }`}
       >
         <div className="textInImage">
-          <img src={item.node.backgroundImage?.url} alt={item.node.backgroundImage?.alt} />
+          <img
+            src={item.node.backgroundImage?.url}
+            alt={item.node.backgroundImage?.alt}
+            className={`${item.node.name.toLowerCase() !== "repuestos" && "h-180px"}`}
+          />
           <div className="texto">
             <p>{item.node.name}</p>
           </div>

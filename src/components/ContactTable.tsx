@@ -5,11 +5,11 @@ export const ContactTable = (contact_data: {
 }) => {
   return (
     <table
-      className="table is-hoverable has-background-light ml-6 "
+      className="table is-hoverable has-background-light "
       style={{ borderCollapse: "collapse", border: "none" }}
     >
       <tbody>
-        <tr className="mx-6">
+        <tr>
           <th className="is-size-4 py-1 has-text-grey has-text-weight-light">Teléfono:</th>
           <td className="is-size-4 py-1 has-text-grey has-text-weight-light">
             {contact_data.phone}

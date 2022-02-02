@@ -6,7 +6,7 @@ import { HomeCard } from "../components/Modal/NavBarShopModal/component/HomeCard
 import Partners from "../components/Partners/container"
 import UserTypes from "../components/UserTypes/UserTypes"
 import { RootState } from "../state/reducers"
-
+import { Slide } from "react-awesome-reveal"
 const Home = () => {
   const usuario = useSelector((state: RootState) => state.loggin.data?.user)
   const logginQuery = "?loggin=loggin"
@@ -37,7 +37,9 @@ const Home = () => {
         <CategoryGrid />
         <Partners />
       </div>
-      <UserTypes />
+      <Slide direction="up" damping={500} triggerOnce={true}>
+        <UserTypes />
+      </Slide>
       <Footer />
     </>
   )

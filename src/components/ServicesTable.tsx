@@ -1,16 +1,18 @@
 import React from "react"
 import { Score } from "./Score"
-import { ServiceButton } from "./ServiceButton"
 
 export const ServicesTable = ({ services_data }) => {
   return (
-    <table className="table is-fullwidth has-background-light my_table-light_titles my_table-no_borders my_table-right">
+    <table className="table is-hoverable has-background-light">
       <tbody>
         {services_data.map((service_data, _index) => {
           return (
-            <tr key={`tr-${service_data.name}`}>
-              <th>
-                <ServiceButton onClick={() => {}}>{service_data.name}</ServiceButton>
+            <tr
+              key={`tr-${service_data.name}`}
+              className="is-size-4 py-1 has-text-grey has-text-weight-light"
+            >
+              <th className="is-size-4 py-1 has-text-grey has-text-weight-light">
+                {service_data.name}
               </th>
               <td>
                 <Score score={2} />

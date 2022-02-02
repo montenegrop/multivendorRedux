@@ -21,9 +21,16 @@
     margin: 0 20px;
   }
 }
-@media only screen and (max-width: 696px) {
+@media only screen and (max-width: 700px) {
   .subcategory_container {
     width: 100% !important;
+  }
+  .category_container {
+    .grid-2col {
+      div {
+        align-items: center !important;
+      }
+    }
   }
 }
 .subcategory_container {
@@ -31,7 +38,6 @@
   width: 30%;
   margin-top: 30px;
   min-width: 280px;
-  background-color: rgb(230, 230, 230);
   border-radius: 10px;
   transition-property: opacity;
   transition-duration: 200ms;
@@ -48,7 +54,9 @@
   img {
     border-radius: 10px;
     width: 100%;
-    height: 180px;
+    min-height: 180px;
+    max-height: 250px;
+    object-fit: cover;
   }
   .texto {
     position: absolute;
