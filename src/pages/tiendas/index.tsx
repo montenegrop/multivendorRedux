@@ -20,26 +20,18 @@ const TiendasPage = () => {
   }
   const stores = useSelector((state: RootState) => state.tiendas)
   const banner_image = "https://www.24store.com.ar/static/media/logo-24-store.ba4bf5c5.png"
-  const banner_title = "Tiendas"
+  const banner_title = "Tiendas Destacadas"
   const carouselImages: { image: string }[] = [
     { image: "http://lorempixel.com/400/200/sports/20/" },
     { image: "http://lorempixel.com/400/200/sports/2/" },
     { image: "http://lorempixel.com/400/200/sports/1/" },
     { image: "http://lorempixel.com/400/200/sports/1/" },
     { image: "http://lorempixel.com/400/200/sports/2/" },
-    { image: "http://lorempixel.com/400/200/sports/3/" },
-    { image: "http://lorempixel.com/400/200/sports/4/" },
-    { image: "http://lorempixel.com/400/200/sports/5/" },
-    { image: "http://lorempixel.com/400/200/sports/6/" },
-    { image: "http://lorempixel.com/400/200/sports/7/" },
-    { image: "http://lorempixel.com/400/200/sports/8/" },
-    { image: "http://lorempixel.com/400/200/sports/9/" },
-    { image: "http://lorempixel.com/400/200/sports/10/" },
   ]
   return (
     <>
       {usuario && (
-        <div className="grey-background">
+        <div>
           <Banner banner_image={banner_image} banner_title={banner_title} />
           <CarouselContainer data={carouselImages} />
           <div className="store-links-grid">

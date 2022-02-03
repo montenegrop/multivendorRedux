@@ -1,16 +1,16 @@
 import { useRouter } from "next/router"
 import React from "react"
+import Footer from "../components/footer"
 import Navbar from "../components/Navbar/Navbar"
 import Slider from "../components/Slide/Slider"
 
 const SliderData = [
   {
-    image:
-      "https://images.unsplash.com/photo-1546768292-fb12f6c92568?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    image: "https://segurarse.com.ar/blog/wp-content/uploads/2020/04/Seguro-Art-02.png",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp0XmvdS7H3PsuBTjiEXd3I-XMb1JKtOjJlg&usqp=CAU",
   },
   {
     image:
@@ -33,8 +33,8 @@ const Layout = ({ children }) => {
       <Navbar />
       {router.pathname === "/" && <Slider slides={SliderData} />}
       <main className="content">{children}</main>
+      <Footer />
     </>
   )
 }
-
 export default Layout

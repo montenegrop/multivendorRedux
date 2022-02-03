@@ -5,7 +5,7 @@ import Cart from "./Cart"
 import Shop from "./Shop"
 import UserIcon from "./UserIcon"
 import LoginForm from "./LoginForm"
-
+import Modal from "react-modal"
 import { useSelector } from "react-redux"
 import { RootState } from "../../state/reducers"
 
@@ -13,7 +13,10 @@ import ModalServicios from "../Modal/container/ModalServicios"
 import { useRouter } from "next/router"
 import CreateUserOne from "./CreateUserOne"
 import LogoutForm from "./LogoutForm"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+// import your icons
+import { faTimes } from "@fortawesome/free-solid-svg-icons"
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false)
   const [isOpen, onClose] = useState(false)
@@ -29,8 +32,13 @@ const Navbar = () => {
   const { loggin, create, logout, ...navbarCleanQuery } = router.query
 
   return (
-    <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
-      <div className={`navbar_layout ${isActive ? "is-active" : ""}`}>
+    <nav
+      className="navbar is-primary"
+      role="navigation"
+      aria-label="main navigation"
+      id="principal-nav-bar"
+    >
+      <div className={`navbar_layout `}>
         <div className="navbar-brand">
           <Link href="/">
             <a className={`navbar-item navbar_logo`}>
@@ -41,7 +49,7 @@ const Navbar = () => {
             onClick={() => {
               setIsActive(!isActive)
             }}
-            className={`navbar-burger ${isActive ? "is-active" : ""}`}
+            className={`navbar-burger`}
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -58,7 +66,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        <div className={`navbar-menu `}>
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
@@ -115,6 +123,66 @@ const Navbar = () => {
               router.push({ query: navbarCleanQuery })
             }}
           />
+          <Modal
+            isOpen={isActive}
+            onRequestClose={() => setIsActive(false)}
+            ariaHideApp={false}
+            style={{
+              content: {
+                width: "100vw",
+                height: "100vh",
+                inset: "0px",
+                position: "relative",
+                padding: "0px",
+                opacity: 1,
+              },
+              overlay: { zIndex: 90000 },
+            }}
+          >
+            <div id="mobile-burger-menu">
+              <header className="bg-primary is-flex is-justify-content-space-between is-align-items-center px-6">
+                <Logo size={"70"} />
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-hidden="true"
+                  onClick={() => setIsActive(false)}
+                  onKeyDown={() => setIsActive(false)}
+                  className="is-clickable"
+                >
+                  <FontAwesomeIcon icon={faTimes} size="2x" color="white" />
+                </div>
+              </header>
+
+              <nav className="my-5 has-text-grey p-4">
+                <p className="is-size-3  is-clickable">Inicio</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+                <p className="is-size-3 is-clickable">Mis Compras</p>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-hidden="true"
+                  onKeyDown={() => {
+                    setIsActive(false)
+                    onClose(!isOpen)
+                  }}
+                  onClick={() => {
+                    setIsActive(false)
+                    onClose(!isOpen)
+                  }}
+                >
+                  <p className="is-size-3  is-clickable">Mis Servicios</p>
+                </div>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "1px" }} />
+                <p className="is-size-3 is-clickable ">Mis Datos</p>
+                <p className="is-size-3  is-clickable">Seguridad</p>
+                <p className="is-size-3 is-clickable ">Privacidad</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+                <p className="is-size-3 is-clickable ">Salir</p>
+                <hr className="has-background-grey-light my-2 mx-0 " style={{ height: "2px" }} />
+              </nav>
+            </div>
+          </Modal>
         </div>
       </div>
     </nav>

@@ -29,13 +29,9 @@
     }
   }
 }
-
-// .my_table_no_borders {
-//   table {
-//     tbody {
-//       .table td {
-//         border: none;
-//       }
-//     }
-//   }
-// }
+.table {
+  min-width: 360px;
+  td {
+    vertical-align: bottom !important;
+  }
+}

@@ -10,19 +10,19 @@ const Partners = () => {
       id: "1",
     },
     {
-      img: "https://media.glassdoor.com/sqll/4264522/andreani-squarelogo-1627545291158.png",
+      img: "https://media-exp1.licdn.com/dms/image/C4D1BAQEY_CbxMIj8fw/company-background_10000/0/1601661408767?e=2159024400&v=beta&t=LHOEdQRVkZ5DYA1RMn9urXX6yEeL0dNsGiGU8iSH9EM",
       name: "Andreani",
       title: "Logistic Partner",
       id: "2",
     },
     {
-      img: "https://media.glassdoor.com/sqll/4264522/andreani-squarelogo-1627545291158.png",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2iQrUilEhqLPM_nB_lN9wlzK526Vp81PTQ&usqp=CAU",
       name: "Andreani",
       title: "Logistic Partner",
       id: "3",
     },
     {
-      img: "https://media.glassdoor.com/sqll/4264522/andreani-squarelogo-1627545291158.png",
+      img: "https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png",
       name: "Andreani",
       title: "Logistic Partner",
       id: "4",

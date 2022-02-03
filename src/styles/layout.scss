@@ -1,5 +1,8 @@
 .content {
-  margin: 0 auto;
+  margin: 0;
+}
+.content:not(:last-child) {
+  margin-bottom: 0 !important;
 }
 .widescreenMaxWidth {
   max-width: $widescreen;

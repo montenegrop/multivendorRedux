@@ -1,13 +1,16 @@
+import { useRouter } from "next/router"
 import Logo from "../Navbar/Logo"
 
 const Footer = () => {
+  const router = useRouter()
   return (
     <>
       <div
-        className="has-background-white footer-user-types partners"
+        className="footer-user-types partners"
         style={{
-          backgroundImage: `url(./images/curve.png)`,
+          backgroundImage: `${router.pathname == "/" && "url(./images/curve.png)"}`,
           paddingTop: "150px",
+          backgroundColor: "rgb(243, 241, 238)",
         }}
       >
         <div className="home-content mx-auto   ">

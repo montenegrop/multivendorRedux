@@ -10,32 +10,22 @@ import FilterContainer from "../../components/ProductsShop/FilterContainer"
 import { useRouter } from "next/router"
 import WspContactButton from "../../components/ProductsShop/WspContactButton"
 import { VENDOR_PRODUCTS_INIT } from "../../state/actions/vendorProducts"
+import { FEATURED_PRODUCTS_INIT } from "../../state/actions/featuredProducts"
+import { FEATURED_ID } from "../../constants"
 
 const Tienda = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const userData = useSelector((state: RootState) => state.store)
   const vendorProducts = useSelector((state: RootState) => state.vendorProducts)
+  const featuredProducts = useSelector((state: RootState) => state.featuredProducts)
+
   useEffect(() => {
     dispatch(VENDOR_PRODUCTS_INIT({ id: router.query.vendorId, channel: "pesos" }))
     dispatch(STORE_INIT({ id: router.query.vendorId }))
+    dispatch(FEATURED_PRODUCTS_INIT({ id: FEATURED_ID, channel: "default-channel" }))
   }, [dispatch])
 
-  const dataCarousel: { image: string }[] = [
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-    { image: "https://placekitten.com/640/360" },
-  ]
   if (vendorProducts.loading) {
     return <p>Cargando...</p>
   }
@@ -43,11 +33,20 @@ const Tienda = () => {
     return <p>Error...</p>
   }
   if (
-    vendorProducts.products &&
+    vendorProducts.products !== null &&
     !vendorProducts.loading &&
     !vendorProducts.error &&
     userData.vendorStore
   ) {
+    const images = featuredProducts.products?.edges.map((item) => {
+      return {
+        url: item.node.images[0].url,
+        alt: item.node.images[0].alt,
+        price: item.node.defaultVariant.pricing.price.net.amount,
+        id: item.node.id,
+      }
+    })
+
     return (
       <>
         {userData.vendorStore?.avatarImage && userData.vendorStore.mainImage && (
@@ -55,9 +54,7 @@ const Tienda = () => {
         )}
         <TiendaNavbar userData={userData.vendorStore} />
         <div className="shop">
-          <div className="carousel-shop">
-            <CarouselContainer data={dataCarousel} />
-          </div>
+          <div className="carousel-shop">{images && <CarouselContainer data={images} />}</div>
           <div className="store">
             <FilterContainer />
             <ProductsContainer
