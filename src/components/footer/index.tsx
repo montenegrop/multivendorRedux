@@ -8,7 +8,7 @@ const Footer = () => {
       <div
         className="footer-user-types partners"
         style={{
-          backgroundImage: `${router.pathname == "/" && "url(./images/curve.png)"}`,
+          backgroundImage: `${router.pathname == "/" ? "url(./images/curve.png)" : ""}`,
           paddingTop: "150px",
           backgroundColor: "rgb(243, 241, 238)",
         }}
@@ -61,9 +61,9 @@ const Footer = () => {
           <p>© 2021 Company Name. Some rights reserved.</p>
         </div>
         <div className="is-flex is-align-items-center is-justify-content-center">
-          <img src="./images/facebook.png" alt="facebook" width={40} />
-          <img src="./images/instagram.png" alt="instagram" width={40} />
-          <img src="./images/whatsapp.png" alt="whatsapp" width={40} />
+          <img src="../images/facebook.png" alt="facebook" width={40} />
+          <img src="../images/instagram.png" alt="instagram" width={40} />
+          <img src="../images/whatsapp.png" alt="whatsapp" width={40} />
         </div>
       </footer>
     </>
