@@ -31,7 +31,7 @@ const TiendasPage = () => {
   return (
     <>
       {usuario && (
-        <div className="grey-background">
+        <div>
           <Banner banner_image={banner_image} banner_title={banner_title} />
           <CarouselContainer data={carouselImages} />
           <div className="store-links-grid">

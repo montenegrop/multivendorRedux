@@ -21,7 +21,6 @@ const FilterContainer = ({ filter = {} }) => {
     filters.splice(index, 1)
     setFiltCheck([...filters])
   }
-  console.log("Estado ", filtCheck)
 
   return (
     <div className="filter-colum ">

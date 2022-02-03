@@ -13,11 +13,12 @@ import productCategoryReducer from "./productCategory"
 import filtersCategoryReducer from "./filtersCategory"
 import simpleProductReducer from "./simpleProduct"
 import vendorProductsReducer from "./vendorProducts"
-
+import featuredProductsReducer from "./featuredProducts"
 export default {
   ...categoryReducers,
   ...contratarReducer,
   ...homepageReducers,
+  ...featuredProductsReducer,
   ...filtersCategoryReducer,
   loggin: persistReducer(
     {

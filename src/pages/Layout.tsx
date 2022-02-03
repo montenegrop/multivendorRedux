@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import React from "react"
+import Footer from "../components/footer"
 import Navbar from "../components/Navbar/Navbar"
 import Slider from "../components/Slide/Slider"
 
@@ -32,6 +33,7 @@ const Layout = ({ children }) => {
       <Navbar />
       {router.pathname === "/" && <Slider slides={SliderData} />}
       <main className="content">{children}</main>
+      <Footer />
     </>
   )
 }

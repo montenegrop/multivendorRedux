@@ -1,7 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import CategoryGrid from "../components/CategoryGrid/CategoryGrid"
-import Footer from "../components/footer"
 import { HomeCard } from "../components/Modal/NavBarShopModal/component/HomeCard"
 import Partners from "../components/Partners/container"
 import UserTypes from "../components/UserTypes/UserTypes"
@@ -19,6 +18,7 @@ const Home = () => {
             <HomeCard
               data={{
                 title: "Tiendas",
+                image: "./images/homeCardBackground.png",
                 text: "PRODUCTOS Y SERVICIOS QUE NECESITaS PARA TU PRóXIMO PROYECTO.",
                 subText: "Buscá productos en la mayor red de construccion.",
                 button: "on",
@@ -28,6 +28,7 @@ const Home = () => {
           <HomeCard
             data={{
               title: "Licitaciones",
+              image: "./images/licitaciones.png",
               text: "PARTICIPÁ EN LICITACIONES MINORISTAS COMPRANDO O VENDIENDO.",
               subText: "Compará precios, ubicaciones y las mejores condiciones.",
               button: "off",
@@ -40,7 +41,6 @@ const Home = () => {
       <Slide direction="up" damping={500} triggerOnce={true}>
         <UserTypes />
       </Slide>
-      <Footer />
     </>
   )
 }

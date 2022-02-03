@@ -10,6 +10,7 @@ import productCategory from "./productCategory"
 import filtersCategory from "./filterCategory"
 import simpleProduct from "./simpleProduct"
 import vendorProducts from "./vendorProducts"
+import featuredProducts from "./featuredProducts"
 export default [
   serviceProvider,
   homepage,
@@ -23,4 +24,5 @@ export default [
   filtersCategory,
   simpleProduct,
   vendorProducts,
+  featuredProducts,
 ]

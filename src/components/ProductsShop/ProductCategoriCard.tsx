@@ -1,16 +1,7 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
 export const ProductCategoryCard = ({ data, vendor = "" }) => {
-  const router = useRouter()
-  const inSubCategory = router.pathname === "/category/[categoryId]/[subCategoryId]"
   return (
-    <Link
-      href={`${
-        inSubCategory
-          ? `/category/${router.query.categoryId}/${router.query.subCategoryId}/${data.id}`
-          : `/category/[categoryId]/[subCategoryId]/${data.id}`
-      }`}
-    >
+    <Link href={`${`/product/${data.id}`}`}>
       <div className="product_card p-0 shadow mx-auto">
         <div className="h-70per p-3 image is-flex is-flex-direction-column is-justify-content-center">
           {data.images.length != 0 ? (
