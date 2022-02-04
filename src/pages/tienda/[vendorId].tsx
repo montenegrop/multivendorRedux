@@ -21,7 +21,14 @@ const Tienda = () => {
   const featuredProducts = useSelector((state: RootState) => state.featuredProducts)
 
   useEffect(() => {
-    dispatch(VENDOR_PRODUCTS_INIT({ id: router.query.vendorId, channel: "pesos" }))
+    dispatch(
+      VENDOR_PRODUCTS_INIT({
+        id: router.query.vendorId,
+        channel: "default-channel",
+        minimun: 0,
+        maximum: 899,
+      })
+    )
     dispatch(STORE_INIT({ id: router.query.vendorId }))
     dispatch(FEATURED_PRODUCTS_INIT({ id: FEATURED_ID, channel: "default-channel" }))
   }, [dispatch])
@@ -32,6 +39,8 @@ const Tienda = () => {
   if (vendorProducts.error) {
     return <p>Error...</p>
   }
+  console.log(vendorProducts.products)
+
   if (
     vendorProducts.products !== null &&
     !vendorProducts.loading &&

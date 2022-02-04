@@ -48,16 +48,19 @@ const ModalComponent = ({ isOpen, onClose }) => {
         }}
       >
         <div className="has-background-white">
-          <div
-            role="button"
-            tabIndex={0}
-            aria-hidden="true"
-            onClick={() => onClose(false)}
-            onKeyDown={() => onClose(false)}
-            className="is-clickable is-flex is-justify-content-space-between pr-5"
-          >
+          <div className=" is-flex is-justify-content-space-between pr-5">
             <h1 className="is-size-3 ml-5">Mis Servicios</h1>
-            <FontAwesomeIcon icon={faTimes} size="2x" color="orange" className="ml-auto" />
+            <FontAwesomeIcon
+              icon={faTimes}
+              size="2x"
+              color="orange"
+              className="ml-auto is-clickable"
+              role="button"
+              tabIndex={0}
+              aria-hidden="true"
+              onClick={() => onClose(false)}
+              onKeyDown={() => onClose(false)}
+            />
           </div>
 
           <br />
