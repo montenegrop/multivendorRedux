@@ -2,7 +2,7 @@ import { createAction } from "@reduxjs/toolkit"
 import { ProductCountableConnection } from "../../generated/graphql"
 
 export const VENDOR_PRODUCTS_INIT =
-  createAction<{ id: string | string[]; channel: string; minimun: number; maximum: number }>(
+  createAction<{ id: string | string[]; channel: string; minimum: number; maximum: number }>(
     "VENDOR_PRODUCTS_INIT"
   )
 export const VENDOR_PRODUCTS_SUCCESS =

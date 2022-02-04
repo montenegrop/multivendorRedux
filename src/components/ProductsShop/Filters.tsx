@@ -1,7 +1,18 @@
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 const Filters = ({ filters, refreshFiltersSelected }) => {
   const router = useRouter()
+  const [min, setMin] = useState("")
+  const [max, setMax] = useState("")
+  useEffect(() => {
+    if (router.query?.max) {
+      setMax(router.query.max.toString())
+    }
+    if (router.query?.min) {
+      setMin(router.query.min.toString())
+    } else return
+  }, [])
   if (router.pathname == "/category/[categoryId]/[subCategoryId]") {
     return (
       <div className="filter ml-5">
@@ -45,6 +56,20 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
       </div>
     )
   } else {
+    const handleEnterKey = (e) => {
+      if (e.key == "Enter") {
+        if (max < min && max !== "") {
+          alert("Introduzca un precio maximo mayor o igual al menor")
+          return
+        }
+        max !== ""
+          ? router.push({
+              query: { min, max, vendorId: router.query.vendorId },
+              href: router.asPath,
+            })
+          : router.push({ query: { min, vendorId: router.query.vendorId }, href: router.asPath })
+      }
+    }
     return (
       <div className="filter ml-5">
         <div className="navbar-end is-expanded tienda_navbar_input_container">
@@ -61,29 +86,27 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
             <ul className="price_list">
               <strong>Segun Precio</strong>
               <li>
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-hidden="true"
-                  onClick={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
-                  onKeyDown={() => refreshFiltersSelected("Menor Precio", "Mayor Precio")}
-                >
-                  <p id="low" className="is-clickable">
-                    Menor Precio
-                  </p>
+                <div className="control">
+                  <input
+                    type="number"
+                    className="input"
+                    placeholder="Minimo"
+                    defaultValue={router.query?.min && router.query.min}
+                    onChange={(e) => setMin(e.target.value)}
+                    onKeyDown={handleEnterKey}
+                  />
                 </div>
               </li>
               <li>
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-hidden="true"
-                  onClick={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
-                  onMouseDown={() => refreshFiltersSelected("Mayor Precio", "Menor Precio")}
-                >
-                  <p id="hight" className="is-clickable">
-                    Mayor Precio
-                  </p>
+                <div className="control">
+                  <input
+                    type="number"
+                    className="input"
+                    placeholder="Maximo"
+                    defaultValue={router.query?.max && router.query.max}
+                    onChange={(e) => setMax(e.target.value)}
+                    onKeyDown={handleEnterKey}
+                  />
                 </div>
               </li>
             </ul>

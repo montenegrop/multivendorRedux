@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import TiendaBanner from "./TiendaBanner"
 import TiendaNavbar from "./TiendaNavbar"
 import { useDispatch, useSelector } from "react-redux"
@@ -20,27 +20,34 @@ const Tienda = () => {
   const vendorProducts = useSelector((state: RootState) => state.vendorProducts)
   const featuredProducts = useSelector((state: RootState) => state.featuredProducts)
 
+  const min = useMemo(() => {
+    if (router.query?.min) {
+      return parseFloat(router.query.min.toString())
+    } else return 0
+  }, [router.query])
+  const max = useMemo(() => {
+    if (router.query?.max) {
+      return parseFloat(router.query.max.toString())
+    } else return 9000
+  }, [router.query])
   useEffect(() => {
     dispatch(
       VENDOR_PRODUCTS_INIT({
         id: router.query.vendorId,
         channel: "default-channel",
-        minimun: 0,
-        maximum: 899,
+        minimum: min,
+        maximum: max,
       })
     )
     dispatch(STORE_INIT({ id: router.query.vendorId }))
     dispatch(FEATURED_PRODUCTS_INIT({ id: FEATURED_ID, channel: "default-channel" }))
-  }, [dispatch])
-
+  }, [dispatch, min, max])
   if (vendorProducts.loading) {
     return <p>Cargando...</p>
   }
   if (vendorProducts.error) {
     return <p>Error...</p>
   }
-  console.log(vendorProducts.products)
-
   if (
     vendorProducts.products !== null &&
     !vendorProducts.loading &&
