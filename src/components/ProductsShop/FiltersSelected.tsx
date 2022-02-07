@@ -4,7 +4,7 @@ const FilterCard = ({ filter, removeFilter }) => {
   const router = useRouter()
   if (router.pathname == "/category/[categoryId]/[subCategoryId]") {
     return (
-      <div className="filter-card m-0">
+      <div className="filter-card m-0  mr-1">
         <button className="button is-small" onClick={() => removeFilter(filter.slug)}>
           <p></p>
           {filter} &#10006;
@@ -13,7 +13,7 @@ const FilterCard = ({ filter, removeFilter }) => {
     )
   } else {
     return (
-      <div className="filter-card m-0 shadow">
+      <div className="filter-card m-0  mr-1">
         <button className="button is-small" onClick={() => removeFilter(filter)}>
           <p className="is-size-6">{filter} &#10006;</p>
         </button>

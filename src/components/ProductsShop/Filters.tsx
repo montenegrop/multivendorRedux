@@ -13,23 +13,71 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
       setMin(router.query.min.toString())
     } else return
   }, [])
-  if (router.pathname == "/category/[categoryId]/[subCategoryId]") {
-    return (
-      <div className="filter ml-5">
-        <div className="navbar-end is-expanded tienda_navbar_input_container ">
-          <div className="navbar-item tienda_navbar_input">
-            <input
-              className="input is-rounded is-normal shadow"
-              type="text"
-              placeholder="Buscar en esta tienda..."
-            />
-          </div>
+  const handleEnterKey = (e) => {
+    const queryParams = () => {
+      if (max !== "") {
+        return {
+          ...router.query,
+          min,
+          max,
+        }
+      } else {
+        return {
+          ...router.query,
+          min,
+        }
+      }
+    }
+    if (e.key == "Enter") {
+      if (max < min && max !== "") {
+        alert("Introduzca un precio maximo mayor o igual al menor")
+        return
+      }
+      router.push({
+        query: queryParams(),
+        href: router.asPath,
+      })
+    }
+  }
+  return (
+    <div className="filter ml-5">
+      <div className="navbar-end is-expanded tienda_navbar_input_container ">
+        <div className="navbar-item tienda_navbar_input">
+          <input
+            className="input is-rounded is-normal shadow"
+            type="text"
+            placeholder="Buscar..."
+          />
         </div>
+      </div>
+      <strong>Segun Precio</strong>
+      <div className="control">
+        <input
+          type="number"
+          className="input"
+          placeholder="Minimo"
+          defaultValue={router.query?.min && router.query.min}
+          onChange={(e) => setMin(e.target.value)}
+          onKeyDown={handleEnterKey}
+        />
+      </div>
+
+      <div className="control">
+        <input
+          type="number"
+          className="input"
+          placeholder="Maximo"
+          defaultValue={router.query?.max && router.query.max}
+          onChange={(e) => setMax(e.target.value)}
+          onKeyDown={handleEnterKey}
+        />
+      </div>
+      {router.pathname == "/category/[categoryId]/[subCategoryId]" ? (
         <ul className="filter-li">
           {filters.map((item, index) => {
             return (
               <li key={index}>
-                <ul className="price_list">
+                <ul>
                   <strong className="is-capitalized">{item.node.name}</strong>
                   {item.node.values.map((item, index) => {
                     return (
@@ -53,66 +101,10 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
             )
           })}
         </ul>
-      </div>
-    )
-  } else {
-    const handleEnterKey = (e) => {
-      if (e.key == "Enter") {
-        if (max < min && max !== "") {
-          alert("Introduzca un precio maximo mayor o igual al menor")
-          return
-        }
-        max !== ""
-          ? router.push({
-              query: { min, max, vendorId: router.query.vendorId },
-              href: router.asPath,
-            })
-          : router.push({ query: { min, vendorId: router.query.vendorId }, href: router.asPath })
-      }
-    }
-    return (
-      <div className="filter ml-5">
-        <div className="navbar-end is-expanded tienda_navbar_input_container">
-          <div className="navbar-item tienda_navbar_input p-0">
-            <input
-              className="input is-rounded is-normal"
-              type="text"
-              placeholder="Buscar en esta tienda..."
-            />
-          </div>
-        </div>
+      ) : (
         <ul className="filter-li">
           <li>
-            <ul className="price_list">
-              <strong>Segun Precio</strong>
-              <li>
-                <div className="control">
-                  <input
-                    type="number"
-                    className="input"
-                    placeholder="Minimo"
-                    defaultValue={router.query?.min && router.query.min}
-                    onChange={(e) => setMin(e.target.value)}
-                    onKeyDown={handleEnterKey}
-                  />
-                </div>
-              </li>
-              <li>
-                <div className="control">
-                  <input
-                    type="number"
-                    className="input"
-                    placeholder="Maximo"
-                    defaultValue={router.query?.max && router.query.max}
-                    onChange={(e) => setMax(e.target.value)}
-                    onKeyDown={handleEnterKey}
-                  />
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul className="name_list">
+            <ul>
               <strong>Segun Orden</strong>
               <li>
                 <div
@@ -143,7 +135,7 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
             </ul>
           </li>
           <li>
-            <ul className="weight_list">
+            <ul>
               <strong>Segun Peso</strong>
               <li>
                 <div
@@ -174,8 +166,8 @@ const Filters = ({ filters, refreshFiltersSelected }) => {
             </ul>
           </li>
         </ul>
-      </div>
-    )
-  }
+      )}
+    </div>
+  )
 }
 export default Filters

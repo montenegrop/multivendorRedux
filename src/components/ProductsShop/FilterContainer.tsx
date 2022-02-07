@@ -24,7 +24,7 @@ const FilterContainer = ({ filter = {} }) => {
 
   return (
     <div className="filter-colum ">
-      <div className="filter-card-container ml-5 mb-5">
+      <div className="filter-card-container ml-5 my-5">
         {filtCheck.map((item, index) => {
           return <FilterCard filter={item} key={index} removeFilter={removeFilter} />
         })}
