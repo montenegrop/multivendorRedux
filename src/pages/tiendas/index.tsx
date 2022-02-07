@@ -4,9 +4,12 @@ import { TIENDAS_INIT } from "../../state/actions/tiendas"
 import { RootState } from "../../state/reducers"
 import StoreCard from "../../components/Store/StoreCard"
 import { Banner } from "../../components/Banner"
-import CarouselContainer from "../../components/Caroucel/CarouselContainer"
 import { CardSkeleton } from "../../components/Skeleton/CardSkeleton"
 import { useRouter } from "next/router"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import { FEATURED_PRODUCTS_INIT } from "../../state/actions/featuredProducts"
+import { FEATURED_ID } from "../../constants"
 
 const TiendasPage = () => {
   const dispatch = useDispatch()
@@ -18,22 +21,62 @@ const TiendasPage = () => {
   if (!usuario) {
     router.push("/?loggin=loggin")
   }
+  const featuredProducts = useSelector((state: RootState) => state.featuredProducts)
   const stores = useSelector((state: RootState) => state.tiendas)
   const banner_image = "https://www.24store.com.ar/static/media/logo-24-store.ba4bf5c5.png"
   const banner_title = "Tiendas Destacadas"
-  const carouselImages: { image: string }[] = [
-    { image: "http://lorempixel.com/400/200/sports/20/" },
-    { image: "http://lorempixel.com/400/200/sports/2/" },
-    { image: "http://lorempixel.com/400/200/sports/1/" },
-    { image: "http://lorempixel.com/400/200/sports/1/" },
-    { image: "http://lorempixel.com/400/200/sports/2/" },
-  ]
+  useEffect(() => {
+    dispatch(FEATURED_PRODUCTS_INIT({ id: FEATURED_ID, channel: "default-channel" }))
+  }, [])
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 700 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 700, min: 0 },
+      items: 1,
+    },
+  }
+  const images = featuredProducts.products?.edges.map((item) => {
+    return {
+      url: item.node.images[0].url,
+      alt: item.node.images[0].alt,
+      price: item.node.defaultVariant.pricing.price.net.amount,
+      id: item.node.id,
+      title: item.node.name,
+    }
+  })
   return (
     <>
       {usuario && (
         <div>
           <Banner banner_image={banner_image} banner_title={banner_title} />
-          <CarouselContainer data={carouselImages} />
+          {images && (
+            <Carousel responsive={responsive} showDots={false} ssr={true} className="listStyleNone">
+              {images.map((item) => {
+                return (
+                  <div
+                    className="is-flex is-flex-direction-column is-align-items-center low-shadow has-background-white is-clickable p-3 m-2 has-text-centered user-select-none w-220px border-radius-15px"
+                    key={item.id}
+                  >
+                    <img src={item.url} alt={item.alt} style={{ height: "100px" }} />
+                    {item?.price && <p className="is-size-4 mb-0 mt-5">${item.price}</p>}
+                    {item?.title && <p className="is-size-5">{item.title}</p>}
+                  </div>
+                )
+              })}
+            </Carousel>
+          )}
           <div className="store-links-grid">
             <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
             <a className="button  polygon-button secondary-color store-link">
