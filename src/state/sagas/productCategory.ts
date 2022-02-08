@@ -10,36 +10,38 @@ export default (dispatch) => {
   return {
     [PRODUCT_CATEGORY_INIT.type]: async (_state, payload) => {
       const query = gql`
-        query productosPorCategoria($id: ID!, $channel: String) {
-          category(id: $id) {
-            products(first: 10, channel: $channel) {
-              edges {
-                node {
-                  id
+        query productosPorCategoria($id: [ID], $channel: String, $minimum: Float, $maximum: Float) {
+          products(
+            filter: { categories: $id, channel: $channel, price: { lte: $maximum, gte: $minimum } }
+            first: 15
+            channel: $channel
+          ) {
+            edges {
+              node {
+                id
+                name
+                defaultVariant {
+                  pricing {
+                    price {
+                      net {
+                        amount
+                      }
+                    }
+                  }
+                }
+                description
+                productType {
                   name
-                  defaultVariant {
-                    pricing {
-                      price {
-                        net {
-                          amount
-                        }
-                      }
-                    }
-                  }
-                  description
-                  productType {
+                  productAttributes {
                     name
-                    productAttributes {
+                    values {
                       name
-                      values {
-                        name
-                      }
                     }
                   }
-                  images {
-                    alt
-                    url
-                  }
+                }
+                images {
+                  alt
+                  url
                 }
               }
             }
@@ -57,12 +59,14 @@ export default (dispatch) => {
       const variables = {
         id: payload.id,
         channel: payload.channel,
+        minimum: payload.minimum,
+        maximum: payload.maximum,
       }
       try {
         const data = await graphQLClient.request(query, variables)
-        dispatch(PRODUCT_CATEGORY_SUCCESS(data.category))
+        dispatch(PRODUCT_CATEGORY_SUCCESS(data.products))
       } catch (error) {
-        dispatch(PRODUCT_CATEGORY_ERROR("error de category"))
+        dispatch(PRODUCT_CATEGORY_ERROR("error de products by category"))
       }
     },
   }

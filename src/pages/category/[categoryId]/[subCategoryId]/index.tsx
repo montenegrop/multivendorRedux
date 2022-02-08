@@ -12,21 +12,27 @@ const ProductCategory = () => {
   const dispatch = useDispatch()
   const categRedux = useSelector((state: RootState) => state.productCategory)
   const filtersRedux = useSelector((state: RootState) => state.filtersCategory)
-
   useEffect(() => {
-    dispatch(PRODUCT_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
+    dispatch(
+      PRODUCT_CATEGORY_INIT({
+        id: router.query.subCategoryId,
+        channel: "default-channel",
+        minimum: 223,
+        maximum: 899,
+      })
+    )
     dispatch(FILTERS_CATEGORY_INIT({ id: router.query.subCategoryId, channel: "default-channel" }))
   }, [dispatch])
 
   if (categRedux.loading || filtersRedux.loading) {
     return <p className="has-text-centered is-size-1">Cargando...</p>
   }
-  if (categRedux.category && filtersRedux.filtersAttributes) {
+  if (categRedux.products && filtersRedux.filtersAttributes) {
     return (
       <div>
         <div className="store">
           <FilterContainer filter={filtersRedux.filtersAttributes.edges} />
-          <ProductsContainer data={categRedux.category.products.edges} />
+          <ProductsContainer data={categRedux.products.edges} />
         </div>
       </div>
     )
