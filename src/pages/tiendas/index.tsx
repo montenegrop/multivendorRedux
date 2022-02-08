@@ -31,16 +31,16 @@ const TiendasPage = () => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
+      breakpoint: { max: 3000, min: 1250 },
       items: 5,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 1250, min: 950 },
       items: 4,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 700 },
-      items: 2,
+      breakpoint: { max: 950, min: 700 },
+      items: 3,
     },
     mobile: {
       breakpoint: { max: 700, min: 0 },
@@ -63,10 +63,10 @@ const TiendasPage = () => {
           <Banner banner_image={banner_image} banner_title={banner_title} />
           {images && (
             <Carousel responsive={responsive} showDots={false} ssr={true} className="listStyleNone">
-              {images.map((item) => {
+              {[...images, ...images, ...images].map((item) => {
                 return (
                   <div
-                    className="is-flex is-flex-direction-column is-align-items-center low-shadow has-background-white is-clickable p-3 m-2 has-text-centered user-select-none w-220px border-radius-15px"
+                    className="is-flex is-flex-direction-column is-align-items-center low-shadow has-background-white is-clickable p-3 m-2 has-text-centered user-select-none border-radius-15px store-carousel-card"
                     key={item.id}
                   >
                     <img src={item.url} alt={item.alt} style={{ height: "100px" }} />
@@ -77,7 +77,7 @@ const TiendasPage = () => {
               })}
             </Carousel>
           )}
-          <div className="store-links-grid">
+          <div className="store-links-grid mt-4">
             <a className="button  polygon-button secondary-color store-link">CREA TU TIENDA</a>
             <a className="button  polygon-button secondary-color store-link">
               VER TODAS LAS SUCURSALES

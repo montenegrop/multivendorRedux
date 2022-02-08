@@ -39,6 +39,12 @@
     align-items: center;
   }
 }
+@media only screen and (max-width: 700px) {
+  .store-carousel-card.m-2 {
+    margin: 0 auto !important;
+    max-width: 400px;
+  }
+}
 .store-links-grid {
   display: flex;
   flex-wrap: wrap;
