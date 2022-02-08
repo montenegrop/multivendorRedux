@@ -10,14 +10,27 @@ export default (dispatch) => {
   return {
     [VENDOR_PRODUCTS_INIT.type]: async (_state, payload) => {
       const query = gql`
-        query productsBySeller($id: ID!, $channel: String) {
-          products(first: 15, channel: $channel, filter: { vendors: [$id] }) {
+        query productsBySeller($id: ID!, $channel: String, $minimum: Float, $maximum: Float) {
+          products(
+            first: 15
+            channel: $channel
+            filter: { vendors: [$id], channel: $channel, price: { lte: $maximum, gte: $minimum } }
+          ) {
             edges {
               node {
                 id
                 slug
                 name
                 description
+                defaultVariant {
+                  pricing {
+                    price {
+                      net {
+                        amount
+                      }
+                    }
+                  }
+                }
                 productType {
                   name
                   productAttributes {
@@ -46,6 +59,8 @@ export default (dispatch) => {
       const variables = {
         id: payload.id,
         channel: payload.channel,
+        minimum: payload.minimum,
+        maximum: payload.maximum,
       }
       try {
         const data = await client.request(query, variables, requestHeaders)

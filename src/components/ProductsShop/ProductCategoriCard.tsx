@@ -3,7 +3,7 @@ export const ProductCategoryCard = ({ data, vendor = "" }) => {
   return (
     <Link href={`${`/product/${data.id}`}`}>
       <div className="product_card p-0 shadow mx-auto">
-        <div className="h-70per p-3 image is-flex is-flex-direction-column is-justify-content-center">
+        <div className="h-70per p-3 image is-flex is-flex-direction-column is-justify-content-center is-clickable">
           {data.images.length != 0 ? (
             <img
               src={data?.images[0].url}

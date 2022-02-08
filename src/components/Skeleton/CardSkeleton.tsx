@@ -8,6 +8,7 @@ export const CardSkeleton = ({ size = 200 }) => {
       viewBox="0 50 450 400"
       backgroundColor="rgb(206, 206, 206)"
       foregroundColor="#dedede"
+      title="Cargando..."
     >
       <rect x="43" y="304" rx="4" ry="4" width="271" height="9" />
       <rect x="44" y="323" rx="3" ry="3" width="119" height="6" />

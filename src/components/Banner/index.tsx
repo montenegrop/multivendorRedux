@@ -4,7 +4,7 @@ export const Banner = ({ banner_image, banner_title }) => {
       <div className="banner-img">
         <img src={banner_image} alt="" style={{ objectFit: "cover" }} />
       </div>
-      <h1 className="banner-title has-text-centered">
+      <h1 className="has-text-centered">
         <strong>{banner_title}</strong>
       </h1>
     </div>

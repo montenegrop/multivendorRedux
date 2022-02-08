@@ -24,12 +24,11 @@ const FilterContainer = ({ filter = {} }) => {
 
   return (
     <div className="filter-colum ">
-      <div className="filter-card-container ml-5 mb-5">
+      <div className="filter-card-container ml-5 mt-3">
         {filtCheck.map((item, index) => {
           return <FilterCard filter={item} key={index} removeFilter={removeFilter} />
         })}
       </div>
-      {/* <ClearFiltersButton filtCheck={filtCheck} clearFilters={clearFilters} /> */}
       <Filters filters={filter} refreshFiltersSelected={refreshFiltersSelected} />
     </div>
   )

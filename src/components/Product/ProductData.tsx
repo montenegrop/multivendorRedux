@@ -12,7 +12,7 @@ export const ProductData = ({ simpleProduct }) => {
       <small className="has-text-link">Ver los metodos de pago</small>
       <br />
       <strong>Envios y Devoluciones acordar con Tienda vendedora</strong>
-      <p className="has-text-link">Necesitas un trasnporte? Contactate</p>
+      <p className="has-text-link">Necesitas un transporte? Contactate</p>
       <a className="button  polygon-button secondary-color" style={{ height: "30px" }}>
         Agregar al carrito
       </a>

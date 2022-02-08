@@ -1,16 +1,16 @@
 import { createReducer } from "@reduxjs/toolkit"
 import * as productCategoryActions from "../../actions/productCategory"
-import { Category } from "../../../generated/graphql"
+import { ProductCountableConnection } from "../../../generated/graphql"
 
 const initialState = {
-  category: <Category>null,
+  products: <ProductCountableConnection>null,
   loading: <boolean>false,
   error: <string>"",
 }
 
 export default createReducer(initialState, (builder) => {
   builder.addCase(productCategoryActions.PRODUCT_CATEGORY_SUCCESS, (state, { payload }) => {
-    state.category = { ...payload }
+    state.products = { ...payload }
     state.loading = false
   })
   builder.addCase(productCategoryActions.PRODUCT_CATEGORY_INIT, (state) => {
